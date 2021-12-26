@@ -108,8 +108,6 @@ include('.//partials-front/header.php');
                 <p>10</p>
                 <p>10</p>
                 <p>10</p>
-                <p>10</p>
-                <p>10</p>
             </div>
         </div>
         <!-- Content -->
