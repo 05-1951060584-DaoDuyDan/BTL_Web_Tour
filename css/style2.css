@@ -1,0 +1,27 @@
+body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+.tao2{
+    align-items: center;
+    height: 100%;
+    justify-content: space-between;
+}
+.tao3 {
+    font-size: 14px;
+}
+.taocon {
+    color: azure;
+    margin-left: 30px;
+    margin-top: 5px;
+}
+.h6a {
+    margin-top: 40px;
+}
+.tao1 {
+
+    margin-top: 10%;
+    margin-left: 10%;
+    margin-right: 10%;
+}

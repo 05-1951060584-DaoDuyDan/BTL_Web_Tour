@@ -1,0 +1,16 @@
+body{
+    background-color: rgb(243, 243, 243);
+    
+}
+#tao1 {
+    margin-top: 5%;
+}
+.tao4 {
+    border: none;
+    border-radius: 40px;
+
+}
+
+.tour_information{
+    height: 1000px;
+}
