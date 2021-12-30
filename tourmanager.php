@@ -4,7 +4,7 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
     header('location: index.php');
 }else{
     require('partials-front/header.php');
-    $sqltourmanager = "Select* from tb_user, tb_touroperator, tb_tour where tb_user.id_user = tb_touroperator.id_user and tb_touroperator.id_touroperator = tb_tour.id_touroperator and tb_user.email = '{$user}'";
+    $sqltourmanager = "Select* from tb_user, tb_touroperator where tb_user.id_user = tb_touroperator.id_user and tb_user.email = '{$user}'";
     $result =  mysqli_query($conn, $sqltourmanager);
     if (mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);
@@ -72,16 +72,6 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                                             Looks good!
                                         </div>
                                     </div>
-                                    <!-- <div class="col-md-4">
-                                    <label for="validationCustom05" class="form-label">Loại Hình Kinh Doanh</label>
-                                        <select class="form-select" aria-readonly="" aria-label="Default select example">
-                                            <option selected>Doanh nghiệp</option>
-                                            <option>Cá Nhân</option>
-                                        </select>
-                                    </div> -->
-                                    <!-- <div class="col-12">
-                                        <button class="btn btn-primary" type="submit">Submit form</button>
-                                    </div> -->
                                 </form>
                             </div>
                         </div>
@@ -89,15 +79,28 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                         <div class="row bg-white">
                             <div class="col-md-12 mb-3" style="margin-left: -12px;">
-                                <button type="button" class="btn btn-primary mt-3">Thêm Tour Du Lịch</button>
+                                <a href="add-tour.php"><button type="button" class="btn btn-primary mt-3">Thêm Tour Du Lịch</button></a>
                             </div>
+                            <?php
+                                $sqltour = "Select* from tb_user, tb_touroperator, tb_tour where tb_user.id_user = tb_touroperator.id_user and tb_touroperator.id_touroperator = tb_tour.id_touroperator and tb_user.email = '{$user}'";
+                                $resulttour =  mysqli_query($conn, $sqltour);
+                                if (mysqli_num_rows($resulttour) > 0) {
+                                    while($rowtour = mysqli_fetch_assoc($resulttour)){
+                                        $tour_code = $rowtour['tour_code'];
+                                        $nametour = $rowtour['nametour'];
+                                        $tourinfo = $rowtour['tourinfo'];
+                                        $tourstartinglocation = $rowtour['startinglocation'];
+                                        $tourendinglocation = $rowtour['endinglocation'];
+                                        $tourstatus = $rowtour["status_tour"];
+
+                            ?>
                             <div class="col-md-4">
                                 <div class="col-md" style="margin-left: -12px;">
                                     <div class="card">
                                         <img src="images/Tour/TuanDung/1.png" class="card-img-top" alt="...">
                                         <div class="card-body">
-                                            <h5 class="card-title"><?php echo $row['nametour'] ?></h5>
-                                            <p class="card-text"><?php echo $row['tourinfo'] ?></p>
+                                            <h5 class="card-title"><?php echo $nametour ?></h5>
+                                            <p class="card-text"><?php echo $tourinfo ?></p>
                                         </div>
                                         <ul class="list-group list-group-flush">
                                             <li class="list-group-item">
@@ -105,7 +108,7 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                                                     <span class="material-icons text-primary">
                                                         location_on
                                                     </span>
-                                                    <p class="fw-bold ms-3"><?php echo $row['startinglocation'] . ' - ' . $row['endinglocation'] ?></p>
+                                                    <p class="fw-bold ms-3"><?php echo $tourstartinglocation . ' - ' . $tourendinglocation ?></p>
                                                 </div>
                                             </li>
                                             <li class="list-group-item">
@@ -117,13 +120,35 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                                                 </div>
                                             </li>
                                         </ul>
+                                        <?php
+                                            if($tourstatus==1){
+                                        ?>
                                         <div class="card-body">
                                             <a href="#" class="card-link text-decoration-none">Xem Thông Tin Tour</a>
                                             <a href="#" class="card-link text-decoration-none">Chỉnh sửa Tour</a>
                                         </div>
+                                        <?php
+                                            }
+                                        ?>
+                                        <?php
+                                            if($tourstatus==0){
+                                        ?>
+                                        <div class="card-body">
+                                            <form action="process-addtour.php" class="form-control" method="GET">
+                                                <input type="text" name="tour_code_update" value=<?php echo $tour_code ?> style="display: none;">
+                                                <button class="btn btn-primary" name="themthongtintour">Thêm thông tin về tour</button>
+                                            </form>
+                                        </div>
+                                        <?php
+                                            }
+                                        ?>
                                     </div>
                                 </div>
                             </div>
+                            <?php
+                                    }
+                                }
+                            ?>
                         </div>
                     </div>
                     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">

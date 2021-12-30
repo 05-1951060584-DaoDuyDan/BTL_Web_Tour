@@ -181,12 +181,12 @@ include('.//partials-front/header.php');
             $sql1 = 'SELECT*
                 FROM tb_tour, tb_touroperator, tb_typetour
                 WHERE tb_tour.id_touroperator = tb_touroperator.id_touroperator AND
-                tb_tour.id_typetour = tb_typetour.id_typetour;';
+                tb_tour.id_typetour = tb_typetour.id_typetour and status_tour = 1;';
 
             $result =  mysqli_query($conn, $sql1);
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
-                    $idtour = $row['id_tour'];
+                    $idtour = $row['tour_code'];
                     $image = $row['imagetouroperator'];
                     $nametouroperator = $row['nametouroperator'];
                     $nametour = $row['nametour'];
@@ -207,7 +207,7 @@ include('.//partials-front/header.php');
                             <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
                                 <div class="carousel-inner">
                                     <?php
-                                    $sql2 = "Select* from tb_tourimages where id_tour = '" . $idtour . "'";
+                                    $sql2 = "Select* from tb_tourimages where tour_code = '" . $idtour . "'";
                                     $result1 =  mysqli_query($conn, $sql2);
                                     if (mysqli_num_rows($result1) > 0) {
                                         for ($i = 0; $i < mysqli_num_rows($result1); $i++) {
