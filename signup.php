@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style/style.css">
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/script.js"></script>
 </head>
 
 <body id="body_login">
@@ -41,6 +43,7 @@
                     <div class="col-md-6">
                         <label for="validationCustom01" class="form-label">Tên</label>
                         <input type="text" class="form-control" id="Ten" required name="nameuser">
+                        
                         <div class="valid-feedback">
                             Looks good!
                         </div>
@@ -53,8 +56,9 @@
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <label for="validationCustom03" class="form-label">Email.</label>
-                        <input type="email" class="form-control" id="Email" name="email" required>
+                        <label for="validationCustom03" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                        <small id="emailHelp" class="form-test"></small>
                         <div class="invalid-feedback">
                             Email chưa chính xác!
                         </div>
@@ -145,6 +149,7 @@
         }
 
     </script>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 

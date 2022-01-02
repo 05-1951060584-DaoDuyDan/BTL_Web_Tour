@@ -33,7 +33,7 @@ include('.//partials-front/header.php');
                         <?php
                         if (isset($_SESSION['LoginOK']) && substr($_SESSION['LoginOK'], 0, 1) == '1') {
                         ?>
-                            <a href="tourmanager.php" class="text-decoration-none text-dark">
+                            <a href="tourmanager/tourmanager.php" class="text-decoration-none text-dark">
                                 <div class="d-flex align-items-center">
                                     <span class="material-icons my_icon_header me-3">monetization_on</span>
                                     <p class="mt-3">Tài khoản kinh doanh</p>
@@ -196,6 +196,7 @@ include('.//partials-front/header.php');
                     $end = $row['endinglocation'];
                     $content = $row['tourinfo'];
                     $discount = $row['tourdiscount'];
+                    $idnew = substr(md5(rand()), 0, 4);
             ?>
                     <div class="card shadow-sm">
                         <div class="p-3">
@@ -204,7 +205,7 @@ include('.//partials-front/header.php');
                                 <p class="ms-3 fw-bold"><?php echo $nametouroperator ?></p>
                             </div>
                             <!-- Images Tour -->
-                            <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
+                            <div id="carouselExampleControlsNoTouching<?php echo $idnew;?>" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
                                 <div class="carousel-inner">
                                     <?php
                                     $sql2 = "Select* from tb_tourimages where tour_code = '" . $idtour . "'";
@@ -216,13 +217,13 @@ include('.//partials-front/header.php');
                                             if ($i == 0) {
                                     ?>
                                                 <div class="carousel-item active">
-                                                    <img src="data:image/png;base64, <?php echo base64_encode($images) ?>" class="card-img-top d-block w-100" alt="...">
+                                                    <img src="data:image/png;base64, <?php echo base64_encode($images) ?>" class="card-img-top d-block w-100" alt="..." style="max-height: 394px">
                                                 </div>
                                             <?php
                                             } else {
                                             ?>
                                                 <div class="carousel-item">
-                                                    <img src="data:image/png;base64, <?php echo base64_encode($images) ?>" class="card-img-top d-block w-100" alt="...">
+                                                    <img src="data:image/png;base64, <?php echo base64_encode($images) ?>" class="card-img-top d-block w-100" alt="..." style="max-height: 394px">
                                                 </div>
                                             <?php
                                             }
@@ -232,11 +233,11 @@ include('.//partials-front/header.php');
                                     }
                                     ?>
                                 </div>
-                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching<?php echo $idnew;?>" data-bs-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Previous</span>
                                 </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsNoTouching<?php echo $idnew;?>" data-bs-slide="next">
                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Next</span>
                                 </button>

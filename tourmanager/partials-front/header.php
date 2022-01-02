@@ -1,10 +1,4 @@
-<?php
-include('config/config.php');
-if (isset($_SESSION['LoginOK'])) {
-    $user = substr($_SESSION['LoginOK'], 1, 60);
-    $user = rtrim($user);
-}
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,16 +10,16 @@ if (isset($_SESSION['LoginOK'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="style/style.css">
-    <script src="js/jquery-3.6.0.min.js"></script>
-    <script src="js/script.js"></script>
+    <link rel="stylesheet" href="../style/style.css">
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <!-- <script src="../js/script.js"></script> -->
 </head>
 
 <body style="background-color: #FAFAFB" id="body-main">
     <div class="header fixed-top shadow-sm rounded">
         <nav class="navbar navbar-expand-lg navbar-light bg-white pt-1 pb-1">
             <div class="container-fluid header-content">
-                <a class="navbar-brand" href="index.php"><img src=".//images/logo_login.png" alt="" class="img-fluid logo_home"></a>
+                <a class="navbar-brand" href="../index.php"><img src="../images/logo_login.png" alt="" class="img-fluid logo_home"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
