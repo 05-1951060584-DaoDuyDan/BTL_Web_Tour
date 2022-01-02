@@ -1,0 +1,229 @@
+/* CSS for header */
+.header{
+  z-index: 1;
+}
+.container-fluid .logo_home {
+  height: 40px;
+  width: 40px;
+  padding: 0;
+}
+.my_font_header {
+  font-family: Mulish, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+  font-weight: 400;
+}
+.section_header:hover {
+  cursor: pointer;
+  background-color: #fafafa;
+}
+.my_icon_header {
+  padding: 10px 11px;
+  border-radius: 100%;
+  background-color: rgb(223, 223, 223);
+  opacity: 0.6;
+  height: 46px;
+}
+.my_icon_header_2 {
+  padding: 10px 11px;
+  height: 46px;
+}
+
+.header_end span:hover {
+  border-radius: 100%;
+  background-color: rgb(243, 243, 243);
+  cursor: pointer;
+}
+
+.clear{
+  clear: both;
+}
+
+#navbarSupportedContent{
+  margin-left: 150px !important;
+}
+
+.my_text_header{
+  font-size: 13px !important;
+}
+
+@media (max-width: 1046px) {
+  .my_text_header{
+    display: none;
+  }
+}
+@media (max-width: 991.4px) {
+  .my_text_header{
+    display: block;
+  }
+  #navbarSupportedContent{
+    margin-left: 0px !important;
+  }
+  #navbar-content-right{
+    margin-left: 220px;
+  }
+  #navbar-content-right{
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .header-main{
+    display: flex;
+    flex-direction: row;
+  }
+  .header_end{
+    flex-direction: column;
+  }
+
+}
+/* @media (max-width: 768px) {
+  #sidebar-content{
+    display: none;
+  }
+} */
+/* end css header */
+
+/* CSS for Login */
+
+#body_login {
+    background: url(../images/login_img.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.container_login{
+    margin-top: 140px !important;
+}
+
+.img_login{
+  height: 80px;
+  width: 80px;
+  padding: 10px 10px;
+}
+
+.login-footer{
+  margin-top: 160px;
+}
+
+/* end css login */
+
+/* CSS for index */
+
+/* .wrapper{
+  margin-top: 64px;
+}
+
+.sidebar-right-image{
+  width: 300px !important;
+  height: 100%;
+} */
+#sidebar-content{
+  max-height: 100%;
+  overflow: auto;
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
+}
+#sidebar-content::-webkit-scrollbar { 
+  width: 0 !important;
+  display: none; 
+}
+#content-index{
+  margin-left: 380px;
+}
+
+.border-radius-main{
+  border-radius: 1px solid #DEE2E6 !important;
+}
+
+
+/* responsive for index */
+@media (max-width: 1062px) {
+  #content-index{
+    margin-left: 280px;
+  }
+}
+
+@media (max-width: 931px) {
+  #content-index{
+    margin-left: 250px;
+  }
+}
+ @media (max-width: 771px) {
+  #content-index{
+    margin-left: 240px;
+  }
+}
+
+@media (max-width: 767.8px) {
+  #content-index{
+    margin-left: 0px;
+  }
+  #sidebar-content{
+    display: none;
+  }
+  #button-displaysidebar{
+    display: block;
+  }
+}
+.advanced-search{
+  display: none;
+}
+@media (min-width: 767.9px) {
+  #button-displaysidebar{
+    display: none;
+  }
+  #sidebar-content{
+    display: block !important;
+  }
+  #content-index{
+    display: block !important;
+  }
+}
+
+/* @media (max-width: 780px) {
+  #sidebar-content{
+    display: none;
+  }
+} */
+/* end css for index */
+
+/* CSS for sign up */
+
+.my_privacypolicy{
+  text-align: justify;
+}
+
+
+/* End css for sign up */
+
+/* CSS for cart */
+.cart-content{
+  display: flex;
+  flex-direction: row;
+}
+@media (max-width: 1008px) {
+  .cart-content{
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media (max-width: 990px) {
+  .cart-content{
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media (max-width: 1000px){
+  .cart-days{
+    width: 100%;
+  }
+}
+
+/* End css for cart */
+
+/* CSS for bookingtour */
+
+.add-passengers{
+  cursor: pointer;
+}
