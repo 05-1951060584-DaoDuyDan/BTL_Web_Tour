@@ -24,7 +24,7 @@ if (isset($_SESSION['LoginOK'])) {
     <div class="header fixed-top shadow-sm rounded">
         <nav class="navbar navbar-expand-lg navbar-light bg-white pt-1 pb-1">
             <div class="container-fluid header-content">
-                <a class="navbar-brand" href="index.php"><img src="image/logo_login.png" alt="" class="img-fluid logo_home"></a>
+                <a class="navbar-brand" href="index.php"><img src="images/hahalolo-logo.png" alt="" class="img-fluid logo_home"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
