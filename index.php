@@ -271,7 +271,7 @@ include('.//partials-front/header.php');
                                     <p class="fw-bold text-danger"><?php echo $discount ?></p>
                                 </div>
                                 <div>
-                                    <button type="button" class="btn btn-info me-auto">Xem chi tiết</button>
+                                    <a href="informationtour.php?tourcode=<?php echo $idtour?>"><button type="button" class="btn btn-info me-auto">Xem chi tiết</button></a>
                                 </div>
                             </div>
                         </div>

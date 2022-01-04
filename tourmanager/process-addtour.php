@@ -44,7 +44,7 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
             $tour_code = $_POST['tour_code_update'];
         else
             $tour_code = $_GET['tourcode'];
-        $sqlinfotour = "Select* from tb_tour where tour_code = '{$tour_code}'";
+        $sqlinfotour = "Select* from tb_tour, tb_typetour where tour_code = '{$tour_code}' and tb_tour.id_typetour = tb_typetour.id_typetour";
         $resultinfotour =  mysqli_query($conn, $sqlinfotour);
         $rowinfotour = mysqli_fetch_assoc($resultinfotour);
     } else {
@@ -57,9 +57,9 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                     arrow_back
                 </span> <span>Quay lại</span> </a>
         </div>
-        <div class="bg-secondary rouned shadow-sm p-2 mb-2 text-white">
+        <div class="bg-secondary rounded shadow-sm p-2 mb-2 text-white">
             <h5>Mã tour: <?php echo $tour_code ?></h5>
-            <input type="text" readonly style="display: none" id="tourcodemainde" value="<?php echo $tour_code ?>">
+            <input type="text" readonly style="display: none;" id="tourcodemainde" value="<?php echo $tour_code ?>">
             <h5>Tên Tour: <?php echo $rowinfotour['nametour'] ?></h5>
             <h5>Số ngày du lịch: <?php echo $rowinfotour['numberofdays'] ?></h5>
         </div>
@@ -67,17 +67,131 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
             <div class="col-md">
                 <nav>
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Thông tin ngày du lịch</button>
+                        <button class="nav-link active" id="nav-info-tab" data-bs-toggle="tab" data-bs-target="#nav-info" type="button" role="tab" aria-controls="nav-info" aria-selected="true">Thông tin tour du lịch</button>
+                        <button class="nav-link" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Thông tin ngày du lịch</button>
                         <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Ảnh tour</button>
                         <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Ngày khởi hành của tour</button>
                     </div>
                 </nav>
                 <!-- Chỉnh sửa hoạt động từng ngày của tour -->
                 <div class="tab-content" id="nav-tabContent">
-                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <div class="tab-pane fade show active" id="nav-info" role="tabpanel" aria-labelledby="nav-info-tab">
+                        <form action="process-updatetour.php" method="POST" class="form-control mt-3" accept-charset="utf-8" onsubmit="return accept()">
+                            <div>
+                                <button class="btn btn-primary rounded-pill" id="capnhatthongtin" type="button">Cập nhật thông tin</button>
+                                <button class="btn btn-primary rounded-pill" id="cancelupdate" type="button">Hủy Cập Nhật</button>
+                            </div>
+                            <div class="d-flex flex-row align-items-center justify-content-between">
+                                <span class="me-2 fw-bold fs-1">Mã tour của bạn: </span>
+                                <input class="form-control mt-2" name="tour_codeupdate" value="<?php echo $tour_code; ?>" style="max-width: 150px;" readonly>
+                            </div>
+                            <div class="mt-3 tourdisplaynone" style="display: none;">
+                                <select class="form-select" aria-label="Default select example" id="typetour" name="typetour" required>
+                                    <option selected>Chọn loại tour của bạn</option>
+                                    <?php
+                                    $sqltypetour = "Select* from tb_typetour";
+                                    $resulttypetour = mysqli_query($conn, $sqltypetour);
+                                    if (mysqli_num_rows($resulttypetour)) {
+                                        while ($rowtypetour = mysqli_fetch_assoc($resulttypetour)) {
+                                    ?>
+                                            <option value="<?php echo $rowtypetour['id_typetour'] ?>"><?php echo $rowtypetour['nametypetour'] ?></option>
+                                    <?php
+                                        }
+                                    }
+                                    ?>
+                                    <!-- <option value="1">One</option> -->
+                                </select>
+                            </div>
+                            <div>
+                                <div class="displayblocktour">
+                                    <div class="col-md me-1 mt-3">
+                                        <label for="exampleInputEmail1" class="form-label fw-bold">Loại tour của bạn</label>
+                                        <input type="text" class="form-control" id="typetournotupdate" value="<?php echo $rowinfotour['nametypetour'] ?>" aria-describedby="emailHelp" name="typetournotupdate" required readonly>
+                                    </div>
+                                </div>
+                                <div class="col-md me-1 mt-3">
+                                    <label for="exampleInputEmail1" class="form-label fw-bold">Tên tour của bạn</label>
+                                    <input type="text" class="form-control informationtourupdate" id="" aria-describedby="emailHelp" value="<?php echo $rowinfotour['nametour'] ?>" name="nametourupdate" required readonly>
+                                </div>
+                            </div>
+                            <div class="col-md d-flex flex-row mt-3">
+                                <div class="col-md-6 me-1">
+                                    <label for="exampleInputEmail1" class="form-label fw-bold">Địa Điểm Bắt Đầu</label>
+                                    <input type="text" class="form-control informationtourupdate" name="startlocationupdate" value="<?php echo $rowinfotour['startinglocation'] ?>" aria-describedby="emailHelp" required readonly>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="exampleInputEmail1" class="form-label fw-bold">Địa Điểm Kết Thúc</label>
+                                    <input type="text" class="form-control informationtourupdate" name="endlocationupdate" value="<?php echo $rowinfotour['endinglocation'] ?>" id="" aria-describedby="emailHelp" required readonly>
+                                </div>
+                            </div>
+                            <div class="col-md mt-3">
+                                <div class="col-md-6">
+                                    <label for="exampleInputEmail1" class="form-label fw-bold">Số ngày thực hiện chuyến đi</label>
+                                    <input type="text" class="form-control informationtourupdate" name="numberofdaysupdate" value="<?php echo $rowinfotour['numberofdays'] ?>" aria-describedby="emailHelp" required readonly>
+                                </div>
+                                <div class="mt-3">
+                                    <div class="form-floating">
+                                        <p class="fw-bold">Mô tả tour của bạn</p>
+                                        <textarea class="form-control informationtourupdate" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 250px;" name="tourinfoupdate" required readonly><?php echo $rowinfotour['tourinfo'] ?></textarea>
+                                    </div>
+                                </div>
+                                <div class="mt-3 tourdisplaynone" style="display: none;">
+                                    <label class="fw-bold">Tour có cho phép trả góp hay không?</label><br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptionse" id="inlineRadio1" value="option1">
+                                        <label class="form-check-label" for="inlineRadio1">Trả góp</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptionse" id="inlineRadio2" value="option2">
+                                        <label class="form-check-label" for="inlineRadio2">Không trả góp</label>
+                                    </div>
+                                </div>
+                                <?php
+                                if ($rowinfotour['installment']) {
+                                    $infoinstallemnt = "Tour cùa bạn có hỗ trợ trả góp";
+                                } else {
+                                    $infoinstallemnt = "Tour cùa bạn không hỗ trợ trả góp";
+                                }
+                                ?>
+                                <div class="col-md-6 mt-3 displayblocktour">
+                                    <label for="exampleInputEmail1" class="form-label fw-bold">Tour Trả Góp</label>
+                                    <input type="text" class="form-control" name="tourtragop" aria-describedby="emailHelp" value="<?php echo $infoinstallemnt ?>" required readonly>
+                                </div>
+                                <div class="col-md-6 mt-3">
+                                    <label for="exampleInputEmail1" class="form-label fw-bold">Khuyến mãi của Tour</label>
+                                    <input type="text" class="form-control informationtourupdate" name="tourdiscountupdate" value="<?php echo $rowinfotour['tourdiscount'] ?>" aria-describedby="emailHelp" required readonly>
+                                </div>
+                                <div class="mt-3">
+                                    <div class="form-floating">
+                                        <p class="fw-bold">Quy định riêng về tour của bạn(Mỗi câu cách nhau bằng 1 dấu chấm)</p>
+                                        <textarea class="form-control informationtourupdate" style="height: 250px;" name="quydinhtourupdate" required readonly><?php echo $rowinfotour['tourregulations'] ?></textarea>
+                                    </div>
+                                </div>
+                                <div class="mt-3">
+                                    <div class="form-floating">
+                                        <p class="fw-bold">Khuyến mãi tour của bạn(Mỗi câu cách nhau bằng 1 dấu chấm)</p>
+                                        <textarea class="form-control informationtourupdate" readonly placeholder="Leave a comment here" id="floatingTextarea2" style="height: 250px;" name="khuyenmaitourupdate" required><?php echo $rowinfotour['conditiontour'] ?></textarea>
+                                    </div>
+                                </div>
+                                <div class="mt-3">
+                                    <div class="form-floating">
+                                        <p class="fw-bold">Chính sách riêng tư tour của bạn(Mỗi câu cách nhau 1 dấu chấm)</p>
+                                        <textarea class="form-control informationtourupdate" readonly placeholder="Leave a comment here" id="floatingTextarea2" style="height: 250px;" name="chinhsachtourupdate" required><?php echo $rowinfotour['tourdepartureschedule'] ?></textarea>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h6 class="text-danger mt-3 mb-2" id="errorInput"></h6>
+                                </div>
+                                <div class="mt-3 d-flex justify-content-center">
+                                    <button class="btn btn-primary" type="submit" id="smUpdateTour" name="smUpdateTour" style="display: none;">Xác Nhận Cập Nhật</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                         <div class="bg-white rounded shadow-sm mt-5 col-md-12">
                             <?php
-                            $sql1 = "SELECT day, location, morning, noon, afternoon, night, numberofdays from tb_tourday, tb_tour where tb_tour.tour_code = '{$tour_code}' and tb_tourday.tour_code = tb_tour.tour_code";
+                            $sql1 = "SELECT day, location, morning, noon, afternoon, night, numberofdays, imgday from tb_tourday, tb_tour where tb_tour.tour_code = '{$tour_code}' and tb_tourday.tour_code = tb_tour.tour_code";
                             $result =  mysqli_query($conn, $sql1);
                             if (mysqli_num_rows($result) >= 0) {
                                 if (mysqli_num_rows($result) > 0) {
@@ -92,6 +206,7 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                                                     <th scope="col">Buổi trưa</th>
                                                     <th scope="col">Buổi chiều</th>
                                                     <th scope="col">Buổi tối</th>
+                                                    <th scope="col">Ảnh</th>
                                                     <th scope="col">Sửa</th>
                                                     <th scope="col">Xóa</th>
                                                 </tr>
@@ -107,6 +222,7 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                                                         <td><?php echo $row['noon']; ?></td>
                                                         <td><?php echo $row['afternoon']; ?></td>
                                                         <td><?php echo $row['night']; ?></td>
+                                                        <td><img src="data:image/png;base64, <?php echo base64_encode($row['imgday']) ?>" style="max-height: 100px; width: 100px" alt=""></td>
                                                         <td><a data-bs-toggle="modal" data-bs-target="#edittourday" class="edittourday" id_service="<?php echo $row['day']; ?>"><i class="bi bi-pencil-square"></i></a></td>
                                                         <td><a data-bs-toggle="modal" data-bs-target="#deletetourday" class="deletetourday" id_service="<?php echo $row['day']; ?>"><i class="bi bi-trash"></i></td>
                                                     </tr>
@@ -161,6 +277,11 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                                                                 <textarea class="form-control" placeholder="Leave a comment here" id="nightupdate" style="height: 100px" name="nightupdate" required></textarea>
                                                             </div>
                                                         </div>
+                                                        <div class="mt-3">
+                                                            <div class="form-floating">
+                                                                <input type="file" class="form-control-file d-block" id="imgDayUpdate" name="imgDayUpdate">
+                                                            </div>
+                                                        </div>
                                                         <div class="d-flex justify-content-center mt-3">
                                                             <button class="btn btn-primary mt-1 rounded-pill" data-bs-dismiss="modal" id="btnupdatedayoftour" type="button" name="btnupdatedayoftour">Chỉnh sửa thông tin</button>
                                                         </div>
@@ -210,7 +331,7 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                             <!-- Thêm thông tin -->
                             <div class="col-md-8">
                                 <h4 class="mt-5">Thông tin về ngày tour của bạn đang bị thiếu vui lòng nhập thêm để hoàn tất thông tin!</h4>
-                                <form action="process-addtourday.php?tourcode=<?php echo $tour_code; ?>" method="POST" class="form-control">
+                                <form action="process-addtourday.php?tourcode=<?php echo $tour_code; ?>" enctype="multipart/form-data" method="POST" class="form-control">
 
                                     <div class="col-md me-1 mt-3">
                                         <label for="exampleInputEmail1" class="form-label fw-bold">Ngày bạn muốn nhập</label>
@@ -242,6 +363,11 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                                         <div class="form-floating">
                                             <b>Buổi tối tại địa điểm thứ của ngày bạn đang thiếu(Mỗi câu cách nhau bằng 1 dấu chấm)</b>
                                             <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" name="nightofday" required></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <div class="form-floating">
+                                            <input type="file" class="form-control-file d-block" id="imgDayNM" name="imgDayNM">
                                         </div>
                                     </div>
                                     <div class="d-flex justify-content-center mt-3">
@@ -328,7 +454,6 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                         <div class="row mt-5 rounded shadow-sm" style="margin-left: -4px; margin-right: -4px;">
                             <div class="col-md-12 bg-white rounded shadow-sm mb-2 p-1">
                                 <h5>Thêm thông tin những chuyến đi của tour</h5>
-                                <h6>Số ngày du lịch: <?php echo $rowinfotour['numberofdays'] ?></h6>
                             </div>
                             <div class="col-md-12 bg-white rounded shadow-sm mb-2 p-1">
                                 <h5>Danh sách những chuyến đi sắp tới của Tour</h5>

@@ -76,7 +76,7 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <?php
-                                    $tourcodenew = substr(md5(rand()), 0, 10);
+                                $tourcodenew = strtoupper(substr(md5(rand()), 0, 10));
                                 ?>
                                 <!-- <div class="modal-dialog" role="document"> -->
                                 <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -87,7 +87,7 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
-                                        <form action="process-addtour.php" method="POST" class="form-control" accept-charset= "utf-8">
+                                        <form action="process-addtour.php" method="POST" class="form-control" accept-charset="utf-8">
                                             <div class="d-flex flex-row align-items-center justify-content-between">
                                                 <span class="me-2 fw-bold fs-1">Mã tour mới của bạn: </span>
                                                 <input class="form-control mt-2" name="tour_code" value="<?php echo $tourcodenew; ?>" style="max-width: 150px;" readonly>
@@ -131,7 +131,7 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                                                 <div class="mt-3">
                                                     <div class="form-floating">
                                                         <p class="fw-bold">Mô tả tour của bạn</p>
-                                                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" name="tourinfo" required></textarea>
+                                                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 250px;" name="tourinfo" required></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="mt-3">
@@ -152,19 +152,19 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                                                 <div class="mt-3">
                                                     <div class="form-floating">
                                                         <p class="fw-bold">Quy định riêng về tour của bạn(Mỗi câu cách nhau bằng 1 dấu chấm)</p>
-                                                        <textarea class="form-control" style="height: 100px" name="quydinhtour" required></textarea>
+                                                        <textarea class="form-control" style="height: 250px;" name="quydinhtour" required></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="mt-3">
                                                     <div class="form-floating">
                                                         <p class="fw-bold">Khuyến mãi tour của bạn(Mỗi câu cách nhau bằng 1 dấu chấm)</p>
-                                                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" name="khuyenmaitour" required></textarea>
+                                                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 250px;" name="khuyenmaitour" required></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="mt-3">
                                                     <div class="form-floating">
                                                         <p class="fw-bold">Chính sách riêng tư tour của bạn(Mỗi câu cách nhau 1 dấu chấm)</p>
-                                                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" name="chinhsachtour" required></textarea>
+                                                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 250px;" name="chinhsachtour" required></textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -224,7 +224,7 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                                                 ?>
                                                     <div class="card-body">
                                                         <a href="#" class="card-link text-decoration-none">Xem Thông Tin Tour</a>
-                                                        <a href="#" class="card-link text-decoration-none">Chỉnh sửa Tour</a>
+                                                        <a href="process-addtour.php?tourcode=<?php echo $tour_code ?>" class="card-link text-decoration-none">Chỉnh sửa Tour</a><br>
                                                     </div>
                                                 <?php
                                                 }
@@ -233,10 +233,7 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                                                 if ($tourstatus == 0) {
                                                 ?>
                                                     <div class="card-body">
-                                                        <form action="process-addtour.php" class="form-control" method="POST">
-                                                            <input type="text" name="tour_code_update" value=<?php echo $tour_code ?> style="display: none;">
-                                                            <button class="btn btn-primary" name="themthongtintour">Thêm thông tin về tour</button>
-                                                        </form>
+                                                        <a href="process-addtour.php?tourcode=<?php echo $tour_code ?>" class="card-link text-decoration-none">Thêm thông tin Tour</a><br>
                                                     </div>
                                                 <?php
                                                 }
@@ -248,6 +245,8 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                                 }
                             }
                             ?>
+                        </div>
+                        <div>
                         </div>
                     </div>
                 </div>

@@ -13,42 +13,6 @@ $(document).ready(function(){
     })
 })
 
-//xử lý khi có sự kiện click
-$('#btnuploadimages').on('click', function () {
-    //Lấy ra files
-    var file_data = $('#tour_images').prop('files')[0];
-    //lấy ra kiểu file
-    var type = file_data.type;
-    //Xét kiểu file được upload
-    var match = ["image/gif", "image/png", "image/jpg","image/jpeg",];
-    //kiểm tra kiểu file
-    if (type == match[0] || type == match[1] || type == match[2] || type == match[3]) {
-        //khởi tạo đối tượng form data
-        var form_data = new FormData();
-        //thêm files vào trong form data
-        form_data.append('file', file_data);
-        var tourcode = $("#my_name_tour").val();
-        form_data.append('text', tourcode);
-        //sử dụng ajax post
-        $.ajax({
-            url: 'process-uploadimages.php', // gửi đến file upload.php 
-            dataType: 'text',
-            cache: false,
-            contentType: false,
-            processData: false,
-            data: form_data,
-            type: 'post',
-            success: function (res) {
-                $('#my_images_tour').html(res);
-                $('#tour_images').val('');
-            }
-        });
-    } else {
-        $('.status').text('Chỉ được upload file ảnh');
-        $('#file').val('');
-    }
-    return false;
-});
 
 //đăng ký ngày đi và kết thúc tour
 $('#btnAddSEDay').on('click', function() {
@@ -286,13 +250,49 @@ $("#btnDeleteSEDay").click(function(){
 
 //Kết thúc
 //Javascript cho Ảnh
+
+//xử lý khi có sự kiện click
+$('#btnuploadimages').on('click', function () {
+    var file_data = $('#tour_images').prop('files')[0];
+    var type = file_data.type;
+    //Xét kiểu file được upload
+    var match = ["image/gif", "image/png", "image/jpg","image/jpeg",];
+    //kiểm tra kiểu file
+    if (type == match[0] || type == match[1] || type == match[2] || type == match[3]) {
+        //khởi tạo đối tượng form data
+        var form_data = new FormData();
+        //thêm files vào trong form data
+        form_data.append('file', file_data);
+        var tourcode = $("#my_name_tour").val();
+        form_data.append('text', tourcode);
+        //sử dụng ajax post
+        $.ajax({
+            url: 'process-uploadimages.php', // gửi đến file upload.php 
+            dataType: 'text',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            type: 'post',
+            success: function (res) {
+                $('#my_images_tour').html(res);
+                $('#tour_images').val('');
+            }
+        });
+    } else {
+        $('.status').text('Chỉ được upload file ảnh');
+        $('#file').val('');
+    }
+    return false;
+});
+//Xóa ảnh
 $(".deleteimages").click(function(){
     let ab = $(this).text();
     let cd = ab.split(":")
 
     $(".imgdelete").text(cd[1]);
 })
-//xóa ảnh
+
 $("#btnDeleteImages").click(function(){
     let az = $(".imgdelete").text();
     let sx = $("#tourcodemainde").val();
@@ -325,26 +325,35 @@ $("#btnupdatedayoftour").click(function(){
     let afternoonupdate = $("#afternoonupdate").val();
     let nightupdate = $("#nightupdate").val();
 
-    form_datas.append('tourcodeupdate', tourcodeupdate);
-    form_datas.append('dayupdate', dayupdate);
-    form_datas.append('nametourdayupdate', nametourdayupdate);
-    form_datas.append('morningtourupdate', morningtourupdate);
-    form_datas.append('noonupdate', noonupdate);
-    form_datas.append('afternoonupdate', afternoonupdate);
-    form_datas.append('nightupdate', nightupdate);
-    $.ajax({
-        url: 'process-updatetourday.php', // gửi đến file upload.php 
-        dataType: 'text',
-        cache: false,
-        contentType: false,
-        processData: false,
-        data: form_datas,
-        type: 'post',
-        success: function(res) {
-            $('.infotourday').html(res);
-        }
-    });
-    return false;
+    var file_data = $('#imgDayUpdate').prop('files')[0];
+    var type = file_data.type;
+    //Xét kiểu file được upload
+    var match = ["image/gif", "image/png", "image/jpg","image/jpeg",];
+    //kiểm tra kiểu file
+    if (type == match[0] || type == match[1] || type == match[2] || type == match[3]) {
+
+        form_datas.append('tourcodeupdate', tourcodeupdate);
+        form_datas.append('dayupdate', dayupdate);
+        form_datas.append('nametourdayupdate', nametourdayupdate);
+        form_datas.append('morningtourupdate', morningtourupdate);
+        form_datas.append('noonupdate', noonupdate);
+        form_datas.append('afternoonupdate', afternoonupdate);
+        form_datas.append('nightupdate', nightupdate);
+        form_datas.append('file', file_data);
+        $.ajax({
+            url: 'process-updatetourday.php', // gửi đến file upload.php 
+            dataType: 'text',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_datas,
+            type: 'post',
+            success: function(res) {
+                $('.infotourday').html(res);
+            }
+        });
+        return false;
+}
 })
 //Cập nhật
 $(".edittourday").click(function() {
@@ -370,3 +379,42 @@ $(".deletetourday").click(function(){
     $(".daydeleteout").val(data[0]);
 })
 //Kết thúc
+
+//update information tour
+$(document).ready(function(){
+    $("#capnhatthongtin").click(function(){
+        if($(".informationtourupdate").attr("readonly")=='readonly'){
+            $(".informationtourupdate").attr("readonly", false);
+            if($(".tourdisplaynone").css("display")=="none"){
+                $(".tourdisplaynone").css("display", "block");
+                $(".displayblocktour").css("display", "none");
+                $("#smUpdateTour").css("display", "block");
+            }
+        }
+    })
+})
+$(document).ready(function(){
+    $("#cancelupdate").click(function(){
+        if(!$(".informationtourupdate").attr("readonly")){
+            $(".informationtourupdate").attr("readonly", true);
+            if($(".tourdisplaynone").css("display")=="block"){
+                $(".tourdisplaynone").css("display", "none");
+                $(".displayblocktour").css("display", "block");
+                $("#smUpdateTour").css("display", "none");
+            }
+        }
+    })
+})
+// $(document).ready(function(){
+//     $("#smUpdateTour").click(function(){
+//         accept();
+//     })
+// })
+function accept(){
+    if($("#typetour").val()=='Chọn loại tour của bạn' || $("#inlineRadio1").prop("checked")==false && $("#inlineRadio2").prop("checked")==false){
+        $("#errorInput").text("Vui lòng chọn loại tour hoặc Tour có cho phép trả góp hay không!");
+        return false;
+    }else{
+        return true;
+    }
+}
