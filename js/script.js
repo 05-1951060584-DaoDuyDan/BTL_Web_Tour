@@ -181,13 +181,13 @@ function getDaySED(date) {
     let dual = new Date(date);
     let a = dual.getDay();
     switch(a){
-        case 0: {return "Chủ Nhật"; break;}
-        case 1: {return "Thứ Hai"; break;}
-        case 2: {return "Thứ Ba"; break;}
-        case 3: {return "Thứ Tư"; break;}
-        case 4: {return "Thứ Năm"; break;}
-        case 5: {return "Thứ Sáu"; break;}
-        case 6: {return "Thứ Bảy"; break;}
+        case 0: {return "CN"; break;}
+        case 1: {return "Thứ 2"; break;}
+        case 2: {return "Thứ 3"; break;}
+        case 3: {return "Thứ 4"; break;}
+        case 4: {return "Thứ 5"; break;}
+        case 5: {return "Thứ 6"; break;}
+        case 6: {return "Thứ 7"; break;}
     }
 }
 //check ngày

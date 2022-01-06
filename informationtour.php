@@ -6,6 +6,11 @@ if ($_GET['tourcode']) {
     $sqlinfotour = "Select* from tb_tour, tb_typetour where tour_code = '{$tour_code}' and tb_tour.id_typetour = tb_typetour.id_typetour";
     $resultinfotour = mysqli_query($conn, $sqlinfotour);
     $rowinfotour = mysqli_fetch_assoc($resultinfotour);
+    $sqlSeDay = "Select* from tb_startendday where tour_code = '{$tour_code}' ORDER by startday";
+    $resultSeDay = mysqli_query($conn, $sqlSeDay);
+    $rowSeDay = mysqli_fetch_assoc($resultSeDay);
+    $startday = date('d-m-Y',strtotime($rowSeDay['startday']));
+    $endday = date('d-m-Y',strtotime($rowSeDay['endday']));
 } else {
     header("location: index.php");
 }
@@ -61,7 +66,7 @@ if ($_GET['tourcode']) {
                                 <h6 class="text-dark">
                                     <?php echo $rowinfotour['startinglocation'] ?>
                                 </h6>
-                                <p class="text-secondary">23/12/2021</p>
+                                <p class="text-secondary"><?php echo $startday ?></p>
                             </div>
                             <div>
                                 <p>Mã tour:
@@ -77,16 +82,16 @@ if ($_GET['tourcode']) {
                                 <h6 class="text-dark">
                                     <?php echo $rowinfotour['endinglocation'] ?>
                                 </h6>
-                                <p class="text-secondary">26/12/2021</p>
+                                <p class="text-secondary"><?php echo $endday ?></p>
                             </div>
 
                             <div class="d-flex">
                                 <p>Ngày khởi hành:
-                                    23/12/2021</p>
+                                    <?php echo $startday ?></p>
                                 <a href="tao4">Thay đổi ngày</a>
                             </div>
                             <p>Ngày kết thúc:
-                                26/12/2021</p>
+                            <?php echo $endday ?></p>
                         </div>
                     </div>
                 </div>
@@ -191,31 +196,50 @@ if ($_GET['tourcode']) {
                     <hr>
                 </div>
                 <div>
+                    <?php
+                    $sqlmonthoftour = "SELECT DISTINCT DATE_FORMAT(startday, '%m/%Y') AS MTour FROM `tb_startendday` WHERE tour_code = '{$tour_code}' ORDER by startday";
+                    $resultmonthoftour = mysqli_query($conn, $sqlmonthoftour);
+                    ?>
                     <div class="m-2 p-2">
                         <h4 class="mb-3">Chọn tháng khởi hành</h4>
-                        <button class="btn btn-info text-white">12/2021</button>
+                        <div>
+                            <?php
+                            while($rowmonthoftour = mysqli_fetch_assoc($resultmonthoftour)){
+                            ?>
+                                <button class="btn btn-info text-white"><?php echo $rowmonthoftour['MTour'] ?></button>
+                            <?php
+                            }
+                            ?>
+                        </div>
                         <h4 class="mt-3">Lịch khởi khành sắp tới</h4>
                     </div>
+                    <?php
+                    for($i = 0; $i < mysqli_num_rows($resultSeDay); $i++){
+                    ?>
                     <div class="card m-2">
                         <div class="d-flex card-body align-items-center justify-content-between">
                             <div class="d-flex flex-row">
-                                <div class="me-4">
-                                    <p>Khởi hành</p>
-                                    <h6>Thứ 5, 23/12/2021</h6>
-                                </div>
-                                <div class="me-4">
-                                    <span class="material-icons">
-                                        east
-                                    </span>
-                                </div>
-                                <div class="me-5">
-                                    <p>Kết thúc</p>
-                                    <h6>CN, 26/12/2021</h6>
+                                <div class="d-flex flex-row justify-content-between">
+                                    <div class="me-4">
+                                        <p>Khởi hành</p><!--Thứ 5, 23/12/2021-->
+                                        <h6><?php echo $rowSeDay['wdstart'].', '.$startday ?></h6>
+                                    </div>
+                                    <div class="me-4 d-flex align-items-center">
+                                        <span class="material-icons border rounded-pill fw-light">
+                                            east
+                                        </span>
+                                    </div>
+                                    <div class="me-5">
+                                        <p>Kết thúc</p>
+                                        <h6><?php echo $rowSeDay['wdend'].', '.$endday ?></h6>
+                                    </div>
                                 </div>
                             </div>
                             <div class="d-flex">
-                                <div class="text-center">
-                                    <p class="fs-4 fw-bold text-danger">1.760.000 ₫</p>
+                                <div>
+                                    <div class="text-center mt-2">
+                                        <p class="fs-4 fw-bold text-danger"><?php echo ps_price($rowSeDay['adultprice']) ?></p>
+                                    </div>
                                 </div>
                                 <div class="f-end p-2 ms-auto">
                                     <button type="button" class="tao4 btn btn-info text-white">
@@ -225,6 +249,14 @@ if ($_GET['tourcode']) {
                             </div>
                         </div>
                     </div>
+                    <?php
+                    if($i <= mysqli_num_rows($resultSeDay)-2){
+                        $rowSeDay = mysqli_fetch_assoc($resultSeDay);
+                        $startday = date('d-m-Y',strtotime($rowSeDay['startday']));
+                        $endday = date('d-m-Y',strtotime($rowSeDay['endday']));
+                    }
+                    }
+                    ?>
                 </div>
                 <div>
 
