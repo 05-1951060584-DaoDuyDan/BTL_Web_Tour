@@ -51,36 +51,9 @@ if (!isset($_SESSION['LoginOK'])) {
                                         <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <label for="validationCustom03" class="form-label">City</label>
-                                    <input type="text" class="form-control" id="validationCustom03" required>
-                                    <div class="invalid-feedback">
-                                        Please provide a valid city.
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <label for="validationCustom04" class="form-label">State</label>
-                                    <select class="form-select" id="validationCustom04" required>
-                                        <option selected disabled value="">Choose...</option>
-                                        <option>...</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-3">
-                                    <label for="validationCustom04" class="form-label">State</label>
-                                    <select class="form-select" id="validationCustom04" required>
-                                        <option selected disabled value="">Choose...</option>
-                                        <option>...</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-3">
-                                    <label for="validationCustom04" class="form-label">State</label>
-                                    <select class="form-select" id="validationCustom04" required>
-                                        <option selected disabled value="">Choose...</option>
-                                        <option>...</option>
-                                    </select>
-                                </div>
-                                <div class="col-12">
-                                    <button class="btn btn-primary" type="submit">Submit form</button>
+                                <div class="col-md-4">
+                                    <label for="validationCustom02" class="form-label">Last name</label>
+                                    <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
                                 </div>
                             </form>
                         </div>
