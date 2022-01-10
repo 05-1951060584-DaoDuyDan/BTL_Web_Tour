@@ -36,23 +36,23 @@ if (!isset($_SESSION['LoginOK'])) {
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <div class="row bg-white" style="margin-left: 1px">
                             <form class="row g-3 needs-validation" novalidate>
-                                <div class="col-md-4">
-                                    <label for="validationCustom01" class="form-label">First name</label>
+                                <div class="col-md-6">
+                                    <label for="validationCustom01" class="form-label">Tên</label>
                                     <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
                                 </div>
-                                <div class="col-md-4">
-                                    <label for="validationCustom02" class="form-label">Last name</label>
+                                <div class="col-md-6">
+                                    <label for="validationCustom02" class="form-label">Họ</label>
                                     <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
                                 </div>
-                                <div class="col-md-4">
-                                    <label for="validationCustomUsername" class="form-label">Username</label>
+                                <div class="col-md-6">
+                                    <label for="validationCustomUsername" class="form-label">Email</label>
                                     <div class="input-group has-validation">
                                         <span class="input-group-text" id="inputGroupPrepend">@</span>
                                         <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <label for="validationCustom02" class="form-label">Last name</label>
+                                <div class="col-md-6">
+                                    <label for="validationCustom02" class="form-label">Số điện thoại</label>
                                     <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
                                 </div>
                             </form>
