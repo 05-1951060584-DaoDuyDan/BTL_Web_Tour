@@ -1,6 +1,6 @@
 /* background */
 .bg-cuatoi{
-    background-color: #555555;
+    background-color: #c2c2c2;
 }
 /* css chung */
 a{
@@ -29,7 +29,7 @@ a{
     padding: 0;
 }
 
-.tao1 ul li {
+.menu ul li {
     display: inline;
     padding: 2%;
 }
