@@ -242,9 +242,11 @@ if ($_GET['tourcode']) {
                                     </div>
                                 </div>
                                 <div class="f-end p-2 ms-auto">
+                                    <a href="bookingtour.php?idse=<?php echo $rowSeDay['id_startendday'] ?>&tourcode=<?php echo $tour_code?>">
                                     <button type="button" class="tao4 btn btn-info text-white">
                                         Đặt ngay
                                     </button>
+                                    </a>
                                 </div>
                             </div>
                         </div>

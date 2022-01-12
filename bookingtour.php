@@ -1,3 +1,13 @@
+<?php
+if(!isset($_GET['tourcode'])&& !isset($_GET['idse'])){
+    header("location: index.php");
+}else{
+    $tour_code = $_GET['tourcode'];
+    $id_startendday = $_GET['idse'];
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
