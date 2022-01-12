@@ -28,5 +28,18 @@ class Process{
 
         return $userArr;
     }
+    public function getTour($idTour){
+        $connection = $this->connectDb();
+        $querySelect = "SELECT * FROM tb_tour WHERE tour_code='{$idTour}'";
+        $results = mysqli_query($connection, $querySelect);
+        $tourArr = [];
+        if (mysqli_num_rows($results) > 0) {
+            $bds = mysqli_fetch_all($results, MYSQLI_ASSOC);
+            $tourArr = $bds[0];
+        }
+        $this->closeDb($connection);
+
+        return $tourArr;
+    }
 }
 ?>

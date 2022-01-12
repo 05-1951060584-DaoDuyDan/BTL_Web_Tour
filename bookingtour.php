@@ -1,9 +1,12 @@
 <?php
+require_once "classprocessSQL.php";
 if(!isset($_GET['tourcode'])&& !isset($_GET['idse'])){
     header("location: index.php");
 }else{
     $tour_code = $_GET['tourcode'];
     $id_startendday = $_GET['idse'];
+    $ps = new Process();
+    $tour = $ps->getTour($tour_code);
 }
 
 ?>
@@ -235,7 +238,7 @@ if(!isset($_GET['tourcode'])&& !isset($_GET['idse'])){
                     <div class="col-md">
                         <h4 class="mt-3">Thông tin tour</h4>
                         <hr>
-                        <h6>003: Đà Nẵng – Sơn Trà – Hội An – Rừng Dừa 7 Mẫu – Bà Nà (4N3Đ)</h6>
+                        <h6><?php echo $tour['nametour'] ?></h6>
                         <a href="" class="text-decoration-none">Xem chi tiết tour</a>
                         <hr>
                         <div class="d-flex justify-content-around" style="font-size: 14px;">
@@ -247,10 +250,10 @@ if(!isset($_GET['tourcode'])&& !isset($_GET['idse'])){
                                 <p>Hành khách:</p>
                             </div>
                             <div class="d-flex flex-column">
-                                <p class="fw-bold">4 ngày</p>
-                                <p  class="fw-bold">Thành phố Đà Nẵng</p>
-                                <p  class="fw-bold">Thứ 4, 29/12/2021 (UTC+07:00)</p>
-                                <p  class="fw-bold">Thứ 7, 01/01/2022 (UTC+07:00)</p>
+                                <p class="fw-bold"><?php echo $tour['numberofdays'] ?> ngày</p>
+                                <p  class="fw-bold"><?php echo $tour['startinglocation'] ?></p>
+                                <p  class="fw-bold"></p>
+                                <p  class="fw-bold"></p>
                                 <p  class="fw-bold">1 người lớn, 1 trẻ nhỏ</p>
                             </div>
                         </div>
