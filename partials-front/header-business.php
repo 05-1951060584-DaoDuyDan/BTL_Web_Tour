@@ -18,6 +18,7 @@ if (isset($_SESSION['LoginOK'])) {
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="css/style2.css">
     <link rel="stylesheet" href="css/style4.css">
+    <!-- <link rel="stylesheet" href="css/style2.css"> -->
 </head>
 
 <body style="background-image: url('images/bg_business.jpg')">

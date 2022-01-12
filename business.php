@@ -1,9 +1,7 @@
 <?php
   require('partials-front/header-business.php')
 ?>
-  <script src="jss/jquery-3.6.0.min.js"></script>
-  <script src="jss/script.js"></script>
-  <link rel="stylesheet" href="css/style2.css">
+  
     
     <!-- <header>AAAA</header> -->
     <div class="tao1">
@@ -37,12 +35,12 @@
                 <label class="form-check-label" for="inlineRadio2">Doanh Nghiệp</label>
               </div>
             <h6>Tên doanh nghiệp</h6>
-            <input type="text" class="form-control" id="text" placeholder="Nhập tên doanh nghiệp" aria-label="Username" aria-describedby="addon-wrapping">
+            <input type="text" class="form-control" id="nameindustry" placeholder="Nhập tên doanh nghiệp" aria-label="Username" aria-describedby="addon-wrapping">
             <small id="textHelp" class="form-text">Tên doanh nghiệp của bạn sẽ được nhìn thấy bởi tất cả nhân viên.</small>
               <h6>Tên chủ sở hữu</h6>
             <input type="text" class="form-control" placeholder="Dao Duy Dan" aria-label="Username" aria-describedby="addon-wrapping">
-              <h6>Email</h6>
-            <input type="text" class="form-control" placeholder="daodan2612@gmail.com" aria-label="Username" aria-describedby="addon-wrapping">
+              <h6>Email</h6> 
+            <input type="text" class="form-control" id="email" placeholder="daodan2612@gmail.com" aria-label="Username" aria-describedby="addon-wrapping">
             <small class="form-text">Chúng tôi sẽ gửi thông báo tới doanh nghiệp của bạn qua email này.</small>
       </div>
       <div class="modal-footer">
@@ -67,6 +65,8 @@
       <a href="https://help.hahalolo.com/hc/vi/articles/360035841292" class="taocon text-decoration-none"> Tiêu chuẩn cộng đồng</a>
       <a href="https://help.hahalolo.com/hc/vi" class="taocon text-decoration-none"> Hỗ trợ</a>
     </section>
+  <script src="jss/jquery-3.6.0.min.js"></script>
+  <script src="jss/script.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
