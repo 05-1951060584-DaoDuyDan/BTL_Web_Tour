@@ -6,7 +6,7 @@ if ($_GET['tourcode']) {
     $sqlinfotour = "Select* from tb_tour, tb_typetour where tour_code = '{$tour_code}' and tb_tour.id_typetour = tb_typetour.id_typetour";
     $resultinfotour = mysqli_query($conn, $sqlinfotour);
     $rowinfotour = mysqli_fetch_assoc($resultinfotour);
-    $sqlSeDay = "Select* from tb_startendday where tour_code = '{$tour_code}' ORDER by startday";
+    $sqlSeDay = "Select* from tb_startendday where tour_code = '{$tour_code}' and startday >= CURDATE() ORDER by startday";
     $resultSeDay = mysqli_query($conn, $sqlSeDay);
     $rowSeDay = mysqli_fetch_assoc($resultSeDay);
     $startday = date('d-m-Y',strtotime($rowSeDay['startday']));
