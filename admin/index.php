@@ -20,7 +20,7 @@
                         }
                     ?>
                     <br>
-                    Số tour hiện có
+                    Số tour
                 </div>
 
                 <div class="col-4">
@@ -36,7 +36,7 @@
                         }
                     ?>
                     <br>
-                    Số người chủ tour hiện có
+                    Số người chủ tour
                 </div>
 
                 <div class="col-4">
