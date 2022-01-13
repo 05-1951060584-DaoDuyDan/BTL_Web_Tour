@@ -1,9 +1,9 @@
 <?php
 require_once "classprocessSQL.php";
 require_once "process-string.php";
-if(!isset($_GET['tourcode'])&& !isset($_GET['idse'])){
+if (!isset($_GET['tourcode']) && !isset($_GET['idse'])) {
     header("location: index.php");
-}else{
+} else {
     $tour_code = $_GET['tourcode'];
     $id_startendday = $_GET['idse'];
     $ps = new Process();
@@ -23,8 +23,7 @@ if(!isset($_GET['tourcode'])&& !isset($_GET['idse'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="style/style.css">
 </head>
@@ -34,6 +33,8 @@ if(!isset($_GET['tourcode'])&& !isset($_GET['idse'])){
         <div class="container mb-5">
             <div class="row">
                 <div class="col-md">
+                    <p class="constAdultPrice" style="display: none;"><?php echo $adultprice; ?></p>
+                    <p class="constChildPrice" style="display: none;"><?php echo $childprice ?></p>
                     <a href="" class="text-decoration-none d-flex align-items-center mb-3">
                         <span class="material-icons">
                             arrow_back_ios
@@ -98,7 +99,7 @@ if(!isset($_GET['tourcode'])&& !isset($_GET['idse'])){
                                             <span class="material-icons border rounded-pill add-passengers" onclick="removeadult()">
                                                 remove
                                             </span>
-                                            <span><input type="text" id="numberadult" class="form-control" name = "numberadultinfo" value="1" style="max-width: 50px" readonly></span>
+                                            <span><input type="text" id="numberadult" class="form-control" name="numberadultinfo" value="1" style="max-width: 50px" readonly></span>
                                             <span class="material-icons border rounded-pill add-passengers" onclick="addadult()">
                                                 add
                                             </span>
@@ -111,7 +112,7 @@ if(!isset($_GET['tourcode'])&& !isset($_GET['idse'])){
                                             <span class="material-icons border rounded-pill add-passengers" onclick="removechild()">
                                                 remove
                                             </span>
-                                            <span><input type="text" id="numberchild" class="form-control" name = "numberchildinfo" value="0" style="max-width: 50px" readonly></span>
+                                            <span><input type="text" id="numberchild" class="form-control" name="numberchildinfo" value="0" style="max-width: 50px" readonly></span>
                                             <span class="material-icons border rounded-pill add-passengers" onclick="addchild()">
                                                 add
                                             </span>
@@ -124,7 +125,7 @@ if(!isset($_GET['tourcode'])&& !isset($_GET['idse'])){
                                             <span class="material-icons border rounded-pill add-passengers" onclick="removebaby()">
                                                 remove
                                             </span>
-                                            <span><input type="text" id="numberbaby" class="form-control" name = "numberbabyinfo" value="0" style="max-width: 50px" readonly></span>
+                                            <span><input type="text" id="numberbaby" class="form-control" name="numberbabyinfo" value="0" style="max-width: 50px" readonly></span>
                                             <span class="material-icons border rounded-pill add-passengers" onclick="addbaby()">
                                                 add
                                             </span>
@@ -238,8 +239,8 @@ if(!isset($_GET['tourcode'])&& !isset($_GET['idse'])){
                         </form>
                     </div>
                 </div>
-                <div class="col-md-4 rounded shadow-sm m-1 bg-white mt-4">
-                    <div class="col-md">
+                <div class="col-md-4">
+                    <div class="col-md bg-white rounded shadow-sm m-1 mt-4 p-2">
                         <h4 class="mt-3">Thông tin tour</h4>
                         <hr>
                         <h6><?php echo $tour['nametour'] ?></h6>
@@ -255,10 +256,10 @@ if(!isset($_GET['tourcode'])&& !isset($_GET['idse'])){
                             </div>
                             <div class="d-flex flex-column">
                                 <p class="fw-bold"><?php echo $tour['numberofdays'] ?> ngày</p>
-                                <p  class="fw-bold"><?php echo $tour['startinglocation'] ?></p>
-                                <p  class="fw-bold"><?php echo date('d-m-Y',strtotime($startendday['startday'])) ?></p>
-                                <p  class="fw-bold"><?php echo date('d-m-Y',strtotime($startendday['endday'])) ?></p>
-                                <p  class="fw-bold">1 người lớn, 1 trẻ nhỏ</p>
+                                <p class="fw-bold"><?php echo $tour['startinglocation'] ?></p>
+                                <p class="fw-bold"><?php echo date('d-m-Y', strtotime($startendday['startday'])) ?></p>
+                                <p class="fw-bold"><?php echo date('d-m-Y', strtotime($startendday['endday'])) ?></p>
+                                <p class="fw-bold">1 người lớn, 1 trẻ nhỏ</p>
                             </div>
                         </div>
                         <hr>
@@ -286,53 +287,17 @@ if(!isset($_GET['tourcode'])&& !isset($_GET['idse'])){
                         <hr>
                         <div class="d-flex justify-content-between">
                             <h6>Tổng tiền</h6>
-                            <h5 class="text-danger">3201000</h5>
+                            <h5 class="text-danger total-price">3201000</h5>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </header>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
-    <script>
-        let adult = document.getElementById('numberadult').value;
-        let child = document.getElementById('numberchild').value;
-        let baby = document.getElementById('numberbaby').value;
-        let adu = Number(adult);
-        let chi = Number(child);
-        let bab = Number(baby);
-        function addadult(){
-            adu+=1;
-            document.getElementById('numberadult').value = String(adu);
-        }
-        function removeadult(){
-            if(adu>1){
-                adu-=1;
-                document.getElementById('numberadult').value = String(adu);
-            }
-        }
-        function addchild(){
-            chi+=1;
-            document.getElementById('numberchild').value = String(chi);
-        }
-        function removechild(){
-            if(chi>0){
-                chi-=1;
-                document.getElementById('numberchild').value = String(chi);
-            }
-        }
-        function addbaby(){
-            bab+=1;
-            document.getElementById('numberbaby').value = String(bab);
-        }
-        function removebaby(){
-            if(bab>0){
-                bab-=1;
-                document.getElementById('numberbaby').value = String(bab);
-            }
-        }
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/bookingtour.js">
     </script>
 </body>
+
 </html>
