@@ -11,6 +11,7 @@ if (!isset($_GET['tourcode']) && !isset($_GET['idse'])) {
     $startendday = $ps->getStartEndDay($id_startendday);
     $adultprice = $startendday['adultprice'];
     $childprice = $startendday['childprice'];
+    $vat = $startendday['vat'];
 }
 
 ?>
@@ -35,7 +36,8 @@ if (!isset($_GET['tourcode']) && !isset($_GET['idse'])) {
                 <div class="col-md">
                     <p class="constAdultPrice" style="display: none;"><?php echo $adultprice; ?></p>
                     <p class="constChildPrice" style="display: none;"><?php echo $childprice ?></p>
-                    <a href="" class="text-decoration-none d-flex align-items-center mb-3">
+                    <p class="constVatPrice" style="display: none;"><?php echo $vat ?></p>
+                    <a href="informationtour.php?tourcode=<?php echo $tour_code ?>" class="text-decoration-none d-flex align-items-center mb-3">
                         <span class="material-icons">
                             arrow_back_ios
                         </span>
@@ -244,7 +246,7 @@ if (!isset($_GET['tourcode']) && !isset($_GET['idse'])) {
                         <h4 class="mt-3">Thông tin tour</h4>
                         <hr>
                         <h6><?php echo $tour['nametour'] ?></h6>
-                        <a href="" class="text-decoration-none">Xem chi tiết tour</a>
+                        <a href="informationtour.php?tourcode=<?php echo $tour_code ?>" class="text-decoration-none">Xem chi tiết tour</a>
                         <hr>
                         <div class="d-flex justify-content-around" style="font-size: 14px;">
                             <div>
@@ -267,27 +269,27 @@ if (!isset($_GET['tourcode']) && !isset($_GET['idse'])) {
                             <h6>Chi tiết giá</h6>
                             <div>
                                 <div class="d-flex justify-content-between">
-                                    <span>Người lớn <b>x</b> <span class="numberadult"></span></span>
-                                    <span class="fw-bold"><?php echo ps_price($adultprice) ?></span>
+                                    <span>Người lớn <b>x</b> <span class="numberAdultTotal">1</span></span>
+                                    <span class="fw-bold adultTotalPrice"><?php echo ps_price($adultprice) ?></span>
                                 </div>
                                 <div class="d-flex justify-content-between">
-                                    <span>Trẻ em <b>x</b> <span class="numberchild"></span></span>
-                                    <span class="fw-bold"></span>
+                                    <span>Trẻ em <b>x</b> <span class="numberChildTotal">0</span></span>
+                                    <span class="fw-bold childTotalPrice">0 đ</span>
                                 </div>
                                 <div class="d-flex justify-content-between">
-                                    <span>Trẻ nhỏ <b>x</b> <span class="numberbaby"></span></span>
-                                    <span class="fw-bold">0 đ</span>
+                                    <span>Trẻ nhỏ <b>x</b> <span class="numberBabyTotal">0</span></span>
+                                    <span class="fw-bold babyTotalPrice">0 đ</span>
                                 </div>
                                 <div class="d-flex justify-content-between">
                                     <span>VAT</span>
-                                    <span class="fw-bold">291000 đ</span>
+                                    <span class="fw-bold vatTotalPrice"><?php echo ps_price($adultprice*($vat*1/100)) ?></span>
                                 </div>
                             </div>
                         </div>
                         <hr>
                         <div class="d-flex justify-content-between">
                             <h6>Tổng tiền</h6>
-                            <h5 class="text-danger total-price">3201000</h5>
+                            <h5 class="text-danger total-price"><?php echo ps_price($adultprice - $adultprice*($vat*1/100)) ?></h5>
                         </div>
                     </div>
                 </div>
