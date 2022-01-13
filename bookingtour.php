@@ -1,5 +1,6 @@
 <?php
 require_once "classprocessSQL.php";
+require_once "process-string.php";
 if(!isset($_GET['tourcode'])&& !isset($_GET['idse'])){
     header("location: index.php");
 }else{
@@ -7,6 +8,9 @@ if(!isset($_GET['tourcode'])&& !isset($_GET['idse'])){
     $id_startendday = $_GET['idse'];
     $ps = new Process();
     $tour = $ps->getTour($tour_code);
+    $startendday = $ps->getStartEndDay($id_startendday);
+    $adultprice = $startendday['adultprice'];
+    $childprice = $startendday['childprice'];
 }
 
 ?>
@@ -252,8 +256,8 @@ if(!isset($_GET['tourcode'])&& !isset($_GET['idse'])){
                             <div class="d-flex flex-column">
                                 <p class="fw-bold"><?php echo $tour['numberofdays'] ?> ngày</p>
                                 <p  class="fw-bold"><?php echo $tour['startinglocation'] ?></p>
-                                <p  class="fw-bold"></p>
-                                <p  class="fw-bold"></p>
+                                <p  class="fw-bold"><?php echo date('d-m-Y',strtotime($startendday['startday'])) ?></p>
+                                <p  class="fw-bold"><?php echo date('d-m-Y',strtotime($startendday['endday'])) ?></p>
                                 <p  class="fw-bold">1 người lớn, 1 trẻ nhỏ</p>
                             </div>
                         </div>
@@ -262,15 +266,15 @@ if(!isset($_GET['tourcode'])&& !isset($_GET['idse'])){
                             <h6>Chi tiết giá</h6>
                             <div>
                                 <div class="d-flex justify-content-between">
-                                    <span>Người lớn <b>x</b></span>
-                                    <span class="fw-bold">1760000 đ</span>
+                                    <span>Người lớn <b>x</b> <span class="numberadult"></span></span>
+                                    <span class="fw-bold"><?php echo ps_price($adultprice) ?></span>
                                 </div>
                                 <div class="d-flex justify-content-between">
-                                    <span>Trẻ em <b>x</b></span>
-                                    <span class="fw-bold">1150000 đ</span>
+                                    <span>Trẻ em <b>x</b> <span class="numberchild"></span></span>
+                                    <span class="fw-bold"></span>
                                 </div>
                                 <div class="d-flex justify-content-between">
-                                    <span>Trẻ nhỏ <b>x</b></span>
+                                    <span>Trẻ nhỏ <b>x</b> <span class="numberbaby"></span></span>
                                     <span class="fw-bold">0 đ</span>
                                 </div>
                                 <div class="d-flex justify-content-between">

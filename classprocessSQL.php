@@ -41,5 +41,18 @@ class Process{
 
         return $tourArr;
     }
+    public function getStartEndDay($idse){
+        $connection = $this->connectDb();
+        $querySelect = "SELECT * FROM tb_startendday WHERE id_startendday='{$idse}'";
+        $results = mysqli_query($connection, $querySelect);
+        $SEDArr = [];
+        if (mysqli_num_rows($results) > 0) {
+            $bds = mysqli_fetch_all($results, MYSQLI_ASSOC);
+            $SEDArr = $bds[0];
+        }
+        $this->closeDb($connection);
+
+        return $SEDArr;
+    }
 }
 ?>
