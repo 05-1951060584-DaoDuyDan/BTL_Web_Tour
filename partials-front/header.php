@@ -3,6 +3,7 @@ include('config/config.php');
 include('process-string.php');
 include('classprocessSQL.php');
 $id_user = "";
+$ps = new Process();
 if (isset($_SESSION['LoginOK'])) {
     $user = substr($_SESSION['LoginOK'], 1, 60);
     $user = rtrim($user);
@@ -10,6 +11,11 @@ if (isset($_SESSION['LoginOK'])) {
     $resultuser = mysqli_query($conn, $sqluser);
     $rowuser = mysqli_fetch_assoc($resultuser);
     $id_user = $rowuser['id_user'];
+    $tourcart = $ps->tourcart($id_user);
+    if($tourcart){
+        $startendday = $ps->getStartEndDay($tourcart['id_startendday']);
+        $price = $startendday['adultprice'];
+    }
 }
 ?>
 <!DOCTYPE html>
