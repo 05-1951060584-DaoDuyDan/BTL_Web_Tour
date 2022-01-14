@@ -3,6 +3,7 @@ include('config/config.php');
 include('process-string.php');
 include('classprocessSQL.php');
 $id_user = "";
+$price = "";
 $ps = new Process();
 if (isset($_SESSION['LoginOK'])) {
     $user = substr($_SESSION['LoginOK'], 1, 60);
@@ -107,7 +108,7 @@ if (isset($_SESSION['LoginOK'])) {
                             <div class="btn-group">
                                 <span class="material-icons my_icon_header_2" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">add_shopping_cart
                                 </span>
-                                <ul class="dropdown-menu dropdown-menu-lg-end p-3">
+                                <ul class="dropdown-menu dropdown-menu-lg-end p-2">
                                     <p class="fw-bold mt-1 ms-2">Giỏ Hàng</p>
                                     <p class="mt-3 ms-2">Thanh Toán</p>
                                     <hr>
@@ -117,7 +118,7 @@ if (isset($_SESSION['LoginOK'])) {
                                         <label class="form-check-label" for="flexRadioDefault1" style="width:100px">
                                             Đặt tour
                                         </label></div>
-                                        <p class="text-danger">1800000</p>
+                                        <p class="text-danger"><?php echo ps_price($price) ?></p>
                                     </div>
                                     <hr>
                                     <a href="cart.php"><div class="d-grid gap-2">
