@@ -36,9 +36,9 @@
                                 $id_user = $row['id_user'];
                                 $nameuser = $row['nameuser'];
                                 $surnameuser = $row['surnameuser'];
-                                $email = $row['endinglocation'];
-                                $phonenumber = $row['numberofdays'];
-                                $pasword = $row['tourdiscount'];
+                                $email = $row['email'];
+                                $phonenumber = $row['phonenumber'];
+                                $pasword = $row['pasword'];
                                 if($row['status_user'] == 0)
                                     $status = 'Không hoạt động';
                                 else
