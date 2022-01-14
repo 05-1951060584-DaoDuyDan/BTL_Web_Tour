@@ -65,7 +65,10 @@
                                     <td><?php echo $businesstype; ?></td>
                                     <td><?php echo $email; ?></td>
                                     <td> <?php echo $phonenumber ?></td>
-                                    <td><?php echo $imagetouroperator; ?></td>
+                                    <td>
+                                <!-- <?php echo $row['imagetouroperator']; ?> -->
+                                <img src="data:image/jpeg;base64,<?php echo base64_encode($row['imagetouroperator']); ?>" width="160" height="100" alt="Image Operator" />
+                            </td>
                                     <td><?php echo $status; ?></td>
                                     <td><?php echo $lock; ?></td>
                                     <td><?php echo $email_verification_link; ?></td>
