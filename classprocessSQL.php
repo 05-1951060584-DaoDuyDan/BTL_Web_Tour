@@ -54,5 +54,18 @@ class Process{
 
         return $SEDArr;
     }
+    function tourcart($id_user){
+        $conn = $this->connectDb();
+        $sqlcart = "Select* from tb_tourcart where id_user = {$id_user}";
+        $resultcart = mysqli_query($conn, $sqlcart);
+        $SEDArr = [];
+        if(mysqli_num_rows($resultcart)>0){
+            $bds = mysqli_fetch_all($resultcart, MYSQLI_ASSOC);
+            $SEDArr = $bds[0];
+            return $SEDArr;
+        }else{
+            return false;
+        }
+    }
 }
 ?>

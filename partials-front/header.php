@@ -1,8 +1,15 @@
 <?php
 include('config/config.php');
+include('process-string.php');
+include('classprocessSQL.php');
+$id_user = "";
 if (isset($_SESSION['LoginOK'])) {
     $user = substr($_SESSION['LoginOK'], 1, 60);
     $user = rtrim($user);
+    $sqluser = "Select* from tb_user where email = '{$user}' or phonenumber = '{$user}'";
+    $resultuser = mysqli_query($conn, $sqluser);
+    $rowuser = mysqli_fetch_assoc($resultuser);
+    $id_user = $rowuser['id_user'];
 }
 ?>
 <!DOCTYPE html>
@@ -36,7 +43,7 @@ if (isset($_SESSION['LoginOK'])) {
                                     article
                                 </span></i></div>
                             <div class="bd-highlight d-flex justify-content-center my_font_header">
-                                <p class="my_text_header"> Bảng tin</p>
+                                <p class="my_text_header">Bảng tin</p>
                             </div>
                         </div>
                         <div class="d-flex flex-column bd-highlight ps-3 pe-3 section_header">
@@ -89,6 +96,7 @@ if (isset($_SESSION['LoginOK'])) {
                         </div>
                     </div>
                     <div class="navbar-nav mb-lg-0">
+                        <?php  ?>
                         <div class="d-flex bd-highlight ps-3 pe-3 header_end" id="navbar-content-right">
                             <div class="btn-group">
                                 <span class="material-icons my_icon_header_2" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">add_shopping_cart

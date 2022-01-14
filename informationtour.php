@@ -242,7 +242,10 @@ if ($_GET['tourcode']) {
                                     </div>
                                 </div>
                                 <div class="f-end p-2 ms-auto">
-                                    <a href="process_addcart.php?idse=<?php echo $rowSeDay['id_startendday'] ?>&tourcode=<?php echo $tour_code?>">
+                                    <?php if(isset($_SESSION['LoginOK'])){   $user = "&iduser=".$id_user;}
+                                          else  {$user= "";}
+                                     ?>
+                                    <a href="process_addcart.php?idse=<?php echo $rowSeDay['id_startendday'] ?>&tourcode=<?php echo $tour_code?><?php echo $user?>">
                                     <button type="button" class="tao4 btn btn-info text-white">
                                         Đặt ngay
                                     </button>
