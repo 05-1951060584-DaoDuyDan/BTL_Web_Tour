@@ -10,26 +10,31 @@
                 <thead>
                     <tr>
                         <th scope="col">STT</th>
-                        <th scope="col">Tên Tour</th>
-                        <th scope="col">Điểm bắt đầu</th>
-                        <th scope="col">Điểm kết thúc</th>
-                        <th scope="col">Số ngày</th>
-                        <th scope="col">Khuyến mãi</th>
-                        <th scope="col">Thông tin tour</th>
-                        <th scope="col">Trả góp</th>
-                        <th scope="col">Quy định tour</th>
-                        <th scope="col">Tình trạng tour</th>
-                        <th scope="col">Lịch khởi hành</th>
-                        <th scope="col">Trạng thái tour</th>
-                        <th scope="col">Loại tour</th>
-                        <th scope="col">Người điều hành tour</th>
-                        <th scope="col">Khóa</th>
-                        <th scope="col">Mở</th>
+                        <th scope="col">Mã booking</th>
+                        <th scope="col">Tên tour book</th>
+                        <th scope="col">Họ tour book</th>
+                        <th scope="col">Giới tính</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Số điện thoại</th>
+                        <th scope="col">Địa chỉ</th>
+                        <th scope="col">Số người lớn</th>
+                        <th scope="col">Số trẻ em</th>
+                        <th scope="col">Số bé</th>
+                        <th scope="col">Tổng tiền</th>
+                        <th scope="col">Ngày đặt</th>
+                        <th scope="col">Thanh toán</th>
+                        <th scope="col">Trạng thái</th>
+                        <th scope="col">Hoàn thành</th>
+                        <th scope="col">Hủy bỏ</th>
+                        <th scope="col">Tên tour</th>
+                        <th scope="col">Ngày bắt đầu</th>
+                        <th scope="col">Sửa</th>
+                        <th scope="col">Xóa</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                        $sql = "SELECT * FROM tb_tour, tb_typetour, tb_touroperator WHERE tb_tour.id_typetour = tb_typetour.id_typetour AND tb_touroperator.id_touroperator = tb_tour.id_touroperator";
+                        $sql = "SELECT * FROM tb_tour, tb_startendday, tb_tourbooking WHERE tb_tour.tour_code = tb_typetour.tour_code AND tb_touroperator.id_touroperator = tb_tour.id_touroperator";
                         $res = mysqli_query($conn,$sql);
                         $sn = 1;
                         if(mysqli_num_rows($res) > 0)
