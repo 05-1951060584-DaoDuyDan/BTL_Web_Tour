@@ -10,6 +10,7 @@
                 <thead>
                     <tr>
                         <th scope="col">STT</th>
+                        <th scope="col">ID</th>
                         <th scope="col">Tên người dùng</th>
                         <th scope="col">Họ người dùng</th>
                         <th scope="col">Email</th>
