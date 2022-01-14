@@ -4,7 +4,7 @@
 
 <body class="bg-cuatoi">
     <div class="container">
-        <a href="add-room.php" class="btn btn-success m-2">Thêm Tour</a>
+        <!-- <a href="add-room.php" class="btn btn-success m-2">Thêm Tour</a> -->
         <div class="row">
             <table class="table table-striped">
                 <thead>
@@ -19,26 +19,23 @@
                         <th scope="col">Địa chỉ</th>
                         <th scope="col">Liên kết lúc</th>
                         <th scope="col">Khóa</th>
-                        <th scope="col">Lịch khởi hành</th>
-                        <th scope="col">Trạng thái tour</th>
-                        <th scope="col">Loại tour</th>
-                        <th scope="col">Người điều hành tour</th>
+                        <th scope="col">Người quản trị</th>
                         <th scope="col">Khóa</th>
                         <th scope="col">Mở</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                        $sql = "SELECT * FROM tb_tour, tb_typetour, tb_touroperator WHERE tb_tour.id_typetour = tb_typetour.id_typetour AND tb_touroperator.id_touroperator = tb_tour.id_touroperator";
+                        $sql = "SELECT * FROM tb_user";
                         $res = mysqli_query($conn,$sql);
                         $sn = 1;
                         if(mysqli_num_rows($res) > 0)
                         {
                             while($row = mysqli_fetch_assoc($res))
                             {
-                                $id_user = $row['tour_code'];
+                                $id_user = $row['id_user'];
                                 $nameuser = $row['nameuser'];
-                                $surnameuser = $row['startinglocation'];
+                                $surnameuser = $row['surnameuser'];
                                 $email = $row['endinglocation'];
                                 $phonenumber = $row['numberofdays'];
                                 $pasword = $row['tourdiscount'];
@@ -55,28 +52,26 @@
                                 else
                                     $lock = 'Hoạt động';
                                 if($row['admin'] == 0)
-                                    $admin = 'Không hoạt động';
+                                    $admin = 'Sai';
                                 else
-                                    $admin = 'Hoạt động';
+                                    $admin = 'Đúng';
 
 
                                 ?>
                                 <tr>
                                     <th scope="row"><?php echo $sn++; ?></th>
-                                    <td><?php echo $nametour; ?></td>
-                                    <td><?php echo $startinglocation; ?></td>
-                                    <td><?php echo $endinglocation; ?></td>
-                                    <td> <?php echo $numberofdays; ?></td>
-                                    <td><?php echo $tourdiscount; ?></td>
-                                    <td><?php echo $tourinfo; ?></td>
-                                    <td><?php echo $installment; ?></td>
-                                    <td><?php echo $tourregulations; ?></td>
-                                    <td><?php echo $conditiontour; ?></td>
-                                    <td><?php echo $tourdepartureschedule; ?></td>
+                                    <td><?php echo $id_user; ?></td>
+                                    <td><?php echo $nameuser; ?></td>
+                                    <td><?php echo $surnameuser; ?></td>
+                                    <td> <?php echo $email; ?></td>
+                                    <td><?php echo $phonenumber; ?></td>
+                                    <td><?php echo $pasword; ?></td>
                                     <td><?php echo $status; ?></td>
-                                    <td><?php echo $nametypetour; ?></td>
-                                    <td><?php echo $nametouroperator; ?></td>
-                                    <td><?php echo $status; ?></td>
+                                    <td><?php echo $email_verification_link; ?></td>
+                                    <td><?php echo $email_verified_at; ?></td>
+                                    <td><?php echo $lock; ?></td>
+                                    <td><?php echo $admin; ?></td>
+
                                     <td>
                                         <a href="update-room.php?id=<?php echo $id;?>" class="m-l-42">
                                             <i class="fas fa-user-edit text-center" style="color:blue"></i>
