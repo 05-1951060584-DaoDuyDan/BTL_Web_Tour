@@ -34,36 +34,36 @@
                 </thead>
                 <tbody>
                     <?php
-                        $sql = "SELECT * FROM tb_tour, tb_startendday, tb_tourbooking WHERE tb_tour.tour_code = tb_tourbooking.tour_code AND tb_tourbooking.id_startendday = tb_startendday.id_startendday";
+                        $sql = "SELECT * FROM tb_tour, tb_startendday, tb_tourbooking , tb_user WHERE tb_tour.tour_code = tb_tourbooking.tour_code  AND tb_user.id_user = tb_tourbooking.id_user AND tb_tourbooking.id_startendday = tb_startendday.id_startendday";
                         $res = mysqli_query($conn,$sql);
                         $sn = 1;
                         if(mysqli_num_rows($res) > 0)
                         {
                             while($row = mysqli_fetch_assoc($res))
                             {
-                                $id_user = $row['tour_code'];
-                                $code_bookingtour = $row['nametour'];
-                                $namebookingtour = $row['startinglocation'];
-                                $surnamebookingtour = $row['endinglocation'];
-                                $gender = $row['numberofdays'];
-                                $email = $row['tourdiscount'];
-                                $phonenumber = $row['tourinfo'];
+                                $nameuser = $row['nameuser'];
+                                $code_bookingtour = $row['code_bookingtour'];
+                                $namebookingtour = $row['namebookingtour'];
+                                $surnamebookingtour = $row['surnamebookingtour'];
+                                $gender = $row['gender'];
+                                $email = $row['email'];
+                                $phonenumber = $row['phonenumber'];
                                 
-                                $address = $row['tourregulations'];
-                                $numberadult = $row['conditiontour'];
-                                $numberchild = $row['tourdepartureschedule'];
-                                $numberbaby = $row['nametypetour'];
-                                $totalmoney = $row['nametouroperator'];
-                                $tourbookingdate = $row['nametouroperator'];
-                                $payments = $row['nametouroperator'];
+                                $address = $row['address'];
+                                $numberadult = $row['numberadult'];
+                                $numberchild = $row['numberchild'];
+                                $numberbaby = $row['numberbaby'];
+                                $totalmoney = $row['totalmoney'];
+                                $tourbookingdate = $row['tourbookingdate'];
+                                $payments = $row['payments'];
                                 if($row['status_bookingtour'] == 0)
-                                    $status = 'Không hoạt động';
+                                    $status = 'Chưa trả';
                                 else
-                                    $status = 'Hoạt động';
-                                $complete = $row['nametouroperator'];
-                                $cancel = $row['nametouroperator'];
-                                $nametour = $row['nametouroperator'];
-                                $startday = $row['nametouroperator'];
+                                    $status = 'Đã trả';
+                                $complete = $row['complete'];
+                                $cancel = $row['cancel'];
+                                $nametour = $row['nametour'];
+                                $startday = $row['startday'];
                             
 
 
