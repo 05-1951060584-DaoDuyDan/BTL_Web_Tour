@@ -70,20 +70,24 @@
                                 ?>
                                 <tr>
                                     <th scope="row"><?php echo $sn++; ?></th>
+                                    <td><?php echo $nameuser; ?></td>
+                                    <td><?php echo $code_bookingtour; ?></td>
+                                    <td><?php echo $namebookingtour; ?></td>
+                                    <td> <?php echo $surnamebookingtour; ?></td>
+                                    <td><?php echo $gender; ?></td>
+                                    <td><?php echo $email; ?></td>
+                                    <td><?php echo $phonenumber; ?></td>
+                                    <td><?php echo $address; ?></td>
+                                    <td><?php echo $numberadult; ?></td>
+                                    <td><?php echo $numberchild; ?></td>
+                                    <td><?php echo $numberbaby; ?></td>
+                                    <td><?php echo $totalmoney; ?></td>
+                                    <td><?php echo $tourbookingdate; ?></td>
+                                    <td><?php echo $payments; ?></td>
+                                    <td><?php echo $status; ?></td>
+                                    <td><?php echo $complete; ?></td>
                                     <td><?php echo $nametour; ?></td>
-                                    <td><?php echo $startinglocation; ?></td>
-                                    <td><?php echo $endinglocation; ?></td>
-                                    <td> <?php echo $numberofdays; ?></td>
-                                    <td><?php echo $tourdiscount; ?></td>
-                                    <td><?php echo $tourinfo; ?></td>
-                                    <td><?php echo $installment; ?></td>
-                                    <td><?php echo $tourregulations; ?></td>
-                                    <td><?php echo $conditiontour; ?></td>
-                                    <td><?php echo $tourdepartureschedule; ?></td>
-                                    <td><?php echo $status; ?></td>
-                                    <td><?php echo $nametypetour; ?></td>
-                                    <td><?php echo $nametouroperator; ?></td>
-                                    <td><?php echo $status; ?></td>
+                                    <td><?php echo $startday; ?></td>
                                     <td>
                                         <a href="update-room.php?id=<?php echo $id;?>" class="m-l-42">
                                             <i class="fas fa-user-edit text-center" style="color:blue"></i>
