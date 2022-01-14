@@ -11,14 +11,12 @@ if(isset($_SESSION['LoginOK'])){
         $resultcart = mysqli_query($conn, $sqlcart);
         if(mysqli_num_rows($resultcart)>0){
             $sqlcartupdate = "Update tb_tourcart set tour_code = '{$tour_code}', id_startendday = {$id_startendday} where id_user = {$id_user}";
-            echo $sqlcartupdate;
             mysqli_query($conn,$sqlcartupdate);
         }else{
             $sqlcartupdate = "INSERT INTO `tb_tourcart`(`id_user`, `tour_code`, `id_startendday`) VALUES ('$id_user','$tour_code','$id_startendday')";
-            echo $sqlcartupdate;
             mysqli_query($conn,$sqlcartupdate);
         }
-        //header("location: bookingtour.php?idse={$id_startendday}&tourcode={$tour_code}");
+        header("location: bookingtour.php?idse={$id_startendday}&tourcode={$tour_code}");
     }
 }else{
     $tour_code = $_GET['tourcode'];

@@ -2,7 +2,6 @@
 if ($_GET['tourcode']) {
     $tour_code = $_GET['tourcode'];
     include('partials-front/header.php');
-    include('process-string.php');
     $sqlinfotour = "Select* from tb_tour, tb_typetour where tour_code = '{$tour_code}' and tb_tour.id_typetour = tb_typetour.id_typetour";
     $resultinfotour = mysqli_query($conn, $sqlinfotour);
     $rowinfotour = mysqli_fetch_assoc($resultinfotour);
