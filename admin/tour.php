@@ -75,6 +75,7 @@
                                     <td><?php echo $tourregulations; ?></td>
                                     <td><?php echo $conditiontour; ?></td>
                                     <td><?php echo $tourdepartureschedule; ?></td>
+                                    <td><?php echo $status; ?></td>
                                     <td><?php echo $nametypetour; ?></td>
                                     <td><?php echo $nametouroperator; ?></td>
                                     <td><?php echo $status; ?></td>

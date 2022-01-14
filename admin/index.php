@@ -36,7 +36,7 @@
                         }
                     ?>
                     <br>
-                    Số người chủ tour
+                    Số người điều hành tour
                 </div>
 
                 <div class="col-4">
