@@ -33,31 +33,50 @@
                 </thead>
                 <tbody>
                     <?php
-                        $sql = "SELECT * FROM tb_tour, tb_typetour, tb_touroperation WHERE tbl_hotel.id_hotel = tbl_room.id_hotel AND tbl_typeroom.id_typeroom = tbl_room.id_typeroom";
+                        $sql = "SELECT * FROM tb_tour, tb_typetour, tb_touroperation WHERE tb_tour.id_typetour = tb_typetour.id_typetour AND tb_touroperator.id_touroperator = tb_tour.id_touroperator";
                         $res = mysqli_query($conn,$sql);
                         $sn = 1;
                         if(mysqli_num_rows($res) > 0)
                         {
                             while($row = mysqli_fetch_assoc($res))
                             {
-                                $id = $row['id_room'];
-                                $name = $row['name_room'];
-                                $price = $row['priceofday_room'];
-                                $customermax = $row['customermax_room'];
-                                $type = $row['name_typeroom'];
-                                $name_hotel = $row['name_hotel'];
-                                if($row['status_room'] == 0)
+                                $tour_code = $row['tour_code'];
+                                $nametour = $row['nametour'];
+                                $startinglocation = $row['startinglocation'];
+                                $endinglocation = $row['endinglocation'];
+                                $numberofdays = $row['numberofdays'];
+                                $tourdiscount = $row['tourdiscount'];
+                                $tourinfo = $row['tourinfo'];
+                                if($row['installment'] == 0)
+                                    $installment = 'Không hoạt động';
+                                else
+                                    $installment = 'Hoạt động';
+                                $tourregulations = $row['tourregulations'];
+                                $conditiontour = $row['conditiontour'];
+                                $tourdepartureschedule = $row['tourdepartureschedule'];
+                                $nametypetour = $row['nametypetour'];
+                                $nametouroperator = $row['nametouroperator'];
+                                if($row['status_tour'] == 0)
                                     $status = 'Không hoạt động';
                                 else
                                     $status = 'Hoạt động';
+
+
                                 ?>
                                 <tr>
                                     <th scope="row"><?php echo $sn++; ?></th>
-                                    <td><?php echo $name; ?></td>
-                                    <td><?php echo $price; ?></td>
-                                    <td><?php echo $customermax; ?></td>
-                                    <td> <?php echo $type; ?></td>
-                                    <td><?php echo $name_hotel; ?></td>
+                                    <td><?php echo $nametour; ?></td>
+                                    <td><?php echo $startinglocation; ?></td>
+                                    <td><?php echo $endinglocation; ?></td>
+                                    <td> <?php echo $numberofdays; ?></td>
+                                    <td><?php echo $tourdiscount; ?></td>
+                                    <td><?php echo $tourinfo; ?></td>
+                                    <td><?php echo $installment; ?></td>
+                                    <td><?php echo $tourregulations; ?></td>
+                                    <td><?php echo $conditiontour; ?></td>
+                                    <td><?php echo $tourdepartureschedule; ?></td>
+                                    <td><?php echo $nametypetour; ?></td>
+                                    <td><?php echo $nametouroperator; ?></td>
                                     <td><?php echo $status; ?></td>
                                     <td>
                                         <a href="update-room.php?id=<?php echo $id;?>" class="m-l-42">
