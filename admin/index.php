@@ -1,6 +1,6 @@
 <?php include('partials-front/header.php') ?>
 
-<div class="container-fluid bg-cuatoi">
+<div class="container-fluid ">
     <div class="wrapper">
         <h2>Dashboard</h2>
         <br><br>

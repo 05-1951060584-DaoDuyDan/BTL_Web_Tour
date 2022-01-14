@@ -2,7 +2,7 @@
     
 ?>
 
-<body class="bg-cuatoi">
+<body >
     <div class="container">
         <!-- <a href="add-room.php" class="btn btn-success m-2">Thêm Tour</a> -->
         <div class="row">
@@ -38,7 +38,7 @@
                                 $surnameuser = $row['surnameuser'];
                                 $email = $row['email'];
                                 $phonenumber = $row['phonenumber'];
-                                $pasword = $row['pasword'];
+                                $password = $row['password'];
                                 if($row['status_user'] == 0)
                                     $status = 'Không hoạt động';
                                 else
