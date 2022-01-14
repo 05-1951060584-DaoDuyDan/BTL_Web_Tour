@@ -22,7 +22,7 @@
                         <th scope="col">Trạng thái</th>
                         <th scope="col">Khóa</th>
                         <th scope="col">Email liên kết</th>
-                        <th scope="col">Địa chỉ liên kết</th>
+                        <th scope="col">Liên kết vào</th>
                         <th scope="col">Trang</th>
                         <th scope="col">Tên người dùng</th>
                         <th scope="col">Khóa</th>
@@ -38,44 +38,40 @@
                         {
                             while($row = mysqli_fetch_assoc($res))
                             {
-                                $tour_code = $row['tour_code'];
-                                $nametour = $row['nametour'];
-                                $startinglocation = $row['startinglocation'];
-                                $endinglocation = $row['endinglocation'];
-                                $numberofdays = $row['numberofdays'];
-                                $tourdiscount = $row['tourdiscount'];
-                                $tourinfo = $row['tourinfo'];
-                                if($row['installment'] == 0)
-                                    $installment = 'Không hoạt động';
-                                else
-                                    $installment = 'Hoạt động';
-                                $tourregulations = $row['tourregulations'];
-                                $conditiontour = $row['conditiontour'];
-                                $tourdepartureschedule = $row['tourdepartureschedule'];
-                                $nametypetour = $row['nametypetour'];
+                                $id_touroperator = $row['id_touroperator'];
                                 $nametouroperator = $row['nametouroperator'];
-                                if($row['status_tour'] == 0)
+                                $businesstype = $row['businesstype'];
+                                $email = $row['email'];
+                                $phonenumber = $row['phonenumber'];
+                                $imagetouroperator = $row['imagetouroperator'];
+                    
+                                if($row['status_touroperator'] == 0)
                                     $status = 'Không hoạt động';
                                 else
                                     $status = 'Hoạt động';
-
-
+                                if($row['lock'] == 0)
+                                    $lock = 'Không';
+                                else
+                                    $lock = 'Có';
+                                $email_verification_link = $row['email_verification_link'];
+                                $email_verified_at = $row['email_verified_at'];
+                                $nametypepage = $row['nametypepage'];
+                                $nameuser = $row['nameuser'];
+                                
                                 ?>
                                 <tr>
                                     <th scope="row"><?php echo $sn++; ?></th>
-                                    <td><?php echo $nametour; ?></td>
-                                    <td><?php echo $startinglocation; ?></td>
-                                    <td><?php echo $endinglocation; ?></td>
-                                    <td> <?php echo $numberofdays; ?></td>
-                                    <td><?php echo $tourdiscount; ?></td>
-                                    <td><?php echo $tourinfo; ?></td>
-                                    <td><?php echo $installment; ?></td>
-                                    <td><?php echo $tourregulations; ?></td>
-                                    <td><?php echo $conditiontour; ?></td>
-                                    <td><?php echo $tourdepartureschedule; ?></td>
-                                    <td><?php echo $nametypetour; ?></td>
                                     <td><?php echo $nametouroperator; ?></td>
+                                    <td><?php echo $businesstype; ?></td>
+                                    <td><?php echo $email; ?></td>
+                                    <td> <?php echo $phonenumber ?></td>
+                                    <td><?php echo $imagetouroperator; ?></td>
                                     <td><?php echo $status; ?></td>
+                                    <td><?php echo $lock; ?></td>
+                                    <td><?php echo $email_verification_link; ?></td>
+                                    <td><?php echo $email_verified_at; ?></td>
+                                    <td><?php echo $nametypepage; ?></td>
+                                    <td><?php echo $nameuser; ?></td>
                                     <td>
                                         <a href="update-room.php?id=<?php echo $id;?>" class="m-l-42">
                                             <i class="fas fa-user-edit text-center" style="color:blue"></i>
