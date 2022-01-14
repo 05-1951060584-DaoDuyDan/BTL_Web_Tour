@@ -9,7 +9,7 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">STT</th>
+                        <th scope="col">Tên người dùng</th>
                         <th scope="col">Mã booking</th>
                         <th scope="col">Tên tour book</th>
                         <th scope="col">Họ tour book</th>
@@ -41,26 +41,30 @@
                         {
                             while($row = mysqli_fetch_assoc($res))
                             {
-                                $tour_code = $row['tour_code'];
-                                $nametour = $row['nametour'];
-                                $startinglocation = $row['startinglocation'];
-                                $endinglocation = $row['endinglocation'];
-                                $numberofdays = $row['numberofdays'];
-                                $tourdiscount = $row['tourdiscount'];
-                                $tourinfo = $row['tourinfo'];
-                                if($row['installment'] == 0)
-                                    $installment = 'Không hoạt động';
-                                else
-                                    $installment = 'Hoạt động';
-                                $tourregulations = $row['tourregulations'];
-                                $conditiontour = $row['conditiontour'];
-                                $tourdepartureschedule = $row['tourdepartureschedule'];
-                                $nametypetour = $row['nametypetour'];
-                                $nametouroperator = $row['nametouroperator'];
-                                if($row['status_tour'] == 0)
+                                $id_user = $row['tour_code'];
+                                $code_bookingtour = $row['nametour'];
+                                $namebookingtour = $row['startinglocation'];
+                                $surnamebookingtour = $row['endinglocation'];
+                                $gender = $row['numberofdays'];
+                                $email = $row['tourdiscount'];
+                                $phonenumber = $row['tourinfo'];
+                                
+                                $address = $row['tourregulations'];
+                                $numberadult = $row['conditiontour'];
+                                $numberchild = $row['tourdepartureschedule'];
+                                $numberbaby = $row['nametypetour'];
+                                $totalmoney = $row['nametouroperator'];
+                                $tourbookingdate = $row['nametouroperator'];
+                                $payments = $row['nametouroperator'];
+                                if($row['status_bookingtour'] == 0)
                                     $status = 'Không hoạt động';
                                 else
                                     $status = 'Hoạt động';
+                                $complete = $row['nametouroperator'];
+                                $cancel = $row['nametouroperator'];
+                                $nametour = $row['nametouroperator'];
+                                $startday = $row['nametouroperator'];
+                            
 
 
                                 ?>
