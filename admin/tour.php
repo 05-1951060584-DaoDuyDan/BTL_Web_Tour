@@ -33,7 +33,7 @@
                 </thead>
                 <tbody>
                     <?php
-                        $sql = "SELECT * FROM tb_tour, tb_typetour, tb_touroperation WHERE tb_tour.id_typetour = tb_typetour.id_typetour AND tb_touroperator.id_touroperator = tb_tour.id_touroperator";
+                        $sql = "SELECT * FROM tb_tour, tb_typetour, tb_touroperator WHERE tb_tour.id_typetour = tb_typetour.id_typetour AND tb_touroperator.id_touroperator = tb_tour.id_touroperator";
                         $res = mysqli_query($conn,$sql);
                         $sn = 1;
                         if(mysqli_num_rows($res) > 0)
