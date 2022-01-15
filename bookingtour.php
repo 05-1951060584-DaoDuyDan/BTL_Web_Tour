@@ -1,4 +1,5 @@
 <?php
+require 'partials-front/header.php';
 require_once "classprocessSQL.php";
 require_once "process-string.php";
 if (!isset($_GET['tourcode']) && !isset($_GET['idse'])) {
@@ -141,18 +142,21 @@ if (!isset($_GET['tourcode']) && !isset($_GET['idse'])) {
                                 <?php
                                 $tourservice = $ps->getTourServive($tour_code);
                                 if($tourservice!=false){
+                                    $ct = count($tourservice);
+                                    echo "<input type='text' class='' name='countservice' id='countservice' style='display:none;'' value='$ct' readonly>";
                                     for($i = 0; $i < count($tourservice);$i++){
                                         $rowtourservice = $tourservice[$i];
                                 ?>
                                 <div class="">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <input class="form-check-input" type="checkbox" id="checkbox<?php echo $i; ?>" value="">
+                                        <input style="display: none;" type="text" id="priceserviceadd<?php echo $i; ?>" value="<?php echo $rowtourservice['priceservice'] ?>"></input>
                                         <label class="form-check-label" for="flexCheckDefault">
                                             <?php echo $rowtourservice['nameservice']." (".ps_price($rowtourservice['priceservice']).")"; ?>
                                         </label>
                                         <div class="col-md-6">
                                             <label for="validationCustom05" class="form-label">Số hành khách</label>
-                                            <input type="text" name="numberpag<?php echo $i; ?>" class="form-control" id="validationCustom05" required>
+                                            <input type="text" name="numberpag<?php echo $i; ?>" id="numberpag<?php echo $i; ?>" class="form-control" id="validationCustom05" required>
                                         </div>
                                     </div>
                                 </div>
@@ -188,10 +192,16 @@ if (!isset($_GET['tourcode']) && !isset($_GET['idse'])) {
                                     <button type="submit" class="btn btn-primary mt-3">Thanh Toán</button>
                                 </div>
                             </div>
-                            <input type="text" class="" name="totalmoney" id="totalprice"  readonly>
-                            <input type="text" class="" name="idstartendday" id="" style="display:none;" readonly>
-                            <input type="text" class="" name="iduser" id="" style="display:none;" readonly>
-                            <input type="text" class="" name="tourcode" id="" style="display:none;" readonly>
+                            <input type="text" class="" name="totalmoney" id="totalprice" style="display:none;" readonly>
+                            <input type="text" class="" name="idstartendday" value="<?php echo $id_startendday ?>" id="" style="display:none;" readonly>
+                            <?php
+                                if(isset($_SESSION['LoginOK'])){
+                            ?>
+                            <input type="text" class="" name="iduser" id="" value="<?php echo $id_user ?>" style="display:none;" readonly>
+                            <?php                             
+                            }
+                            ?>
+                            <input type="text" class="" name="tourcode" id="" value="<?php echo $tour_code ?>" style="display:none;" readonly>
                         </form>
                     </div>
                 </div>
@@ -243,7 +253,7 @@ if (!isset($_GET['tourcode']) && !isset($_GET['idse'])) {
                         <hr>
                         <div class="d-flex justify-content-between">
                             <h6>Tổng tiền</h6>
-                            <h5 class="text-danger total-price"><?php echo ps_price($adultprice - $adultprice * ($vat * 1 / 100)) ?></h5>
+                            <h5 class="text-danger total-price"><?php echo ps_price($adultprice + $adultprice * ($vat * 1 / 100)) ?></h5>
                         </div>
                     </div>
                 </div>
