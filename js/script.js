@@ -423,12 +423,14 @@ $(document).ready(function(){
     $(".addTourService").click(function(){
         let nameService = $("#nameService").val();
         let priceService = $("#priceService").val();
-        if(nameService!=""&&priceService!=""){
+        var tourcode = $("#my_name_tour").val();
+        if(nameService!=""||priceService!=""){
             let form_datas = new FormData();
             form_datas.append('nameservice',nameService);
             form_datas.append('priceservice',priceService);
+            form_datas.append('tourcode',tourcode);
             $.ajax({
-                url: 'process-updatetourday.php', // gửi đến file upload.php 
+                url: 'process-addService.php', // gửi đến file upload.php 
                 dataType: 'text',
                 cache: false,
                 contentType: false,
@@ -436,7 +438,7 @@ $(document).ready(function(){
                 data: form_datas,
                 type: 'post',
                 success: function(res) {
-                    $('.infotourday').html(res);
+                    $(".inforAddService").text(res).css('color','green');
                 }
             });
             return false;
