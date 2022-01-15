@@ -42,7 +42,7 @@ function addadult() {
     $(".adultTotalPrice").text(ps_price(adu*adultprice));
     $(".vatTotalPrice").text(ps_price(tong*(vatPrice*1/100)));
     $(".total-price").text(ps_price(tong + tong*(vatPrice*1/100)));
-    $("#totalprice").val(tong + tong*(vatPrice*1/100));
+    $("#totalpricepost").val(tong + tong*(vatPrice*1/100));
 }
 
 function removeadult() {
@@ -63,7 +63,7 @@ function removeadult() {
         $(".adultTotalPrice").text(ps_price(adu*adultprice));
         $(".vatTotalPrice").text(ps_price(tong*(vatPrice*1/100)));
         $(".total-price").text(ps_price(tong + tong*(vatPrice*1/100)));
-        $("#totalprice").val(tong + tong*(vatPrice*1/100));
+        $("#totalpricepost").val(tong + tong*(vatPrice*1/100));
     }
 }
 
@@ -84,7 +84,7 @@ function addchild() {
     $(".childTotalPrice").text(ps_price(chi*childprice));
     $(".vatTotalPrice").text(ps_price(tong*(vatPrice*1/100)));
     $(".total-price").text(ps_price(tong + tong*(vatPrice*1/100)));
-    $("#totalprice").val(tong + tong*(vatPrice*1/100));
+    $("#totalpricepost").val(tong + tong*(vatPrice*1/100));
 }
 
 function removechild() {
@@ -105,7 +105,7 @@ function removechild() {
         $(".childTotalPrice").text(ps_price(chi*childprice));
         $(".vatTotalPrice").text(ps_price(tong*(vatPrice*1/100)));
         $(".total-price").text(ps_price(tong + tong*(vatPrice*1/100)));
-        $("#totalprice").val(tong + tong*(vatPrice*1/100));
+        $("#totalpricepost").val(tong + tong*(vatPrice*1/100));
     }
 }
 
@@ -148,10 +148,10 @@ for(let i = 0; i < Number($('#countservice').val()); i++){
                         tongtiendv += price*numberkh;
                     }
                 }
-                tong = adultprice*adu + childprice*chi+tongtiendv;
-                $(".vatTotalPrice").text(ps_price(tong*(vatPrice*1/100)));
-                $(".total-price").text(ps_price(tong + tong*(vatPrice*1/100)));
-                $("#totalprice").val(tong + tong*(vatPrice*1/100));
+            tong = adultprice*adu + childprice*chi+tongtiendv;
+            $(".vatTotalPrice").text(ps_price(tong*(vatPrice*1/100)));
+            $(".total-price").text(ps_price(tong + tong*(vatPrice*1/100)));
+            $("#totalpricepost").val(tong + tong*(vatPrice*1/100));
             }
         })
     })
@@ -185,7 +185,7 @@ for(let i = 0; i < Number($('#countservice').val()); i++){
                 tong = adultprice*adu + childprice*chi+tongtiendv;
                 $(".vatTotalPrice").text(ps_price(tong*(vatPrice*1/100)));
                 $(".total-price").text(ps_price(tong + tong*(vatPrice*1/100)));
-                $("#totalprice").val(tong + tong*(vatPrice*1/100));
+                $("#totalpricepost").val(tong + tong*(vatPrice*1/100));
             }
         })
     })
@@ -195,10 +195,49 @@ $(document).ready(function() {
     let ab = $(".total-price").text();
     ab = ab.replace(' đ','');
     ab = ab.replace('.','');
-    $("#totalprice").val(ab);
+    $("#totalpricepost").val(ab);
 })
 
 function kiemtra(){
-    if($("#surname").val()!="" && $("#name").val()!="" && $("#surname").val()!="" && $("#email").val()!=""  && $("#phonenumber").val()!="" && $("#address").val()!=""  )
-    return false;
+    let adult = $('#numberadult').val();
+    let child = $('#numberchild').val();
+    let baby = $('#numberbaby').val();
+    let adu = Number(adult);
+    let chi = Number(child);
+    let bab = Number(baby);
+    let adultprice = Number($(".constAdultPrice").text());
+    let childprice = Number($(".constChildPrice").text());
+    let vatPrice = Number($(".constVatPrice").text());
+    let tong;
+    let tongtiendv = 0;
+    for(let j = 0; j < Number($('#countservice').val()); j++){
+        let cbs = "#checkbox"+j;
+        if($(cbs).is(":checked")==true){
+            let price = Number($("#priceserviceadd"+j).val());
+            let numberkh = Number($("#numberpag"+j).val());
+            tongtiendv += price*numberkh;
+        }
+    }
+    tong = adultprice*adu + childprice*chi+tongtiendv;
+    tong = tong + tong*(vatPrice*1/100);
+    if($("#surname").val()!="" && $("#name").val()!="" && $("input[name='gender']:checked").val() == "Nam" || $("input[name='gender']:checked").val() == "Nữ" && $("#email").val()!=""  && $("#phonenumber").val()!="" && $("#address").val()!="")
+    {
+        for(let j = 0; j < Number($('#countservice').val()); j++){
+            let cbs = "#checkbox"+j;
+            if($(cbs).is(":checked")==true){
+                if($("#numberpag"+j).val()==''){
+                    return false;
+                }
+            }
+        }
+        if(tong!=Number($("#totalpricepost").val())){
+            return false;
+        }
+        if($("input[name='dieukhoan']:checked").val()!='dieukhoan'){
+            return false;
+        }
+        return true;
+    }else{
+        return false;
+    }
 }

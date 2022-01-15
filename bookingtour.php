@@ -50,7 +50,7 @@ if (!isset($_GET['tourcode']) && !isset($_GET['idse'])) {
             <div class="row">
                 <div class="col-md-7 m-1">
                     <div>
-                        <form class="row g-3 needs-validation m-1" method="POST" action="add-tour.php" onsubmit="return kiemtra()" novalidate>
+                        <form class="row g-3 needs-validation m-1" method="POST" action="process-bookingtour.php" onsubmit="return kiemtra()" novalidate>
                             <div class="bg-white rounded shadow-sm p-2">
                                 <div class="col-md-6">
                                     <label for="validationCustom01" class="form-label">Họ <span class="text-danger">*</span></label>
@@ -182,17 +182,22 @@ if (!isset($_GET['tourcode']) && !isset($_GET['idse'])) {
                                     </div>
                                 </div>
                                 <div class="mt-5">
-                                    <span class="material-icons text-primary">
-                                        handshake
-                                    </span>
-                                    <span class="" style="text-align:justify">Tiếp tục thực hiện bước tiếp theo, tôi xác nhận đã xem và chấp thuận
-                                        các <a href="">Điều khoản & chính sách</a> và <a href="">Chính sách riêng tư</a> của hahalolo.</span>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="dieukhoan" id="" value="dieukhoan">
+                                        <label class="form-check-label" for="flexRadioDefault1">
+                                        <span class="material-icons text-primary">
+                                            handshake
+                                        </span>
+                                        <span class="" style="text-align:justify">Tiếp tục thực hiện bước tiếp theo, tôi xác nhận đã xem và chấp thuận
+                                            các <a href="">Điều khoản & chính sách</a> và <a href="">Chính sách riêng tư</a> của hahalolo.</span>
+                                        </label>
+                                    </div>
                                 </div>
                                 <div class="d-flex justify-content-center">
                                     <button type="submit" class="btn btn-primary mt-3">Thanh Toán</button>
                                 </div>
                             </div>
-                            <input type="text" class="" name="totalmoney" id="totalprice" style="display:none;" readonly>
+                            <input type="text" class="" name="totalmoney" id="totalpricepost" style="display:none;" value="<?php echo $adultprice + $adultprice*($vat * 1 / 100) ?>" readonly>
                             <input type="text" class="" name="idstartendday" value="<?php echo $id_startendday ?>" id="" style="display:none;" readonly>
                             <?php
                                 if(isset($_SESSION['LoginOK'])){
