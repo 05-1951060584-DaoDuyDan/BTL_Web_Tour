@@ -40,6 +40,9 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
         mkdir("../images/Tour/" . $tour_code);
     } else if (isset($_POST['themthongtintour']) || isset($_GET['tourcode'])) {
         require('partials-front/header.php');
+        require_once "../classprocessSQL.php";
+        require_once "../process-string.php";
+        $ps = new Process();
         if (isset($_POST['themthongtintour']))
             $tour_code = $_POST['tour_code_update'];
         else
@@ -613,7 +616,7 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                                 <input type="text" name="priceService" class="form-control" id="priceService" value="" required>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary">Thêm dịch vụ</button>
+                                <button type="button" class="btn btn-primary addTourService">Thêm dịch vụ</button>
                             </div>
                         </form>
                         <table class="table mt-2 bg-white shadow-sm rounded">
@@ -627,14 +630,26 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                                     <th scope="col">Xóa</th>
                                 </tr>
                             </thead>
+                            <?php
+                            $tourservice = $ps->getTourServive($tour_code);
+                            ?>
                             <tbody>
+                                <?php
+                                if($tourservice!=false){
+                                    for($i = 0; $i < count($tourservice); $i++){
+                                        $rowservice = $tourservice[$i];
+                                ?>
                                 <tr>
-                                    <td scope="row"></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td scope="row"><?php echo $rowservice['id_tourservice'] ?></td>
+                                    <td><?php echo $rowservice['nameservice'] ?></td>
+                                    <td><?php echo $rowservice['priceservice'] ?></td>
+                                    <td><i class="bi bi-pencil-square text-warning"></i></td>
+                                    <td><i class="bi bi-trash text-warning"></i></td>
                                 </tr>
+                                <?php                              
+                                    }
+                                }
+                                ?>
                             </tbody>
                         </table>
                     </div>

@@ -418,3 +418,9 @@ function accept(){
         return true;
     }
 }
+
+$(document).ready(function(){
+    $(".addTourService").click(function(){
+        
+    })
+})

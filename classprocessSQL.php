@@ -67,5 +67,17 @@ class Process{
             return false;
         }
     }
+    function getTourServive($tour_code){
+        $conn = $this->connectDb();
+        $sqlServive = "Select* from tb_tourservice where tour_code = '{$tour_code}'";
+        $resultService = mysqli_query($conn, $sqlServive);
+        $SEDArr = [];
+        if(mysqli_num_rows($resultService)>0){
+            $bds = mysqli_fetch_all($resultService, MYSQLI_ASSOC);
+            return $bds;
+        }else{
+            return false;
+        }
+    }
 }
 ?>
