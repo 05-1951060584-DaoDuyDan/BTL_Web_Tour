@@ -708,7 +708,7 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Thoát</button>
-                                        <button type="button" class="btn btn-primary commitDeleteService">Xóa</button>
+                                        <button type="button" class="btn btn-primary commitDeleteService" data-bs-dismiss="modal">Xóa</button>
                                     </div>
                                 </div>
                             </div>
