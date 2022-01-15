@@ -1,6 +1,4 @@
-<?php
-include('.//partials-front/header.php');
-?>
+
   <!DOCTYPE html>
   <html lang="en">
 
