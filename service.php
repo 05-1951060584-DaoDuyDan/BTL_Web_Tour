@@ -58,3 +58,14 @@
             $(".delete").click(function() {
                 $tr = $(this).closest('tr');
                 var data = $tr.children("td").map(function() {
+                    return $(this).text();
+                }).get();
+                $("#id_service_delete").attr('value', data[0]);
+                $("#name_service_delete").val(data[1]);
+            });
+        });
+    </script>
+</body>
+
+</html>
+                    
