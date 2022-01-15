@@ -38,3 +38,13 @@
                         </tr>
                 <?php
                     }
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $(".edit").click(function() {
+                $tr = $(this).closest('tr');
