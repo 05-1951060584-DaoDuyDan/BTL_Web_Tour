@@ -38,3 +38,13 @@
                         {
                             while($row = mysqli_fetch_assoc($res))
                             {
+                                $id_touroperator = $row['id_touroperator'];
+                                $nametouroperator = $row['nametouroperator'];
+                                $businesstype = $row['businesstype'];
+                                $email = $row['email'];
+                                $phonenumber = $row['phonenumber'];
+                                $imagetouroperator = $row['imagetouroperator'];
+                    
+                                if($row['status_touroperator'] == 0)
+                                    $status = 'Không hoạt động';
+                                else
