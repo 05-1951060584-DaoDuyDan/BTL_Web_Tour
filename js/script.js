@@ -421,6 +421,27 @@ function accept(){
 
 $(document).ready(function(){
     $(".addTourService").click(function(){
-        
+        let nameService = $("#nameService").val();
+        let priceService = $("#priceService").val();
+        if(nameService!=""&&priceService!=""){
+            let form_datas = new FormData();
+            form_datas.append('nameservice',nameService);
+            form_datas.append('priceservice',priceService);
+            $.ajax({
+                url: 'process-updatetourday.php', // gửi đến file upload.php 
+                dataType: 'text',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: form_datas,
+                type: 'post',
+                success: function(res) {
+                    $('.infotourday').html(res);
+                }
+            });
+            return false;
+        }else{
+            $(".inforAddService").text("Thông tin chưa đầy đủ mời nhập lại!").css('color','red');
+        }
     })
 })

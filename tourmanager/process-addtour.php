@@ -615,6 +615,9 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                                 <label for="priceService" class="form-label">Giá dịch vụ</label>
                                 <input type="text" name="priceService" class="form-control" id="priceService" value="" required>
                             </div>
+                            <div class="col-md-6">
+                                <small class="inforAddService"></small>
+                            </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-primary addTourService">Thêm dịch vụ</button>
                             </div>
