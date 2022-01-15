@@ -639,23 +639,58 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                                 ?>
                                 <tbody>
                                     <?php
-                                    if($tourservice!=false){
-                                        for($i = 0; $i < count($tourservice); $i++){
+                                    if ($tourservice != false) {
+                                        for ($i = 0; $i < count($tourservice); $i++) {
                                             $rowservice = $tourservice[$i];
                                     ?>
-                                    <tr>
-                                        <td scope="row"><?php echo $rowservice['id_tourservice'] ?></td>
-                                        <td><?php echo $rowservice['nameservice'] ?></td>
-                                        <td><?php echo $rowservice['priceservice'] ?></td>
-                                        <td><i class="bi bi-pencil-square text-warning"></i></td>
-                                        <td><i class="bi bi-trash text-warning"></i></td>
-                                    </tr>
-                                    <?php                              
+                                            <tr>
+                                                <td scope="row"><?php echo $rowservice['id_tourservice'] ?></td>
+                                                <td><?php echo $rowservice['nameservice'] ?></td>
+                                                <td><?php echo $rowservice['priceservice'] ?></td>
+                                                <td><i class="bi bi-pencil-square text-warning updateTourServiceClick" data-bs-toggle="modal" data-bs-target="#editServiceTour"></i></td>
+                                                <td><i class="bi bi-trash text-warning"></i></td>
+                                            </tr>
+                                    <?php
                                         }
                                     }
                                     ?>
                                 </tbody>
                             </table>
+                        </div>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="editServiceTour" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel">Chỉnh sửa dịch vụ của Tour</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="row g-3 bg-white p-2 mt-3 rounded shadow-sm" method="POST" action="process-updatestartendday.php">
+                                            <div class="col-md-12">
+                                                <label for="nameService" class="form-label">Mã dịch vụ</label>
+                                                <input type="text" name="idTourServiceUpdate" class="form-control" readonly id="idTourServiceUpdate" value="" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="nameService" class="form-label">Tên dịch vụ</label>
+                                                <input type="text" name="nameServiceUpdate" class="form-control" id="nameServiceUpdate" value="" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="priceService" class="form-label">Giá dịch vụ</label>
+                                                <input type="text" name="priceServiceUpdate" class="form-control" id="priceServiceUpdate" value="" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <small class="inforAddService"></small>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Thoát</button>
+                                        <button type="button" class="btn btn-primary updateTourService">Chỉnh sửa</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

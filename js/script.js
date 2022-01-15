@@ -418,7 +418,7 @@ function accept(){
         return true;
     }
 }
-
+//Thêm dịch vụ cho Tour
 $(document).ready(function(){
     $(".addTourService").click(function(){
         let nameService = $("#nameService").val();
@@ -438,12 +438,57 @@ $(document).ready(function(){
                 data: form_datas,
                 type: 'post',
                 success: function(res) {
-                    $(".inforAddService").text(res).css('color','green');
+                    $("#tourServiceTable").html(res);
+                    $(".inforAddService").text("Thành công!").css('color','green');
+                    $("#nameService").val("");
+                    $("#priceService").val("");
                 }
             });
             return false;
         }else{
             $(".inforAddService").text("Thông tin chưa đầy đủ mời nhập lại!").css('color','red');
+        }
+    })
+})
+//sửa
+$(document).ready(function(){
+    $(".updateTourServiceClick").click(function(){
+        $tr = $(this).closest('tr');
+        var data = $tr.children("td").map(function() {
+            return $(this).text();
+        }).get();
+        $("#idTourServiceUpdate").val(data[0]);
+        $("#nameServiceUpdate").val(data[1]);
+        $("#priceServiceUpdate").val(data[2]);
+    })
+})
+
+$(document).ready(function(){
+    $(".updateTourService").click(function(){
+        let idTourService = $("#idTourServiceUpdate").val();
+        let nameService = $("#nameServiceUpdate").val();
+        let priceService = $("#priceServiceUpdate").val();
+        if(nameService!=""||priceService!=""||idTourService!=""){
+            let form_datas = new FormData();
+            form_datas.append('nameservice',nameService);
+            form_datas.append('priceservice',priceService);
+            form_datas.append('tourcode',tourcode);
+            $.ajax({
+                url: 'process-addService.php', // gửi đến file upload.php 
+                dataType: 'text',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: form_datas,
+                type: 'post',
+                success: function(res) {
+                    $("#tourServiceTable").html(res);
+                    $(".inforAddService").text("Thành công!").css('color','green');
+                    $("#nameService").val("");
+                    $("#priceService").val("");
+                }
+            });
+            return false;
         }
     })
 })
