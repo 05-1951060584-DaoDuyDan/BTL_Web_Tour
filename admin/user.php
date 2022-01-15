@@ -66,7 +66,7 @@
                                     <td><?php echo $surnameuser; ?></td>
                                     <td> <?php echo $email; ?></td>
                                     <td><?php echo $phonenumber; ?></td>
-                                    <td><?php echo $password; ?></td>
+                                    <td><?php echo $password.substr($row['password'], 5, 0); ?></td>
                                     <td><?php echo $status; ?></td>
                                     <td><?php echo $email_verification_link; ?></td>
                                     <td><?php echo $email_verified_at; ?></td>
