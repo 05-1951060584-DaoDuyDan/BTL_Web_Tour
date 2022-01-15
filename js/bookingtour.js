@@ -33,6 +33,7 @@ function addadult() {
     $(".adultTotalPrice").text(ps_price(adu*adultprice));
     $(".vatTotalPrice").text(ps_price(tong*(vatPrice*1/100)));
     $(".total-price").text(ps_price(tong - tong*(vatPrice*1/100)));
+    $("#totalprice").val(tong - tong*(vatPrice*1/100));
 }
 
 function removeadult() {
@@ -44,6 +45,7 @@ function removeadult() {
         $(".adultTotalPrice").text(ps_price(adu*adultprice));
         $(".vatTotalPrice").text(ps_price(tong*(vatPrice*1/100)));
         $(".total-price").text(ps_price(tong - tong*(vatPrice*1/100)));
+        $("#totalprice").val(tong - tong*(vatPrice*1/100));
     }
 }
 
@@ -55,6 +57,7 @@ function addchild() {
     $(".childTotalPrice").text(ps_price(chi*childprice));
     $(".vatTotalPrice").text(ps_price(tong*(vatPrice*1/100)));
     $(".total-price").text(ps_price(tong - tong*(vatPrice*1/100)));
+    $("#totalprice").val(tong - tong*(vatPrice*1/100));
 }
 
 function removechild() {
@@ -66,6 +69,7 @@ function removechild() {
         $(".childTotalPrice").text(ps_price(chi*childprice));
         $(".vatTotalPrice").text(ps_price(tong*(vatPrice*1/100)));
         $(".total-price").text(ps_price(tong - tong*(vatPrice*1/100)));
+        $("#totalprice").val(tong - tong*(vatPrice*1/100));
     }
 }
 
@@ -84,5 +88,8 @@ function removebaby() {
 }
 
 $(document).ready(function() {
-
+    let ab = $(".total-price").text();
+    ab = ab.replace(' đ','');
+    ab = ab.replace('.','');
+    $("#totalprice").val(ab);
 })

@@ -137,79 +137,29 @@ if (!isset($_GET['tourcode']) && !isset($_GET['idse'])) {
                             </div>
                             <div class="bg-white rounded shadow-sm p-2">
                                 <h4 class="mt-3">Dịch vụ đi kèm</h4>
-                                <p class="ms-2">Vui lòng chọn dịch vụ đi kèm và số lượng tương ứng (Nếu không thì hãy bỏ qua)</p>
-                                <div class="d-flex flex-row">
-                                    <div class="col-md-6 me-1">
-                                        <label for="validationCustom04" class="form-label">Dịch vụ đi kèm</label>
-                                        <select class="col-md-6 form-select" name="service" aria-label="Default select example">
-                                            <option selected>Mở tùy chọn</option>
-                                            <option value="1">Transportation (950.000 đ)</option>
-                                            <option value="2">Single room(600.000 đ)</option>
-                                            <option value="3">Food and Beverage service (195.000 đ)</option>
-                                            <option value="4">Tour guide(2.400.000 đ)</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="validationCustom05" class="form-label">Số hành khách</label>
-                                        <input type="text" name="numberpag" class="form-control" id="validationCustom05" required>
-                                        <div class="invalid-feedback">
+                                <p class="ms-2">Vui lòng tích chọn dịch vụ đi kèm và số lượng tương ứng (Nếu không thì hãy bỏ qua)</p>
+                                <?php
+                                $tourservice = $ps->getTourServive($tour_code);
+                                if($tourservice!=false){
+                                    for($i = 0; $i < count($tourservice);$i++){
+                                        $rowtourservice = $tourservice[$i];
+                                ?>
+                                <div class="">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            <?php echo $rowtourservice['nameservice']." (".ps_price($rowtourservice['priceservice']).")"; ?>
+                                        </label>
+                                        <div class="col-md-6">
+                                            <label for="validationCustom05" class="form-label">Số hành khách</label>
+                                            <input type="text" name="numberpag<?php echo $i; ?>" class="form-control" id="validationCustom05" required>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="d-flex flex-row">
-                                    <div class="col-md-6 me-1">
-                                        <label for="validationCustom04" class="form-label">Dịch vụ đi kèm</label>
-                                        <select class="col-md-6 form-select" name="service" aria-label="Default select example">
-                                            <option selected>Mở tùy chọn</option>
-                                            <option value="1">Transportation (950.000 đ)</option>
-                                            <option value="2">Single room(600.000 đ)</option>
-                                            <option value="3">Food and Beverage service (195.000 đ)</option>
-                                            <option value="4">Tour guide(2.400.000 đ)</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="validationCustom05" class="form-label">Số hành khách</label>
-                                        <input type="text" name="numberpag" class="form-control" id="validationCustom05" required>
-                                        <div class="invalid-feedback">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex flex-row">
-                                    <div class="col-md-6 me-1">
-                                        <label for="validationCustom04" class="form-label">Dịch vụ đi kèm</label>
-                                        <select class="col-md-6 form-select" name="service" aria-label="Default select example">
-                                            <option selected>Mở tùy chọn</option>
-                                            <option value="1">Transportation (950.000 đ)</option>
-                                            <option value="2">Single room(600.000 đ)</option>
-                                            <option value="3">Food and Beverage service (195.000 đ)</option>
-                                            <option value="4">Tour guide(2.400.000 đ)</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="validationCustom05" class="form-label">Số hành khách</label>
-                                        <input type="text" name="numberpag" class="form-control" id="validationCustom05" required>
-                                        <div class="invalid-feedback">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex flex-row">
-                                    <div class="col-md-6 me-1">
-                                        <label for="validationCustom04" class="form-label">Dịch vụ đi kèm</label>
-                                        <select class="col-md-6 form-select" name="service" aria-label="Default select example">
-                                            <option selected>Mở tùy chọn</option>
-                                            <option value="1">Transportation (950.000 đ)</option>
-                                            <option value="2">Single room(600.000 đ)</option>
-                                            <option value="3">Food and Beverage service (195.000 đ)</option>
-                                            <option value="4">Tour guide(2.400.000 đ)</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="validationCustom05" class="form-label">Số hành khách</label>
-                                        <input type="text" name="numberpag" class="form-control" id="validationCustom05" required>
-                                        <div class="invalid-feedback">
-                                        </div>
-                                    </div>
-                                </div>
+                                <?php
+                                    }
+                                }
+                                ?>
                             </div>
                             <div class="bg-white rounded shadow-sm p-2">
                                 <h4>Hình thức thanh toán</h4>
@@ -238,6 +188,10 @@ if (!isset($_GET['tourcode']) && !isset($_GET['idse'])) {
                                     <button type="submit" class="btn btn-primary mt-3">Thanh Toán</button>
                                 </div>
                             </div>
+                            <input type="text" class="" name="totalmoney" id="totalprice"  readonly>
+                            <input type="text" class="" name="idstartendday" id="" style="display:none;" readonly>
+                            <input type="text" class="" name="iduser" id="" style="display:none;" readonly>
+                            <input type="text" class="" name="tourcode" id="" style="display:none;" readonly>
                         </form>
                     </div>
                 </div>
@@ -282,14 +236,14 @@ if (!isset($_GET['tourcode']) && !isset($_GET['idse'])) {
                                 </div>
                                 <div class="d-flex justify-content-between">
                                     <span>VAT</span>
-                                    <span class="fw-bold vatTotalPrice"><?php echo ps_price($adultprice*($vat*1/100)) ?></span>
+                                    <span class="fw-bold vatTotalPrice"><?php echo ps_price($adultprice * ($vat * 1 / 100)) ?></span>
                                 </div>
                             </div>
                         </div>
                         <hr>
                         <div class="d-flex justify-content-between">
                             <h6>Tổng tiền</h6>
-                            <h5 class="text-danger total-price"><?php echo ps_price($adultprice - $adultprice*($vat*1/100)) ?></h5>
+                            <h5 class="text-danger total-price"><?php echo ps_price($adultprice - $adultprice * ($vat * 1 / 100)) ?></h5>
                         </div>
                     </div>
                 </div>
