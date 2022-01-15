@@ -54,40 +54,40 @@ if (!isset($_GET['tourcode']) && !isset($_GET['idse'])) {
                             <div class="bg-white rounded shadow-sm p-2">
                                 <div class="col-md-6">
                                     <label for="validationCustom01" class="form-label">Họ <span class="text-danger">*</span></label>
-                                    <input type="text" name="surname" class="form-control" id="validationCustom01" required>
+                                    <input type="text" name="surname" class="form-control" id="surname" required>
                                     <div class="invalid-feedback">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="validationCustom02" class="form-label">Tên đệm & tên <span class="text-danger">*</span></label>
-                                    <input type="text" name="name" class="form-control" id="validationCustom01" required>
+                                    <input type="text" name="name" class="form-control" id="name" required>
                                     <div class="invalid-feedback">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <span class="me-4">Giới tính <span class="text-danger">*</span></span>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Nam">
+                                        <input class="form-check-input" type="radio" name="gender" id="gender_nam" value="Nam">
                                         <label class="form-check-label" for="inlineRadio1">Nam</label>
                                     </div>
                                     <div class="form-check form-check-inline mt-2 mb-3">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Nữ">
+                                        <input class="form-check-input" type="radio" name="gender" id="gender_nu" value="Nữ">
                                         <label class="form-check-label" for="inlineRadio2">Nữ</label>
                                     </div>
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Email <span class="text-danger">*</span></label>
-                                    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp">
                                 </div>
                                 <div class="col-md-12">
                                     <label for="validationCustom02" class="form-label">Số điện thoại <span class="text-danger">*</span></label>
-                                    <input type="text" name="phonenumber" class="form-control" id="validationCustom02" required>
+                                    <input type="text" name="phonenumber" class="form-control" id="phonenumber" required>
                                     <div class="invalid-feedback">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <label for="validationCustom03" class="form-label">Địa chỉ <span class="text-danger">*</span></label>
-                                    <input type="text" name="address" class="form-control" id="validationCustom03" required>
+                                    <input type="text" name="address" class="form-control" id="address" required>
                                     <div class="invalid-feedback">
                                     </div>
                                 </div>

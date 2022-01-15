@@ -199,5 +199,6 @@ $(document).ready(function() {
 })
 
 function kiemtra(){
+    if($("#surname").val()!="" && $("#name").val()!="" && $("#surname").val()!="" && $("#email").val()!=""  && $("#phonenumber").val()!="" && $("#address").val()!=""  )
     return false;
 }
