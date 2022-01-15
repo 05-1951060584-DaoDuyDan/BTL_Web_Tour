@@ -42,7 +42,7 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                                 <td><?php echo $rowservice['nameservice'] ?></td>
                                 <td><?php echo $rowservice['priceservice'] ?></td>
                                 <td><i class="bi bi-pencil-square text-warning updateTourServiceClick" data-bs-toggle="modal" data-bs-target="#editServiceTour"></i></td>
-                                <td><i class="bi bi-trash text-warning"></i></td>
+                                <td><i class="bi bi-trash text-warning deleteTourServiceClick" data-bs-toggle="modal" data-bs-target="#deleteTourService"></i></td>
                             </tr>
                     <?php
                         }

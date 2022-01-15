@@ -648,7 +648,7 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                                                 <td><?php echo $rowservice['nameservice'] ?></td>
                                                 <td><?php echo $rowservice['priceservice'] ?></td>
                                                 <td><i class="bi bi-pencil-square text-warning updateTourServiceClick" data-bs-toggle="modal" data-bs-target="#editServiceTour"></i></td>
-                                                <td><i class="bi bi-trash text-warning"></i></td>
+                                                <td><i class="bi bi-trash text-warning deleteTourServiceClick" data-bs-toggle="modal" data-bs-target="#deleteTourService"></i></td>
                                             </tr>
                                     <?php
                                         }
@@ -685,6 +685,30 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Thoát</button>
                                         <button type="button" class="btn btn-primary updateTourService" data-bs-dismiss="modal">Chỉnh sửa</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal xóa dịch vụ -->
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#deleteTourService">
+                            Launch demo modal
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="deleteTourService" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Xác nhận xóa dịch vụ</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Bạn có muốn xóa dịch vụ có mã dịch vụ = <span class="idservicedelete"></span></p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Thoát</button>
+                                        <button type="button" class="btn btn-primary commitDeleteService">Xóa</button>
                                     </div>
                                 </div>
                             </div>

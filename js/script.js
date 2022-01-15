@@ -496,3 +496,41 @@ $(document).ready(function(){
         }
     })
 })
+
+//xóa
+$(".deleteTourServiceClick").click(function(){
+    $tr = $(this).closest('tr');
+    var data = $tr.children("td").map(function() {
+        return $(this).text();
+    }).get();
+    $(".idservicedelete").text(data[0]);
+    //$(".daydeleteout").val(data[0]);
+})
+
+$(document).ready(function(){
+    $(".commitDeleteService").click(function(){
+        let idTourService = $(".idservicedelete").text();
+        var tourcode = $("#my_name_tour").val();
+        if(idTourService!=""){
+            let form_datas = new FormData();
+            form_datas.append('idTourService',idTourService);
+            form_datas.append('tourcode',tourcode);
+            $.ajax({
+                url: 'process-updateService.php', // gửi đến file upload.php 
+                dataType: 'text',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: form_datas,
+                type: 'post',
+                success: function(res) {
+                    $("#tourServiceTable").html(res);
+                    $(".inforAddService").text("Xóa hành công!").css('color','green');
+                }
+            });
+            return false;
+        }else{
+            $(".inforAddService").text("Thông tin xóa chưa đầy đủ mời nhập lại!").css('color','red');
+        }
+    })
+})
