@@ -28,3 +28,13 @@
                         <th scope="col">Khóa</th>
                         <th scope="col">Mở</th>
                     </tr>
+                    </thead>
+                <tbody>
+                    <?php
+                        $sql = "SELECT * FROM tb_user, tb_typepage, tb_touroperator WHERE tb_touroperator.id_typepage = tb_typepage.id_typepage AND tb_touroperator.id_user = tb_user.id_user";
+                        $res = mysqli_query($conn,$sql);
+                        $sn = 1;
+                        if(mysqli_num_rows($res) > 0)
+                        {
+                            while($row = mysqli_fetch_assoc($res))
+                            {
