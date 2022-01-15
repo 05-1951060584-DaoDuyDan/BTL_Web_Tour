@@ -516,7 +516,7 @@ $(document).ready(function(){
             form_datas.append('idTourService',idTourService);
             form_datas.append('tourcode',tourcode);
             $.ajax({
-                url: 'process-updateService.php', // gửi đến file upload.php 
+                url: 'process-deleteService.php', // gửi đến file upload.php 
                 dataType: 'text',
                 cache: false,
                 contentType: false,
