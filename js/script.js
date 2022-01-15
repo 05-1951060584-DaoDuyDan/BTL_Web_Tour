@@ -472,9 +472,9 @@ $(document).ready(function(){
             let form_datas = new FormData();
             form_datas.append('nameservice',nameService);
             form_datas.append('priceservice',priceService);
-            form_datas.append('tourcode',tourcode);
+            form_datas.append('idTourService',idTourService);
             $.ajax({
-                url: 'process-addService.php', // gửi đến file upload.php 
+                url: 'process-updateService.php', // gửi đến file upload.php 
                 dataType: 'text',
                 cache: false,
                 contentType: false,
