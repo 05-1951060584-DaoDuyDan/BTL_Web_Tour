@@ -680,14 +680,11 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                                                 <label for="priceService" class="form-label">Giá dịch vụ</label>
                                                 <input type="text" name="priceServiceUpdate" class="form-control" id="priceServiceUpdate" value="" required>
                                             </div>
-                                            <div class="col-md-6">
-                                                <small class="inforAddService"></small>
-                                            </div>
                                         </form>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Thoát</button>
-                                        <button type="button" class="btn btn-primary updateTourService">Chỉnh sửa</button>
+                                        <button type="button" class="btn btn-primary updateTourService" data-bs-dismiss="modal">Chỉnh sửa</button>
                                     </div>
                                 </div>
                             </div>

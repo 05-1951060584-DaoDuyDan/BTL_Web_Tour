@@ -424,7 +424,7 @@ $(document).ready(function(){
         let nameService = $("#nameService").val();
         let priceService = $("#priceService").val();
         var tourcode = $("#my_name_tour").val();
-        if(nameService!=""||priceService!=""){
+        if(nameService!=""&&priceService!=""){
             let form_datas = new FormData();
             form_datas.append('nameservice',nameService);
             form_datas.append('priceservice',priceService);
@@ -468,11 +468,13 @@ $(document).ready(function(){
         let idTourService = $("#idTourServiceUpdate").val();
         let nameService = $("#nameServiceUpdate").val();
         let priceService = $("#priceServiceUpdate").val();
-        if(nameService!=""||priceService!=""||idTourService!=""){
+        var tourcode = $("#my_name_tour").val();
+        if(nameService!=""&&priceService!=""&&idTourService!=""){
             let form_datas = new FormData();
             form_datas.append('nameservice',nameService);
             form_datas.append('priceservice',priceService);
             form_datas.append('idTourService',idTourService);
+            form_datas.append('tourcode',tourcode);
             $.ajax({
                 url: 'process-updateService.php', // gửi đến file upload.php 
                 dataType: 'text',
@@ -483,12 +485,14 @@ $(document).ready(function(){
                 type: 'post',
                 success: function(res) {
                     $("#tourServiceTable").html(res);
-                    $(".inforAddService").text("Thành công!").css('color','green');
-                    $("#nameService").val("");
-                    $("#priceService").val("");
+                    $(".inforAddService").text("Cập nhật hành công!").css('color','green');
+                    $("#nameServiceUpdate").val("");
+                    $("#priceServiceUpdate").val("");
                 }
             });
             return false;
+        }else{
+            $(".inforAddService").text("Thông tin cập nhật chưa đầy đủ mời nhập lại!").css('color','red');
         }
     })
 })

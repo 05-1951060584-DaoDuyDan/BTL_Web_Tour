@@ -41,7 +41,7 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                                 <td scope="row"><?php echo $rowservice['id_tourservice'] ?></td>
                                 <td><?php echo $rowservice['nameservice'] ?></td>
                                 <td><?php echo $rowservice['priceservice'] ?></td>
-                                <td><i class="bi bi-pencil-square text-warning updateTourServiceClick"></i></td>
+                                <td><i class="bi bi-pencil-square text-warning updateTourServiceClick" data-bs-toggle="modal" data-bs-target="#editServiceTour"></i></td>
                                 <td><i class="bi bi-trash text-warning"></i></td>
                             </tr>
                     <?php
@@ -50,6 +50,19 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                     ?>
                 </tbody>
             </table>
+            <script>
+                $(document).ready(function() {
+                    $(".updateTourServiceClick").click(function() {
+                        $tr = $(this).closest('tr');
+                        var data = $tr.children("td").map(function() {
+                            return $(this).text();
+                        }).get();
+                        $("#idTourServiceUpdate").val(data[0]);
+                        $("#nameServiceUpdate").val(data[1]);
+                        $("#priceServiceUpdate").val(data[2]);
+                    })
+                })
+            </script>
 <?php
         } else {
             echo "Không thành công!";
