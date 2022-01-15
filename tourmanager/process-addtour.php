@@ -71,6 +71,7 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                         <button class="nav-link" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Thông tin ngày du lịch</button>
                         <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Ảnh tour</button>
                         <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Ngày khởi hành của tour</button>
+                        <button class="nav-link" id="nav-service-tab" data-bs-toggle="tab" data-bs-target="#nav-service" type="button" role="tab" aria-controls="nav-service" aria-selected="false">Dịch vụ của Tour</button>
                     </div>
                 </nav>
                 <!-- Chỉnh sửa hoạt động từng ngày của tour -->
@@ -599,6 +600,43 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="tab-pane fade" id="nav-service" role="tabpanel" aria-labelledby="nav-service-tab">
+                        <form class="row g-3 bg-white p-2 mt-3 rounded shadow-sm" method="POST" action="process-updatestartendday.php">
+                            <h4>Thêm dịch vụ cho Tour của bạn</h4>
+                            <div class="col-md-6">
+                                <label for="nameService" class="form-label">Tên dịch vụ</label>
+                                <input type="text" name="nameService" class="form-control" id="nameService" value="" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="priceService" class="form-label">Giá dịch vụ</label>
+                                <input type="text" name="priceService" class="form-control" id="priceService" value="" required>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary">Thêm dịch vụ</button>
+                            </div>
+                        </form>
+                        <table class="table mt-2 bg-white shadow-sm rounded">
+                            <h4 class="mt-2">Danh sách các dịch vụ của Tour</h4>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Mã dịch vụ</th>
+                                    <th scope="col">Tên dịch vụ</th>
+                                    <th scope="col">Giá</th>
+                                    <th scope="col">Sửa</th>
+                                    <th scope="col">Xóa</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td scope="row"></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
