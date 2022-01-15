@@ -197,3 +197,7 @@ $(document).ready(function() {
     ab = ab.replace('.','');
     $("#totalprice").val(ab);
 })
+
+function kiemtra(){
+    return false;
+}

@@ -50,7 +50,7 @@ if (!isset($_GET['tourcode']) && !isset($_GET['idse'])) {
             <div class="row">
                 <div class="col-md-7 m-1">
                     <div>
-                        <form class="row g-3 needs-validation m-1" method="POST" action="add-tour.php" novalidate>
+                        <form class="row g-3 needs-validation m-1" method="POST" action="add-tour.php" onsubmit="return kiemtra()" novalidate>
                             <div class="bg-white rounded shadow-sm p-2">
                                 <div class="col-md-6">
                                     <label for="validationCustom01" class="form-label">Họ <span class="text-danger">*</span></label>
