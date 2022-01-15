@@ -92,3 +92,7 @@
                     ?>
             </table>
         </div>
+        </div>
+</body>
+
+<?php include('partials-front/footer.php') ?>
