@@ -8,3 +8,13 @@
 ?>
 
 
+
+<div class="container">
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Tên dịch vụ</th>
+                    <th scope="col">Giá</th>
+                    <th scope="col">Sửa dịch vụ</th>
