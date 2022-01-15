@@ -18,3 +18,13 @@
                     <th scope="col">Tên dịch vụ</th>
                     <th scope="col">Giá</th>
                     <th scope="col">Sửa dịch vụ</th>
+                    <th scope="col">Xóa dịch vụ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+
+                $sql = "SELECT * from tb_tourservice";
+                $result = mysqli_query($conn, $sql);
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
