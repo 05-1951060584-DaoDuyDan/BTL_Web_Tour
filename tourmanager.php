@@ -48,3 +48,13 @@
                                 if($row['status_touroperator'] == 0)
                                     $status = 'Không hoạt động';
                                 else
+                                $status = 'Hoạt động';
+                                if($row['lock'] == 0)
+                                    $lock = 'Không';
+                                else
+                                    $lock = 'Có';
+                                $email_verification_link = $row['email_verification_link'];
+                                $email_verified_at = $row['email_verified_at'];
+                                $nametypepage = $row['nametypepage'];
+                                $nameuser = $row['nameuser'];
+                                
