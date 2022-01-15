@@ -48,3 +48,13 @@
         $(document).ready(function() {
             $(".edit").click(function() {
                 $tr = $(this).closest('tr');
+                var data = $tr.children("td").map(function() {
+                    return $(this).text();
+                }).get();
+                $("#id_tourservice").attr('value', data[0]);
+                $("#name_service_new").val(data[1]);
+            });
+
+            $(".delete").click(function() {
+                $tr = $(this).closest('tr');
+                var data = $tr.children("td").map(function() {
