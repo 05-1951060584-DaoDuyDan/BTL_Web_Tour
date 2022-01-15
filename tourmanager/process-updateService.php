@@ -3,7 +3,7 @@ require "config/config.php";
 if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') {
     header('location: ../index.php');
 } else {
-    if(isset($_POST)){
+    if (isset($_POST)) {
         require_once "../classprocessSQL.php";
         require_once "../process-string.php";
         $ps = new Process();
@@ -17,7 +17,7 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
         $stmt->bindParam(2, $priceservice);
         $stmt->bindParam(3, $id_tourservice);
         if ($stmt->execute()) {
-            ?>
+?>
             <table class="table mt-2 bg-white shadow-sm rounded">
                 <h4 class="mt-2">Danh sách các dịch vụ của Tour</h4>
                 <thead>
@@ -62,6 +62,14 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                         $("#nameServiceUpdate").val(data[1]);
                         $("#priceServiceUpdate").val(data[2]);
                     })
+                })
+                $(".deleteTourServiceClick").click(function() {
+                    $tr = $(this).closest('tr');
+                    var data = $tr.children("td").map(function() {
+                        return $(this).text();
+                    }).get();
+                    $(".idservicedelete").text(data[0]);
+                    //$(".daydeleteout").val(data[0]);
                 })
             </script>
 <?php

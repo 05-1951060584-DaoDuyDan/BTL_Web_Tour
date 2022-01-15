@@ -62,6 +62,14 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                         $("#priceServiceUpdate").val(data[2]);
                     })
                 })
+                $(".deleteTourServiceClick").click(function() {
+                    $tr = $(this).closest('tr');
+                    var data = $tr.children("td").map(function() {
+                        return $(this).text();
+                    }).get();
+                    $(".idservicedelete").text(data[0]);
+                    //$(".daydeleteout").val(data[0]);
+                })
             </script>
 <?php
         } else {
