@@ -44,16 +44,6 @@ if (isset($_POST['submitsearchbooking']) && $_POST['codebookingtour'] != '') {
                                 echo "<b>Tên dịch vụ: {$rowse['nameservice']} | Số hành khách: {$rowse['numberofpassengers']}</b><br>";
                             }
                         }
-                        // $ct = count($tourservice);
-                        // for ($i = 0; $i < count($tourservice); $i++) {
-                        //     if (isset($_POST['checkbox' . $i])) {
-                        //         $id_service = $_POST['checkbox' . $i];
-                        //         $numberkh = $_POST['numberpag' . $i];
-                        //         $rowser = $ps->getOneServive($id_service);
-                        //         echo "<b>Tên dịch vụ: {$rowser['nameservice']} | Số hành khách: {$numberkh}</b><br>";
-                        //     } else {
-                        //     }
-                        // }
                         ?>
                     </div>
                 </div>

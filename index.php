@@ -138,61 +138,56 @@ require_once "process-string.php";
                 <form class="row g-3 needs-validation mt-3 me-3 ms-3" id="form-search" novalidate>
                     <div class="col-md-6">
                         <label for="validationCustom01" class="form-label">Bạn muốn đi đâu?</label>
-                        <input type="text" class="form-control" id="validationCustom01" required>
+                        <input type="text" class="form-control" id="location" required>
                     </div>
                     <div class="col-md-6">
                         <label for="validationCustom02" class="form-label">Ngày khởi hành</label>
-                        <input type="date" class="form-control" id="validationCustom02" required>
+                        <input type="date" class="form-control" id="searchstartday" required>
                     </div>
                     <div class="col-md-6 advanced-search">
                         <label for="validationCustom03" class="form-label">Điểm khởi hành</label>
-                        <input type="text" class="form-control" id="validationCustom03" required>
+                        <input type="text" class="form-control" id="searchStartLocation" required>
                     </div>
                     <div class="col-md-6 advanced-search">
                         <label for="validationCustom04" class="form-label">Điểm kết thúc</label>
-                        <input type="text" class="form-control" id="validationCustom04" required>
+                        <input type="text" class="form-control" id="searchEndLocation" required>
                     </div>
                     <div class="col-md-6 advanced-search">
                         <label for="validationCustom05" class="form-label">Chủ đề tour</label>
-                        <input type="text" class="form-control" id="validationCustom05" required>
+                        <input type="text" class="form-control" id="searchcdTour" required>
                     </div>
 
-                    <div class="col-md-6 advanced-search">
+                    <!-- <div class="col-md-6 advanced-search">
                         <label for="validationCustom06" class="form-label">Chủ đề tour</label>
                         <select class="form-select" aria-label="Default select example">
                             <option selected>Tất cả các loại Tour</option>
                             <option value="1">Tour trong nước</option>
                             <option value="2">Tour nước ngoài</option>
                         </select>
-                    </div>
+                    </div> -->
                     <div class="col-md-6 advanced-search">
                         <label for="validationCustom07" class="form-label">Số ngày đi tour</label>
-                        <input type="text" class="form-control" id="validationCustom07" required>
+                        <input type="text" class="form-control" id="searchnumberday" required>
                     </div>
-                    <div class="col-md-6 advanced-search">
+                    <div class="col-md-12 advanced-search">
                         <label for="validationCustom08" class="form-label">Khoảng giá</label>
-                        <input type="text" class="form-control" id="validationCustom08" required>
+                        <input type="text" class="form-control" id="searchPrice" required>
                     </div>
-
-                    <!-- <div class="col-md-6">
-                        <label for="validationCustom0" class="form-label"></label>
-                        <input type="text" class="form-control" id="validationCustom0" required>
-                    </div> -->
                     <div class="col-md-6 form-check advanced-search">
-                        <input class="form-check-input" type="checkbox" value="">
+                        <input class="form-check-input" id="checkbox1" name="checkbox1" type="checkbox1" value="ApDungKhuyenMai">
                         <label class="form-check-label" for="flexCheckChecked">
                             Có áp dụng khuyến mãi
                         </label>
                     </div>
                     <div class="col-md-6 form-check advanced-search">
-                        <input class="form-check-input" type="checkbox" value="">
+                        <input class="form-check-input" type="checkbox2" name="checkbox2" id="checkbox2" value="TraGop">
                         <label class="form-check-label" for="flexCheckChecked">
                             Tour trả góp
                         </label>
                     </div>
                     <div class="col-12 mb-3 d-flex justify-content-between">
                         <button type="button" class="btn btn-outline-secondary" onclick="displaysearch()">Tìm kiếm nâng cao</button>
-                        <button class="btn btn-primary" type="submit">Tìm kiếm</button>
+                        <button class="btn btn-primary" id="btnsearchTour" type="button">Tìm kiếm</button>
                     </div>
                     <div class="col-12 mb-3 d-flex justify-content-end">
                         <a href="" class="code-tour text-decoration-none" data-bs-toggle="modal" data-bs-target="#searchbookingtour">Tra cứu mã đặt toa</a>
