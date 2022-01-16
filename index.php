@@ -95,19 +95,40 @@ include('.//partials-front/header.php');
                     </div>
                 </div>
                 <img src="images\index\sidebar-img-right.png" alt="" class="img-fluid shadow-sm rounded mb-3 mt-3 sidebar-right-image">
-                <div class="bg-white shadow-sm rounded">
+                <div class="bg-white shadow-sm rounded p-2">
                     <p class="fw-bold ms-1 mt-2">Trải nghiệm nổi bật</p>
                     <hr style="max-width: 300px">
                     <img src="images/Tour/DaNang_BaNa_NguHanhSon_HoiAn.png" alt="" class="img-fluid sidebar-right-image shadow-sm rounded">
                 </div>
-                <p>10</p>
-                <p>10</p>
-                <p>10</p>
-                <p>10</p>
-                <p>10</p>
-                <p>10</p>
-                <p>10</p>
-                <p>10</p>
+                <div class="row bg-white shadow-sm rounded mt-3 p-2" style="max-width:300px; margin-left:1px">
+                    <div class="d-flex flex-row justify-content-between">
+                        <div class="col-md-6">
+                            <a href=""><img src="images/footer/dadangky.png" alt="" class="img-fluid" style="max-width: 100px; max-height:100%"></a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href=""><img src="images/footer/dathongbao.png" alt="" class="img-fluid" style="max-width: 100px; max-height:100%"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 ms-1">
+                        <a href=""><img src="images/footer/usstoa.png" alt="" class="img-fluid" style="max-width: 100px; max-height:100%"></a>
+                    </div>
+                </div>
+                <div class="bg-white shadow-sm rounded p-2 mt-3 mb-3">
+                    <a href="" class="text-decoration-none text-dark fs-6">Giới thiệu</a>
+                    <a href="" class="text-decoration-none text-dark">Quyền riêng tư</a>
+                    <a href="" class="text-decoration-none text-dark">Điều khoản</a>
+                    <a href="" class="text-decoration-none text-dark">Cookie</a>
+                    <a href="" class="text-decoration-none text-dark fs-6">Tuyển dụng</a>
+                    <a href="" class="text-decoration-none text-dark">Hỗ trợ</a><br>
+                    <a href="" class="text-decoration-none text-dark">Tiếp thị liên kết</a>
+                    <div class="d-flex justify-content-center mt-2">
+                        <small>&#169; Hahalolo 2017. Đã đăng ký bản quyền</small>
+                    </div>
+                </div>
+                <p class="mt-4">Hahalolo</p>
+                <p>Hahalolo</p>
+                <p>Hahalolo</p>
+
             </div>
         </div>
         <!-- Content -->
@@ -173,9 +194,35 @@ include('.//partials-front/header.php');
                         <button class="btn btn-primary" type="submit">Tìm kiếm</button>
                     </div>
                     <div class="col-12 mb-3 d-flex justify-content-end">
-                        <a href="" class="code-tour text-decoration-none">Tra cứu mã đặt toa</a>
+                        <a href="" class="code-tour text-decoration-none" data-bs-toggle="modal" data-bs-target="#searchbookingtour">Tra cứu mã đặt toa</a>
                     </div>
                 </form>
+
+                <!-- Modal -->
+                <div class="modal fade" id="searchbookingtour" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Tra cứu mã đặt Tour</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="row g-3 needs-validation" novalidate>
+                                    <div class="col-md-12">
+                                        <label for="validationCustom01" class="form-label">Tìm kiếm</label>
+                                        <input type="text" class="form-control" id="validationCustom01" value="" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <button class="btn btn-primary" type="submit">Tra cứu</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <?php
             $sql1 = 'SELECT*
@@ -205,7 +252,7 @@ include('.//partials-front/header.php');
                                 <p class="ms-3 fw-bold"><?php echo $nametouroperator ?></p>
                             </div>
                             <!-- Images Tour -->
-                            <div id="carouselExampleControlsNoTouching<?php echo $idnew;?>" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
+                            <div id="carouselExampleControlsNoTouching<?php echo $idnew; ?>" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
                                 <div class="carousel-inner">
                                     <?php
                                     $sql2 = "Select* from tb_tourimages where tour_code = '" . $idtour . "'";
@@ -233,11 +280,11 @@ include('.//partials-front/header.php');
                                     }
                                     ?>
                                 </div>
-                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching<?php echo $idnew;?>" data-bs-slide="prev">
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching<?php echo $idnew; ?>" data-bs-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Previous</span>
                                 </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsNoTouching<?php echo $idnew;?>" data-bs-slide="next">
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsNoTouching<?php echo $idnew; ?>" data-bs-slide="next">
                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Next</span>
                                 </button>
@@ -271,7 +318,7 @@ include('.//partials-front/header.php');
                                     <p class="fw-bold text-danger"><?php echo $discount ?></p>
                                 </div>
                                 <div>
-                                    <a href="informationtour.php?tourcode=<?php echo $idtour?>"><button type="button" class="btn btn-info me-auto">Xem chi tiết</button></a>
+                                    <a href="informationtour.php?tourcode=<?php echo $idtour ?>"><button type="button" class="btn btn-info me-auto">Xem chi tiết</button></a>
                                 </div>
                             </div>
                         </div>
@@ -322,7 +369,7 @@ include('.//partials-front/header.php');
             if (content.style.display == 'none') {
                 content.style.display = 'block'
                 sidebar.style.display = 'none'
-            }else{
+            } else {
                 content.style.display = 'none'
                 sidebar.style.display = 'block'
             }

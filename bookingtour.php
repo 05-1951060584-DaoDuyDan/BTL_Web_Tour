@@ -149,7 +149,7 @@ if (!isset($_GET['tourcode']) && !isset($_GET['idse'])) {
                                 ?>
                                 <div class="">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="checkbox<?php echo $i; ?>" value="">
+                                        <input class="form-check-input" type="checkbox" id="checkbox<?php echo $i; ?>" value="" name="checkbox<?php echo $i; ?>">
                                         <input style="display: none;" type="text" id="priceserviceadd<?php echo $i; ?>" value="<?php echo $rowtourservice['priceservice'] ?>"></input>
                                         <label class="form-check-label" for="flexCheckDefault">
                                             <?php echo $rowtourservice['nameservice']." (".ps_price($rowtourservice['priceservice']).")"; ?>

@@ -65,6 +65,22 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
             <input type="text" readonly style="display: none;" id="tourcodemainde" value="<?php echo $tour_code ?>">
             <h5>Tên Tour: <?php echo $rowinfotour['nametour'] ?></h5>
             <h5>Số ngày du lịch: <?php echo $rowinfotour['numberofdays'] ?></h5>
+            <?php
+            if($rowinfotour['status_tour']==1){
+                ?>
+                <form action="">
+                    <button class="btn btn-primary" type="submit">Ngừng Hoạt Động Du Lịch Cho Tour</button>
+                </form>
+                <?php
+            }else{
+                ?>
+                <form action="">
+                    <button class="btn btn-primary" type="submit">Mở Hoạt Động Du Lịch Cho Tour</button>
+                </form>
+                <?php
+            }
+            ?>
+            
         </div>
         <div class="row">
             <div class="col-md">
