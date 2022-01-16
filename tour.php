@@ -5,15 +5,28 @@ if (isset($_SESSION['LoginOK'])) {
     $user = rtrim($user);
 }
 ?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
 
 <body >
     <div class="container">
-        <a href="add-room.php" class="btn btn-success m-2">Thêm Tour</a>
+        <a href="add-tour.php" class="btn btn-success m-2">Thêm Tour</a>
         <div class="row">
             <table class="table table-striped">
                 <thead>
                     <tr>
                         <th scope="col">STT</th>
+                        <th scope="col">Mã Tour</th>
                         <th scope="col">Tên Tour</th>
                         <th scope="col">Điểm bắt đầu</th>
                         <th scope="col">Điểm kết thúc</th>
@@ -48,9 +61,9 @@ if (isset($_SESSION['LoginOK'])) {
                                 $tourdiscount = $row['tourdiscount'];
                                 $tourinfo = $row['tourinfo'];
                                 if($row['installment'] == 0)
-                                    $installment = 'Không hoạt động';
+                                    $installment = 'Không';
                                 else
-                                    $installment = 'Hoạt động';
+                                    $installment = 'Có';
                                 $tourregulations = $row['tourregulations'];
                                 $conditiontour = $row['conditiontour'];
                                 $tourdepartureschedule = $row['tourdepartureschedule'];
@@ -65,6 +78,7 @@ if (isset($_SESSION['LoginOK'])) {
                                 ?>
                                 <tr>
                                     <th scope="row"><?php echo $sn++; ?></th>
+                                    <td><?php echo $tour_code; ?></td>
                                     <td><?php echo $nametour; ?></td>
                                     <td><?php echo $startinglocation; ?></td>
                                     <td><?php echo $endinglocation; ?></td>
@@ -75,17 +89,16 @@ if (isset($_SESSION['LoginOK'])) {
                                     <td><?php echo $tourregulations; ?></td>
                                     <td><?php echo $conditiontour; ?></td>
                                     <td><?php echo $tourdepartureschedule; ?></td>
-                                    <td><?php echo $status; ?></td>
                                     <td><?php echo $nametypetour; ?></td>
                                     <td><?php echo $nametouroperator; ?></td>
                                     <td><?php echo $status; ?></td>
                                     <td>
-                                        <a href="update-room.php?id=<?php echo $id;?>" class="m-l-42">
+                                        <a href="update-tour.php?id=<?php echo $id;?>" >
                                             <i class="fas fa-user-edit text-center" style="color:blue"></i>
                                         </a>
                                     </td>
                                     <td>
-                                        <a href="delete-room.php?id=<?php echo $id;?>" class="m-l-42">
+                                        <a href="delete-tour.php?id=<?php echo $id;?>" >
                                             <i class="fas fa-user-times" style="color:red"></i>
                                         </a>
                                     </td>

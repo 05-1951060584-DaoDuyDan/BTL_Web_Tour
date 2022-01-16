@@ -4,11 +4,12 @@
 
 <body >
     <div class="container">
-        <div class="row">
+    <div class="row">
             <table class="table table-striped">
                 <thead>
                     <tr>
                         <th scope="col">STT</th>
+                        <th scope="col">Mã Tour</th>
                         <th scope="col">Tên Tour</th>
                         <th scope="col">Điểm bắt đầu</th>
                         <th scope="col">Điểm kết thúc</th>
@@ -22,8 +23,8 @@
                         <th scope="col">Trạng thái tour</th>
                         <th scope="col">Loại tour</th>
                         <th scope="col">Người điều hành tour</th>
-                        <th scope="col">Khóa</th>
-                        <th scope="col">Mở</th>
+                        <th scope="col">Khóa tour</th>
+                        <th scope="col">Mở tour</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -43,9 +44,9 @@
                                 $tourdiscount = $row['tourdiscount'];
                                 $tourinfo = $row['tourinfo'];
                                 if($row['installment'] == 0)
-                                    $installment = 'Không hoạt động';
+                                    $installment = 'Không';
                                 else
-                                    $installment = 'Hoạt động';
+                                    $installment = 'Có';
                                 $tourregulations = $row['tourregulations'];
                                 $conditiontour = $row['conditiontour'];
                                 $tourdepartureschedule = $row['tourdepartureschedule'];
@@ -60,6 +61,7 @@
                                 ?>
                                 <tr>
                                     <th scope="row"><?php echo $sn++; ?></th>
+                                    <td><?php echo $tour_code; ?></td>
                                     <td><?php echo $nametour; ?></td>
                                     <td><?php echo $startinglocation; ?></td>
                                     <td><?php echo $endinglocation; ?></td>
@@ -70,18 +72,18 @@
                                     <td><?php echo $tourregulations; ?></td>
                                     <td><?php echo $conditiontour; ?></td>
                                     <td><?php echo $tourdepartureschedule; ?></td>
-                                    <td><?php echo $status; ?></td>
+                                
                                     <td><?php echo $nametypetour; ?></td>
                                     <td><?php echo $nametouroperator; ?></td>
                                     <td><?php echo $status; ?></td>
                                     <td>
-                                        <a href="update-room.php?id=<?php echo $id;?>" class="m-l-42">
-                                            <i class="fas fa-user-edit text-center" style="color:blue"></i>
+                                        <a href="update-room.php?id=<?php echo $id;?>" >
+                                        <i class="fas fa-lock" style="color:blue"></i>
                                         </a>
                                     </td>
                                     <td>
-                                        <a href="delete-room.php?id=<?php echo $id;?>" class="m-l-42">
-                                            <i class="fas fa-user-times" style="color:red"></i>
+                                        <a href="delete-room.php?id=<?php echo $id;?>" >
+                                        <i class="fas fa-lock-open text-center" style="color:red"></i>
                                         </a>
                                     </td>
                                 </tr>

@@ -70,13 +70,13 @@
                                     <td><?php echo $admin; ?></td>
 
                                     <td>
-                                        <a href="update-room.php?id=<?php echo $id;?>" class="m-l-42">
-                                            <i class="fas fa-user-edit text-center" style="color:blue"></i>
+                                        <a href="update-room.php?id=<?php echo $id;?>" >
+                                        <i class="fas fa-lock text-center" style="color:blue"></i>
                                         </a>
                                     </td>
                                     <td>
-                                        <a href="delete-room.php?id=<?php echo $id;?>" class="m-l-42">
-                                            <i class="fas fa-user-times" style="color:red"></i>
+                                        <a href="delete-room.php?id=<?php echo $id;?>" >
+                                        <i class="fas fa-lock-open" style="color:red"></i>
                                         </a>
                                     </td>
                                 </tr>
