@@ -1,9 +1,14 @@
-<?php include('partials-front/header.php')
-    
+<?php
+include('config/config.php');
+if (isset($_SESSION['LoginOK'])) {
+    $user = substr($_SESSION['LoginOK'], 1, 60);
+    $user = rtrim($user);
+}
 ?>
 
 <body >
     <div class="container">
+        <a href="add-room.php" class="btn btn-success m-2">Thêm Tour</a>
         <div class="row">
             <table class="table table-striped">
                 <thead>
@@ -22,8 +27,8 @@
                         <th scope="col">Trạng thái tour</th>
                         <th scope="col">Loại tour</th>
                         <th scope="col">Người điều hành tour</th>
-                        <th scope="col">Khóa</th>
-                        <th scope="col">Mở</th>
+                        <th scope="col">Sửa</th>
+                        <th scope="col">Xóa</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -93,5 +98,3 @@
         </div>
     </div>
 </body>
-
-<?php include('partials-front/footer.php') ?>

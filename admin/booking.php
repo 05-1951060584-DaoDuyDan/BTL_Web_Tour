@@ -4,7 +4,6 @@
 
 <body >
     <div class="container ">
-        <!-- <a href="add-room.php" class="btn btn-success m-2">Thêm Tour</a> -->
         <div class="row">
             <table class="table table-striped">
                 <thead>
@@ -28,8 +27,8 @@
                         <th scope="col">Hủy bỏ</th>
                         <th scope="col">Tên tour</th>
                         <th scope="col">Ngày bắt đầu</th>
-                        <th scope="col">Sửa</th>
-                        <th scope="col">Xóa</th>
+                        <th scope="col">Khóa</th>
+                        <th scope="col">Mở</th>
                     </tr>
                 </thead>
                 <tbody>

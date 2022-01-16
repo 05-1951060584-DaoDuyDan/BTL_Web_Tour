@@ -1,3 +1,3 @@
 <?php
-echo substr("Hello world",1);
+echo substr("Hello world",0 ,2);
 ?>

@@ -4,7 +4,6 @@
 
 <body >
     <div class="container">
-        <!-- <a href="add-room.php" class="btn btn-success m-2">Thêm Tour</a> -->
         <div class="row">
             <table class="table table-striped">
                 <thead>
@@ -15,7 +14,6 @@
                         <th scope="col">Họ người dùng</th>
                         <th scope="col">Email</th>
                         <th scope="col">Số điện thoại</th>
-                        <th scope="col">Mật khẩu</th>
                         <th scope="col">Trạng thái</th>
                         <th scope="col">Địa chỉ</th>
                         <th scope="col">Liên kết lúc</th>
@@ -39,7 +37,6 @@
                                 $surnameuser = $row['surnameuser'];
                                 $email = $row['email'];
                                 $phonenumber = $row['phonenumber'];
-                                $password = $row['password'];
                                 if($row['status_user'] == 0)
                                     $status = 'Không hoạt động';
                                 else
@@ -66,9 +63,8 @@
                                     <td><?php echo $surnameuser; ?></td>
                                     <td> <?php echo $email; ?></td>
                                     <td><?php echo $phonenumber; ?></td>
-                                    <td><?php echo $password.substr($row['password'], 5, 0); ?></td>
                                     <td><?php echo $status; ?></td>
-                                    <td><?php echo $email_verification_link; ?></td>
+                                    <td><?php echo $email_verification_link.substr($row['email_verification_link'], 50); ?></td>
                                     <td><?php echo $email_verified_at; ?></td>
                                     <td><?php echo $lock; ?></td>
                                     <td><?php echo $admin; ?></td>
