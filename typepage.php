@@ -68,7 +68,7 @@ include 'config/config.php';
                         <div class="modal-body">
                             <div class="form-group">
                                 <label for="formGroupExampleInput">Tên loại trang</label>
-                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Nhập tên loại trang" name="nametypetrang">
+                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Nhập tên loại trang" name="nametypepage">
                             </div>
                         </div>
                         <div class="modal-footer">

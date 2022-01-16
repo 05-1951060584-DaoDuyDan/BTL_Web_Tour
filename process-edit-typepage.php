@@ -4,17 +4,17 @@
       if(!isset($_SESSION['loginOK']) || $_SESSION['loginOK'] != 'admin'){
           header("Location:login.php");
       }
-    $nametypetour_new = $_POST['nametypetour_new'];
-    $id_typetour = $_POST['id_typetour'];
+    $nametypepage_new = $_POST['nametypepage_new'];
+    $id_typepage = $_POST['id_typepage'];
 
-    $sql = "UPDATE tb_typetour set nametypetour = '$nametypetour_new' where id_typetour = '$id_typetour'";  
+    $sql = "UPDATE tb_typepage set nametypepage = '$nametypepage_new' where id_typepage = '$id_typepage'";  
     $ressult = mysqli_query($conn, $sql);
     if($ressult > 0) {
-        header("Location: typetour.php");
+        header("Location: typepage.php");
         // echo $sql;
     }
     else {
-        header("Location: errortypetour.php");
+        header("Location: errortypepage.php");
         // echo "Loi";
     }
     mysqli_close($conn);

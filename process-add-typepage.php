@@ -5,17 +5,17 @@ include 'config/config.php';
       header("Location:login.php");
   }
 
-    $nametypetour = $_POST['nametypetour'];
+    $nametypepage = $_POST['nametypepage'];
     
 
     // Bước 02:
-    $sql = "INSERT INTO tb_typetour (nametypetour) VALUES ('$nametypetour')";
+    $sql = "INSERT INTO tb_typepage (nametypepage) VALUES ('$nametypepage')";
 
     echo $sql;
     $result = mysqli_query($conn,$sql);
     // Bước 03:
     if($result > 0){
-        header("Location: typetour.php");
+        header("Location: typepage.php");
     }else{
         echo "Lỗi!";
     }
