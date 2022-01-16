@@ -1,9 +1,9 @@
 <?php
-include('config/config.php');
-if (isset($_SESSION['LoginOK'])) {
-    $user = substr($_SESSION['LoginOK'], 1, 60);
-    $user = rtrim($user);
-}
+include 'config/config.php';
+//   session_start(); //Dịch vụ bảo vệ
+  if(!isset($_SESSION['loginOK']) || $_SESSION['loginOK'] != 'admin'){
+      header("Location:login.php");
+  }
 ?>
 
 <!DOCTYPE html>
@@ -81,7 +81,7 @@ if (isset($_SESSION['LoginOK'])) {
         </div>
 
         <!-- Modal edit -->
-        <div class="modal fade" id="editService" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="edittypetour" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -89,20 +89,20 @@ if (isset($_SESSION['LoginOK'])) {
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
-                    <form action="./process-edit-service.php" method="POST" class="form_edit_service">
+                    <form action="./process-edit-typetour.php" method="POST" class="form_edit_typetour">
                         <div class="modal-body">
                             <div class="form-group">
-                                <label for="id_service">ID</label>
-                                <input type="text" class="form-control" id="id_service" value="" name="id_service" readonly="readonly">
+                                <label for="id_typetour">ID</label>
+                                <input type="text" class="form-control" id="id_typetour" value="" name="id_typetour" readonly="readonly">
                             </div>
                             <div class="form-group">
-                                <label for="name_service_new">Tên dịch vụ mới</label>
-                                <input type="text" class="form-control" id="name_service_new" placeholder="Nhập tên dịch vụ" name="name_service_new">
+                                <label for="nametypetour_new">Tên loại tour mới</label>
+                                <input type="text" class="form-control" id="nametypetour_new" placeholder="Nhập tên loại tour" name="nametypetour_new">
                             </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary" name="editService" id="btnEditService">Edit</button>
+                            <button type="submit" class="btn btn-primary" name="edittypetour" id="btnEdittypetour">Edit</button>
                         </div>
                     </form>
                 </div>
@@ -110,28 +110,28 @@ if (isset($_SESSION['LoginOK'])) {
         </div>
 
         <!-- Modal delete -->
-        <div class="modal fade" id="deleteService" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="deletetypetour" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Xóa dịch vụ</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Xóa loại tour</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
-                    <form action="./process-delete-service.php" method="POST" class="form_edit_service">
+                    <form action="./process-delete-typetour.php" method="POST" class="form_edit_typetour">
                         <div class="modal-body">
                             <div class="form-group">
-                                <label for="id_service_delete">ID</label>
-                                <input type="text" class="form-control" id="id_service_delete" value="" name="id_service_delete" readonly="readonly">
+                                <label for="id_typetour_delete">ID</label>
+                                <input type="text" class="form-control" id="id_typetour_delete" value="" name="id_typetour_delete" readonly="readonly">
                             </div>
                             <div class="form-group">
-                                <label for="name_service_delete">Tên dịch vụ</label>
-                                <input type="text" class="form-control" id="name_service_delete" placeholder="Nhập tên dịch vụ" name="name_service_delete" readonly="readonly">
+                                <label for="nametypetour_delete">Tên dịch vụ</label>
+                                <input type="text" class="form-control" id="nametypetour_delete" placeholder="Nhập tên loại tour" name="nametypetour_delete" readonly="readonly">
                             </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary" name="deleteService" id="btnDeleteService">Delete</button>
+                            <button type="submit" class="btn btn-primary" name="deletetypetour" id="btntypetour">Delete</button>
                         </div>
                     </form>
                 </div>
