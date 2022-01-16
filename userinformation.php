@@ -36,24 +36,46 @@ if (!isset($_SESSION['LoginOK'])) {
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <div class="row bg-white" style="margin-left: 1px">
                             <form class="row g-3 needs-validation" novalidate>
+                                <div class="col-md-12">
+                                    <!--   -->
+                                    <div class="d-flex justify-content-center">
+                                        <img src="data:image/png;base64, <?php echo base64_encode($row['imageuser']) ?>" alt="" class="img-fluid" style="max-width: 82px; max-height: 100%">
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <b>Ảnh đại diện</b>
+                                    </div>
+                                </div>
                                 <div class="col-md-6">
                                     <label for="validationCustom01" class="form-label">Tên</label>
-                                    <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
+                                    <input type="text" class="form-control" id="nameuser" name="nameuser" value="<?php echo $row['nameuser'] ?>" readonly required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="validationCustom02" class="form-label">Họ</label>
-                                    <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
+                                    <input type="text" class="form-control" id="surnameuser" name="surnameuser" value="<?php echo $row['surnameuser'] ?>" readonly required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="validationCustomUsername" class="form-label">Email</label>
                                     <div class="input-group has-validation">
                                         <span class="input-group-text" id="inputGroupPrepend">@</span>
-                                        <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+                                        <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" value="<?php echo $row['email'] ?>" readonly required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="validationCustom02" class="form-label">Số điện thoại</label>
-                                    <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
+                                    <input type="text" class="form-control" id="validationCustom02" value="<?php echo $row['phonenumber'] ?>" readonly required>
+                                </div>
+                                <div class="col-md-12">
+                                    <button class="btn btn-primary" type="button" id="updateInfoUser">Sửa thông tin cá nhân</button>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="mt-3">
+                                        <div class="form-floating">
+                                            <input type="file" class="form-control-file d-block" id="imgUserUpdate" name="imgUserUpdate" style="display: none;">
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <button class="btn btn-primary" type="submit" id="submitUpdateUser" name="submitUpdateUser" style="display: none;">Hoàn tất chỉnh sửa</button>
+                                    </div>
                                 </div>
                             </form>
                         </div>

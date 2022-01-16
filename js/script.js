@@ -534,3 +534,9 @@ $(document).ready(function(){
         }
     })
 })
+
+$(document).ready(function(){
+    $("#updateInfoUser").click(function(){
+        
+    })
+})

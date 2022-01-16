@@ -6,5 +6,7 @@
     $body = document.getElementById('body-main');
     $body.style['background-color'] = 'bg-dark';
 </script>
+<script src="js/script.js">
+</script>
 </body>
 </html>
