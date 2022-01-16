@@ -545,3 +545,49 @@ $(document).ready(function(){
 })
 
 //tìm kiếm tour
+$(document).ready(function(){
+    $("#btnsearchTour").click(function(){
+        let form_datas = new FormData();
+        if($("#location").val()!=""){
+            form_datas.append('location', $("#location").val())
+        }
+        if($("#searchstartday").val()!=""){
+            form_datas.append('searchstartday', $("#searchstartday").val())
+        }
+        if($("#searchStartLocation").val()!=""){
+            form_datas.append('searchStartLocation', $("#searchStartLocation").val())
+        }
+        if($("#searchEndLocation").val()!=""){
+            form_datas.append('searchEndLocation', $("#searchEndLocation").val())
+        }
+        if($("#searchcdTour").val()!=""){
+            form_datas.append('searchcdTour', $("#searchcdTour").val())
+        }
+        if($("#searchnumberday").val()!=""){
+            form_datas.append('searchnumberday', $("#searchnumberday").val())
+        }
+        if($("#searchPrice").val()!=""){
+            form_datas.append('searchPrice', $("#searchPrice").val())
+        }
+        if(($("#checkbox1").is(":checked")==true).val()!=""){
+            form_datas.append('khuyenmai', $("#checkbox1").val())
+        }
+        if(($("#checkbox2").is(":checked")==true).val()!=""){
+            form_datas.append('tragop', $("#checkbox2").val())
+        }
+        $.ajax({
+            url: 'process-deleteService.php', // gửi đến file upload.php 
+            dataType: 'text',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_datas,
+            type: 'post',
+            success: function(res) {
+                $("#tourServiceTable").html(res);
+                $(".inforAddService").text("Xóa hành công!").css('color','green');
+            }
+        });
+        return false;
+    })
+})
