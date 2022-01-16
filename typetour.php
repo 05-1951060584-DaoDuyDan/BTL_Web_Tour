@@ -1,10 +1,9 @@
 <?php
-    include("partials-front/header.php")
-// session_start(); //Dịch vụ bảo vệ
-// if(!isset($_SESSION['loginOK']) || $_SESSION['loginOK'] != 'admin'){
-//     header("Location:../login.php");
-// }
-// include '../config.php';
+include('config/config.php');
+if (isset($_SESSION['LoginOK'])) {
+    $user = substr($_SESSION['LoginOK'], 1, 60);
+    $user = rtrim($user);
+}
 ?>
 
 
@@ -50,7 +49,27 @@
         </table>
     </div>
 
+    <script>
+        $(document).ready(function() {
+            $(".edit").click(function() {
+                $tr = $(this).closest('tr');
+                var data = $tr.children("td").map(function() {
+                    return $(this).text();
+                }).get();
+                $("#id_tourservice").attr('value', data[0]);
+                $("#name_service_new").val(data[1]);
+            });
 
+            $(".delete").click(function() {
+                $tr = $(this).closest('tr');
+                var data = $tr.children("td").map(function() {
+                    return $(this).text();
+                }).get();
+                $("#id_service_delete").attr('value', data[0]);
+                $("#name_service_delete").val(data[1]);
+            });
+        });
+    </script>
 </body>
 
 </html>
