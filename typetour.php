@@ -44,8 +44,8 @@ include 'config/config.php';
                         <tr>
                             <td><?php echo $row['id_typetour']; ?></td>
                             <td><?php echo $row['nametypetour']; ?></td>
-                            <td><a data-bs-toggle="modal" data-bs-target="#edittypetour" class="edit" id_service="<?php echo $row['id_typetour']; ?>"><i class="fas fa-user-edit" style="color:blue"></i></a></td>
-                            <td><a data-bs-toggle="modal" data-bs-target="#deletetypetour" class="delete" id_service="<?php echo $row['id_typetour']; ?>" href="./deleteService.php?id=<?php echo $row['id_typetour']; ?>"><i class="fas fa-user-times" style="color:red"></i></a></td>
+                            <td><a data-bs-toggle="modal" data-bs-target="#edittypetour" class="edit" id_typetour="<?php echo $row['id_typetour']; ?>"><i class="fas fa-user-edit" style="color:blue"></i></a></td>
+                            <td><a data-bs-toggle="modal" data-bs-target="#deletetypetour" class="delete" id_typetour="<?php echo $row['id_typetour']; ?>" href="./deletetypetour.php?id=<?php echo $row['id_typetour']; ?>"><i class="fas fa-user-times" style="color:red"></i></a></td>
                         </tr>
                 <?php
                     }
