@@ -23,8 +23,6 @@
                         <th scope="col">Ngày đặt</th>
                         <th scope="col">Thanh toán</th>
                         <th scope="col">Trạng thái</th>
-                        <th scope="col">Hoàn thành</th>
-                        <th scope="col">Hủy bỏ</th>
                         <th scope="col">Tên tour</th>
                         <th scope="col">Ngày bắt đầu</th>
                         <th scope="col">Khóa</th>
@@ -56,11 +54,9 @@
                                 $tourbookingdate = $row['tourbookingdate'];
                                 $payments = $row['payments'];
                                 if($row['status_bookingtour'] == 0)
-                                    $status = 'Chưa trả';
+                                    $status = 'Hủy bỏ';
                                 else
-                                    $status = 'Đã trả';
-                                $complete = $row['complete'];
-                                $cancel = $row['cancel'];
+                                    $status = 'Hoàn thành';
                                 $nametour = $row['nametour'];
                                 $startday = $row['startday'];
                             
@@ -84,7 +80,6 @@
                                     <td><?php echo $tourbookingdate; ?></td>
                                     <td><?php echo $payments; ?></td>
                                     <td><?php echo $status; ?></td>
-                                    <td><?php echo $complete; ?></td>
                                     <td><?php echo $nametour; ?></td>
                                     <td><?php echo $startday; ?></td>
                                     <td>
