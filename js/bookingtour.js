@@ -198,7 +198,7 @@ $(document).ready(function() {
     $("#totalpricepost").val(ab);
 })
 
-function kiemtra(){/*
+function kiemtra(){
     let adult = $('#numberadult').val();
     let child = $('#numberchild').val();
     let baby = $('#numberbaby').val();
@@ -239,5 +239,5 @@ function kiemtra(){/*
         return true;
     }else{
         return false;
-    }*/return true;
+    }
 }

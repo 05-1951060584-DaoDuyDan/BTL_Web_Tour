@@ -67,6 +67,7 @@ class Process{
             return false;
         }
     }
+    //lấy ra dịch vụ của 1 tour
     function getTourServive($tour_code){
         $conn = $this->connectDb();
         $sqlServive = "Select* from tb_tourservice where tour_code = '{$tour_code}'";
@@ -79,6 +80,21 @@ class Process{
             return false;
         }
     }
+    //lấy ra 1 dịch vụ
+    function getOneServive($idser){
+        $conn = $this->connectDb();
+        $sqlServive = "Select* from tb_tourservice where id_tourservice = '{$idser}'";
+        $resultService = mysqli_query($conn, $sqlServive);
+        $SEDArr = [];
+        if(mysqli_num_rows($resultService)>0){
+            $bds = mysqli_fetch_all($resultService, MYSQLI_ASSOC);
+            $SEDArr = $bds[0];
+            return $SEDArr;
+        }else{
+            return false;
+        }
+    }
+    //Lấy danh sách đặt tour của User
     function getBookingTourChoUser($iduser){
         $conn = $this->connectDb();
         $sqlServive = "Select* from tb_tourbooking where id_user = {$iduser} and status_bookingtour = 0";
@@ -130,6 +146,19 @@ class Process{
     function getBookingTourHTOperator($idtour){
         $conn = $this->connectDb();
         $sqlServive = "Select* from tb_tourbooking where tour_code = '{$idtour}' and status_bookingtour = 1";
+        $resultService = mysqli_query($conn, $sqlServive);
+        $SEDArr = [];
+        if(mysqli_num_rows($resultService)>0){
+            $SEDArr = mysqli_fetch_all($resultService, MYSQLI_ASSOC);
+            return $SEDArr;
+        }else{
+            return false;
+        }
+    }
+    //lấy dịch vụ của 1 đơn đặt tour
+    function getservicebooktour($code){
+        $conn = $this->connectDb();
+        $sqlServive = "Select* from tb_tourservicebookingtour, tb_tourservice where code_bookingtour = '{$code}' and tb_tourservice.id_tourservice = tb_tourservicebookingtour.id_tourservice";
         $resultService = mysqli_query($conn, $sqlServive);
         $SEDArr = [];
         if(mysqli_num_rows($resultService)>0){

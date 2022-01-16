@@ -149,7 +149,7 @@ if (!isset($_GET['tourcode']) && !isset($_GET['idse'])) {
                                 ?>
                                 <div class="">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="checkbox<?php echo $i; ?>" value="" name="checkbox<?php echo $i; ?>">
+                                        <input class="form-check-input" type="checkbox" id="checkbox<?php echo $i; ?>" name="checkbox<?php echo $i; ?>" value="<?php echo $rowtourservice['id_tourservice'] ?>">
                                         <input style="display: none;" type="text" id="priceserviceadd<?php echo $i; ?>" value="<?php echo $rowtourservice['priceservice'] ?>"></input>
                                         <label class="form-check-label" for="flexCheckDefault">
                                             <?php echo $rowtourservice['nameservice']." (".ps_price($rowtourservice['priceservice']).")"; ?>
@@ -194,7 +194,7 @@ if (!isset($_GET['tourcode']) && !isset($_GET['idse'])) {
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-center">
-                                    <button type="submit" class="btn btn-primary mt-3">Thanh Toán</button>
+                                    <button type="submit" class="btn btn-primary mt-3" name="submitaddbooking">Thanh Toán</button>
                                 </div>
                             </div>
                             <input type="text" class="" name="totalmoney" id="totalpricepost" style="display:none;" value="<?php echo $adultprice + $adultprice*($vat * 1 / 100) ?>" readonly>
