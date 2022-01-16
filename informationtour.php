@@ -7,9 +7,13 @@ if ($_GET['tourcode']) {
     $rowinfotour = mysqli_fetch_assoc($resultinfotour);
     $sqlSeDay = "Select* from tb_startendday where tour_code = '{$tour_code}' and startday >= CURDATE() ORDER by startday";
     $resultSeDay = mysqli_query($conn, $sqlSeDay);
-    $rowSeDay = mysqli_fetch_assoc($resultSeDay);
-    $startday = date('d-m-Y',strtotime($rowSeDay['startday']));
-    $endday = date('d-m-Y',strtotime($rowSeDay['endday']));
+    $startday="";
+    $endday="";
+    if(mysqli_num_rows($resultSeDay)>0){
+        $rowSeDay = mysqli_fetch_assoc($resultSeDay);
+        $startday = date('d-m-Y',strtotime($rowSeDay['startday']));
+        $endday = date('d-m-Y',strtotime($rowSeDay['endday']));
+    }
 } else {
     header("location: index.php");
 }

@@ -223,7 +223,7 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                                                 if ($tourstatus == 1) {
                                                 ?>
                                                     <div class="card-body">
-                                                        <a href="#" class="card-link text-decoration-none">Xem Thông Tin Tour</a>
+                                                        <a href="../informationtour.php?tourcode=<?php echo $tour_code ?>" class="card-link text-decoration-none">Xem Thông Tin Tour</a>
                                                         <a href="process-addtour.php?tourcode=<?php echo $tour_code ?>" class="card-link text-decoration-none">Chỉnh sửa Tour</a><br>
                                                     </div>
                                                 <?php

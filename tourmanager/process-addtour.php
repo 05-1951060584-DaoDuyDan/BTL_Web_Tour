@@ -26,7 +26,7 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
         $quydinhtour = $_POST['quydinhtour'];
         $khuyenmaitour = $_POST['khuyenmaitour'];
         $chinhsachtour = $_POST['chinhsachtour'];
-        $sqladdtour = "Insert into tb_tour Values('{$tour_code}','{$nametour}','{$startlocation}','{$endlocation}',{$numberofdays},{$tourdiscount}, '{$tourinfo}', {$tourinstallemnt} ,'{$quydinhtour}','{$khuyenmaitour}','{$chinhsachtour}', 0, 1, {$row['id_touroperator']})";
+        $sqladdtour = "Insert into tb_tour Values('{$tour_code}','{$nametour}','{$startlocation}','{$endlocation}',{$numberofdays},{$tourdiscount}, '{$tourinfo}', {$tourinstallemnt} ,'{$quydinhtour}','{$khuyenmaitour}','{$chinhsachtour}', 0, 0, {$_POST['typetour']}, {$row['id_touroperator']})";
         if (mysqli_query($conn, $sqladdtour)) {
         } else {
             // header("location: add-tour.php");
