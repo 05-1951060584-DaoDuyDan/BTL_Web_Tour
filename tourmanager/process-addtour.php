@@ -66,21 +66,21 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
             <h5>Tên Tour: <?php echo $rowinfotour['nametour'] ?></h5>
             <h5>Số ngày du lịch: <?php echo $rowinfotour['numberofdays'] ?></h5>
             <?php
-            if($rowinfotour['status_tour']==1){
-                ?>
+            if ($rowinfotour['status_tour'] == 1) {
+            ?>
                 <form action="process-statustour.php?tourcode=<?php echo $tour_code ?>&statuslock=1" method="POST">
                     <button class="btn btn-primary" type="submit">Ngừng Hoạt Động Du Lịch Cho Tour</button>
                 </form>
-                <?php
-            }else{
-                ?>
+            <?php
+            } else {
+            ?>
                 <form action="process-statustour.php?tourcode=<?php echo $tour_code ?>&status=0" method="POST">
                     <button class="btn btn-primary" type="submit">Mở Hoạt Động Du Lịch Cho Tour</button>
                 </form>
-                <?php
+            <?php
             }
             ?>
-            
+
         </div>
         <div class="row">
             <div class="col-md">
@@ -91,6 +91,8 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                         <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Ảnh tour</button>
                         <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Ngày khởi hành của tour</button>
                         <button class="nav-link" id="nav-service-tab" data-bs-toggle="tab" data-bs-target="#nav-service" type="button" role="tab" aria-controls="nav-service" aria-selected="false">Dịch vụ của Tour</button>
+                        <button class="nav-link" id="nav-booking-tab" data-bs-toggle="tab" data-bs-target="#nav-booking" type="button" role="tab" aria-controls="nav-booking" aria-selected="false">Quản lý người đặt Tour</button>
+                        <button class="nav-link" id="nav-booking-tab" data-bs-toggle="tab" data-bs-target="#nav-tablebooking" type="button" role="tab" aria-controls="nav-tablebooking" aria-selected="false">Quản lý người đặt Tour</button>
                     </div>
                 </nav>
                 <!-- Chỉnh sửa hoạt động từng ngày của tour -->
@@ -705,11 +707,6 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                                 </div>
                             </div>
                         </div>
-                        <!-- Modal xóa dịch vụ -->
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#deleteTourService">
-                            Launch demo modal
-                        </button>
 
                         <!-- Modal -->
                         <div class="modal fade" id="deleteTourService" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -729,6 +726,12 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="tab-pane fade" id="nav-booking" role="tabpanel" aria-labelledby="nav-booking-tab">
+                        
+                    </div>
+                    <div class="tab-pane fade" id="nav-tablebooking" role="tabpanel" aria-labelledby="nav-tablebooking-tab">
+
                     </div>
                 </div>
             </div>
