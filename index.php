@@ -208,13 +208,13 @@ require_once "process-string.php";
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form class="row g-3 needs-validation" novalidate>
+                                <form class="row g-3 needs-validation" method="post" action="process-searchBookingTour.php" novalidate>
                                     <div class="col-md-12">
                                         <label for="validationCustom01" class="form-label">Tìm kiếm</label>
-                                        <input type="text" class="form-control" id="validationCustom01" value="" required>
+                                        <input type="text" class="form-control" id="validationCustom01" name="codebookingtour" value="" required>
                                     </div>
                                     <div class="col-12">
-                                        <button class="btn btn-primary" type="submit">Tra cứu</button>
+                                        <button class="btn btn-primary" name="submitsearchbooking" type="submit">Tra cứu</button>
                                     </div>
                                 </form>
                             </div>

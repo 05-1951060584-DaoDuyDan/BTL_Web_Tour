@@ -737,6 +737,7 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                                     <th scope="col">Trạng thái</th>
                                     <th scope="col">Mã Tour</th>
                                     <th scope="col">Ngày khởi hành</th>
+                                    <th scope="col">Phê duyệt</th>
                                     <th scope="col">Xem chi tiết</th>
                                     <th scope="col">Hủy Booking</th>
                                 </tr>
@@ -756,6 +757,7 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                                             <td>Chờ phê duyệt</td>
                                             <td><?php echo $rowbooking['tour_code'] ?></td>
                                             <td><?php echo date('d-m-Y', strtotime($rowseday['startday'])) ?></td>
+                                            <td class="text-center text-primary"><i class="bi bi-check2"></i></td>
                                             <td class="text-center text-primary"><i class="bi bi-info-circle"></i></td>
                                             <td class="text-center"><a href="deleteBookingTour.php"><i class="bi bi-x-lg"></i></a></td>
                                         </tr>
