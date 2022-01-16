@@ -68,13 +68,13 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
             <?php
             if($rowinfotour['status_tour']==1){
                 ?>
-                <form action="">
+                <form action="process-statustour.php?tourcode=<?php echo $tour_code ?>&statuslock=1" method="POST">
                     <button class="btn btn-primary" type="submit">Ngừng Hoạt Động Du Lịch Cho Tour</button>
                 </form>
                 <?php
             }else{
                 ?>
-                <form action="">
+                <form action="process-statustour.php?tourcode=<?php echo $tour_code ?>&status=0" method="POST">
                     <button class="btn btn-primary" type="submit">Mở Hoạt Động Du Lịch Cho Tour</button>
                 </form>
                 <?php

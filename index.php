@@ -1,5 +1,6 @@
 <?php
 include('.//partials-front/header.php');
+require_once "process-string.php";
 ?>
 
 <div class="container-fluid" style="margin-top: 66px">
@@ -228,8 +229,7 @@ include('.//partials-front/header.php');
             $sql1 = 'SELECT*
                 FROM tb_tour, tb_touroperator, tb_typetour
                 WHERE tb_tour.id_touroperator = tb_touroperator.id_touroperator AND
-                tb_tour.id_typetour = tb_typetour.id_typetour and status_tour = 1;';
-
+                tb_tour.id_typetour = tb_typetour.id_typetour and status_tour = 1 and tb_tour.lock = 0;';
             $result =  mysqli_query($conn, $sql1);
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
@@ -244,6 +244,9 @@ include('.//partials-front/header.php');
                     $content = $row['tourinfo'];
                     $discount = $row['tourdiscount'];
                     $idnew = substr(md5(rand()), 0, 4);
+                    $sqlseday = "Select* from tb_startendday where tour_code = '{$idtour}' order by startday";
+                    $resultseday = mysqli_query($conn, $sqlseday);
+                    $rowseday = mysqli_fetch_assoc($resultseday);
             ?>
                     <div class="card shadow-sm">
                         <div class="p-3">
@@ -315,7 +318,7 @@ include('.//partials-front/header.php');
                             <div class="d-flex flex-inline justify-content-between">
                                 <div>
                                     <p style="font-size: 14px;">Giá chỉ từ</p>
-                                    <p class="fw-bold text-danger"><?php echo $discount ?></p>
+                                    <p class="fw-bold text-danger"><?php echo ps_price($rowseday['adultprice']) ?></p>
                                 </div>
                                 <div>
                                     <a href="informationtour.php?tourcode=<?php echo $idtour ?>"><button type="button" class="btn btn-info me-auto">Xem chi tiết</button></a>
