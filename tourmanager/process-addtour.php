@@ -91,8 +91,8 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                         <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Ảnh tour</button>
                         <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Ngày khởi hành của tour</button>
                         <button class="nav-link" id="nav-service-tab" data-bs-toggle="tab" data-bs-target="#nav-service" type="button" role="tab" aria-controls="nav-service" aria-selected="false">Dịch vụ của Tour</button>
-                        <button class="nav-link" id="nav-booking-tab" data-bs-toggle="tab" data-bs-target="#nav-booking" type="button" role="tab" aria-controls="nav-booking" aria-selected="false">Quản lý người đặt Tour</button>
-                        <button class="nav-link" id="nav-booking-tab" data-bs-toggle="tab" data-bs-target="#nav-tablebooking" type="button" role="tab" aria-controls="nav-tablebooking" aria-selected="false">Quản lý người đặt Tour</button>
+                        <button class="nav-link" id="nav-booking-tab" data-bs-toggle="tab" data-bs-target="#nav-booking" type="button" role="tab" aria-controls="nav-booking" aria-selected="false">Quản lý đặt Tour</button>
+                        <button class="nav-link" id="nav-booking-tab" data-bs-toggle="tab" data-bs-target="#nav-tablebooking" type="button" role="tab" aria-controls="nav-tablebooking" aria-selected="false">Danh sách người đặt Tour</button>
                     </div>
                 </nav>
                 <!-- Chỉnh sửa hoạt động từng ngày của tour -->
@@ -728,10 +728,80 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                         </div>
                     </div>
                     <div class="tab-pane fade" id="nav-booking" role="tabpanel" aria-labelledby="nav-booking-tab">
-                        
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Mã đặt tour</th>
+                                    <th scope="col">Tổng tiền</th>
+                                    <th scope="col">Ngày đặt Tour</th>
+                                    <th scope="col">Trạng thái</th>
+                                    <th scope="col">Mã Tour</th>
+                                    <th scope="col">Ngày khởi hành</th>
+                                    <th scope="col">Xem chi tiết</th>
+                                    <th scope="col">Hủy Booking</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                if ($ps->getBookingTourChoOperator($tour_code) != false) {
+                                    $rowBookingTourUser = $ps->getBookingTourChoOperator($tour_code);
+                                    for ($i = 0; $i < count($rowBookingTourUser); $i++) {
+                                        $rowbooking = $rowBookingTourUser[$i];
+                                        $rowseday = $ps->getStartEndDay($rowbooking['id_startendday']);
+                                ?>
+                                        <tr>
+                                            <td scope="row"><?php echo $rowbooking['code_bookingtour'] ?></td>
+                                            <td><?php echo ps_price($rowbooking['totalmoney']) ?></td>
+                                            <td><?php echo $rowbooking['tourbookingdate'] ?></td>
+                                            <td>Chờ phê duyệt</td>
+                                            <td><?php echo $rowbooking['tour_code'] ?></td>
+                                            <td><?php echo date('d-m-Y', strtotime($rowseday['startday'])) ?></td>
+                                            <td class="text-center text-primary"><i class="bi bi-info-circle"></i></td>
+                                            <td class="text-center"><a href="deleteBookingTour.php"><i class="bi bi-x-lg"></i></a></td>
+                                        </tr>
+                                <?php
+                                    }
+                                }
+                                ?>
+                            </tbody>
+                        </table>
                     </div>
                     <div class="tab-pane fade" id="nav-tablebooking" role="tabpanel" aria-labelledby="nav-tablebooking-tab">
-
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Mã đặt tour</th>
+                                    <th scope="col">Tổng tiền</th>
+                                    <th scope="col">Ngày đặt Tour</th>
+                                    <th scope="col">Trạng thái</th>
+                                    <th scope="col">Mã Tour</th>
+                                    <th scope="col">Ngày khởi hành</th>
+                                    <th scope="col">Xem chi tiết</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                if ($ps->getBookingTourHTOperator($tour_code) != false) {
+                                    $rowBookingTourUser = $ps->getBookingTourHTOperator($tour_code);
+                                    for ($i = 0; $i < count($rowBookingTourUser); $i++) {
+                                        $rowbooking = $rowBookingTourUser[$i];
+                                        $rowseday = $ps->getStartEndDay($rowbooking['id_startendday']);
+                                ?>
+                                        <tr>
+                                            <td scope="row"><?php echo $rowbooking['code_bookingtour'] ?></td>
+                                            <td><?php echo ps_price($rowbooking['totalmoney']) ?></td>
+                                            <td><?php echo $rowbooking['tourbookingdate'] ?></td>
+                                            <td>Đang phục vụ</td>
+                                            <td><?php echo $rowbooking['tour_code'] ?></td>
+                                            <td><?php echo date('d-m-Y', strtotime($rowseday['startday'])) ?></td>
+                                            <td class="text-center text-primary"><i class="bi bi-info-circle"></i></td>
+                                        </tr>
+                                <?php
+                                    }
+                                }
+                                ?>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

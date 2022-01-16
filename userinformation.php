@@ -30,7 +30,7 @@ if (!isset($_SESSION['LoginOK'])) {
                         <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Đang phục vụ</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="done" aria-selected="false">Hoàn thành</button>
+                        <button class="nav-link" id="done-tab" data-bs-toggle="tab" data-bs-target="#done" type="button" role="tab" aria-controls="done" aria-selected="false">Hoàn thành</button>
                     </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
@@ -110,8 +110,8 @@ if (!isset($_SESSION['LoginOK'])) {
                                             <td>Chờ phê duyệt</td>
                                             <td><?php echo $rowbooking['tour_code'] ?></td>
                                             <td><?php echo date('d-m-Y', strtotime($rowseday['startday'])) ?></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td class="text-center text-primary"><i class="bi bi-info-circle"></i></td>
+                                            <td class="text-center"><a href="deleteBookingTour.php"><i class="bi bi-x-lg"></i></a></td>
                                         </tr>
                                 <?php
                                     }
@@ -145,10 +145,10 @@ if (!isset($_SESSION['LoginOK'])) {
                                             <td scope="row"><?php echo $rowbooking['code_bookingtour'] ?></td>
                                             <td><?php echo ps_price($rowbooking['totalmoney']) ?></td>
                                             <td><?php echo $rowbooking['tourbookingdate'] ?></td>
-                                            <td>Chờ phê duyệt</td>
+                                            <td>Đang phục vụ</td>
                                             <td><?php echo $rowbooking['tour_code'] ?></td>
                                             <td><?php echo date('d-m-Y', strtotime($rowseday['startday'])) ?></td>
-                                            <td></td>
+                                            <td class="text-center text-primary"><i class="bi bi-info-circle"></i></td>
                                         </tr>
                                 <?php
                                     }
@@ -157,7 +157,7 @@ if (!isset($_SESSION['LoginOK'])) {
                             </tbody>
                         </table>
                     </div>
-                    <div class="tab-pane fade" id="done" role="tabpanel" aria-labelledby="contact-tab">
+                    <div class="tab-pane fade" id="done" role="tabpanel" aria-labelledby="done-tab">
                         <table class="table">
                             <thead>
                                 <tr>
@@ -182,10 +182,10 @@ if (!isset($_SESSION['LoginOK'])) {
                                             <td scope="row"><?php echo $rowbooking['code_bookingtour'] ?></td>
                                             <td><?php echo ps_price($rowbooking['totalmoney']) ?></td>
                                             <td><?php echo $rowbooking['tourbookingdate'] ?></td>
-                                            <td>Chờ phê duyệt</td>
+                                            <td>Đã hoàn thành</td>
                                             <td><?php echo $rowbooking['tour_code'] ?></td>
                                             <td><?php echo date('d-m-Y', strtotime($rowseday['startday'])) ?></td>
-                                            <td></td>
+                                            <td class="text-center text-primary"><i class="bi bi-info-circle"></i></td>
                                         </tr>
                                 <?php
                                     }

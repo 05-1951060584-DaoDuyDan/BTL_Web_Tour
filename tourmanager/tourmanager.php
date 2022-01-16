@@ -33,6 +33,15 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                     <div class="col-md bg-white shawdow-sm mt-3" style="margin-left: -12px;">
                         <div class="col-md-8">
                             <form class="row g-3 needs-validation p-3" novalidate>
+                                <div class="col-md-12">
+                                    <!--   -->
+                                    <div class="d-flex justify-content-center">
+                                        <img src="data:image/png;base64, <?php echo base64_encode($row['imagetouroperator']) ?>" alt="" class="img-fluid" style="max-width: 82px; max-height: 100%">
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <b>Ảnh đại diện</b>
+                                    </div>
+                                </div>
                                 <div class="col-md-4">
                                     <label for="validationCustom01" class="form-label">Họ</label>
                                     <input type="text" class="form-control" readonly id="validationCustom01" value="<?php echo $row['surnameuser'] ?>" required>
@@ -58,7 +67,32 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                                     <label for="validationCustom05" class="form-label">Loại hình kinh doanh</label>
                                     <input type="text" class="form-control" readonly id="validationCustom05" value="<?php echo $row['businesstype'] ?>" required>
                                 </div>
+                                <div class="col-md-4">
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                        Cập nhật thông tin
+                                    </button>
+                                </div>
                             </form>
+                            <!-- Button trigger modal -->
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog  modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Understood</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

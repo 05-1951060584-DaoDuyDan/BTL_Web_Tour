@@ -93,7 +93,7 @@ class Process{
     }
     function getBookingTourDPVUser($iduser){
         $conn = $this->connectDb();
-        $sqlServive = "Select* from tb_tourbooking where id_user = {$iduser} and status_bookingtour = 1";
+        $sqlServive = "Select* from tb_tourbooking where id_user = {$iduser} and status_bookingtour = 1 and complete = 0";
         $resultService = mysqli_query($conn, $sqlServive);
         $SEDArr = [];
         if(mysqli_num_rows($resultService)>0){
@@ -105,7 +105,31 @@ class Process{
     }
     function getBookingTourHTUser($iduser){
         $conn = $this->connectDb();
-        $sqlServive = "Select* from tb_tourbooking where id_user = {$iduser} and status_bookingtour = 1";
+        $sqlServive = "Select* from tb_tourbooking where id_user = {$iduser} and status_bookingtour = 1 and complete = 1";
+        $resultService = mysqli_query($conn, $sqlServive);
+        $SEDArr = [];
+        if(mysqli_num_rows($resultService)>0){
+            $SEDArr = mysqli_fetch_all($resultService, MYSQLI_ASSOC);
+            return $SEDArr;
+        }else{
+            return false;
+        }
+    }
+    function getBookingTourChoOperator($idtour){
+        $conn = $this->connectDb();
+        $sqlServive = "Select* from tb_tourbooking where tour_code = '{$idtour}' and status_bookingtour = 0";
+        $resultService = mysqli_query($conn, $sqlServive);
+        $SEDArr = [];
+        if(mysqli_num_rows($resultService)>0){
+            $SEDArr = mysqli_fetch_all($resultService, MYSQLI_ASSOC);
+            return $SEDArr;
+        }else{
+            return false;
+        }
+    }
+    function getBookingTourHTOperator($idtour){
+        $conn = $this->connectDb();
+        $sqlServive = "Select* from tb_tourbooking where tour_code = '{$idtour}' and status_bookingtour = 1";
         $resultService = mysqli_query($conn, $sqlServive);
         $SEDArr = [];
         if(mysqli_num_rows($resultService)>0){
