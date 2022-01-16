@@ -537,6 +537,9 @@ $(document).ready(function(){
 
 $(document).ready(function(){
     $("#updateInfoUser").click(function(){
-        
+        $("#nameuser").attr("readonly", false);
+        $("#surnameuser").attr("readonly", false);
+        $("#imgUserUpdate").css("display", "block");
+        $("#submitUpdateUser").css("display", "block");
     })
 })

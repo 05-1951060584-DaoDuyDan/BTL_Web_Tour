@@ -35,7 +35,7 @@ if (!isset($_SESSION['LoginOK'])) {
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <div class="row bg-white" style="margin-left: 1px">
-                            <form class="row g-3 needs-validation" novalidate>
+                            <form class="row g-3 needs-validation" action="process-updateInforUser.php" method="POST" novalidate>
                                 <div class="col-md-12">
                                     <!--   -->
                                     <div class="d-flex justify-content-center">
@@ -68,9 +68,9 @@ if (!isset($_SESSION['LoginOK'])) {
                                     <button class="btn btn-primary" type="button" id="updateInfoUser">Sửa thông tin cá nhân</button>
                                 </div>
                                 <div class="col-md-12">
-                                    <div class="mt-3">
+                                    <div class="mt-3" id="imgUserUpdate" style="display: none;">
                                         <div class="form-floating">
-                                            <input type="file" class="form-control-file d-block" id="imgUserUpdate" name="imgUserUpdate" style="display: none;">
+                                            <input type="file" class="form-control-file d-block" name="imgUserUpdate">
                                         </div>
                                     </div>
                                     <div class="mt-3">
@@ -80,7 +80,51 @@ if (!isset($_SESSION['LoginOK'])) {
                             </form>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <?php
+                        
+                        ?>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Mã đặt tour</th>
+                                    <!-- <th scope="col">Họ</th>
+                                    <th scope="col">Tên</th>
+                                    <th scope="col">Giới tính</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Số điện thoại</th>
+                                    <th scope="col">Địa chỉ</th> -->
+                                    <th scope="col">Số người lớn</th>
+                                    <th scope="col">Số trẻ em</th>
+                                    <th scope="col">Số trẻ con</th>
+                                    <th scope="col">Tổng tiền</th>
+                                    <th scope="col">Ngày đặt Tour</th>
+                                    <th scope="col">Phương thức thanh toán</th>
+                                    <th scope="col">Trạng thái</th>
+                                    <th scope="col">Mã Tour</th>
+                                    <th scope="col">Ngày khởi hành</th>
+                                    <th scope="col">Ngày kết thúc</th>
+                                    <th scope="col">Xem chi tiết</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td scope="row"></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
                     <div class="tab-pane fade" id="done" role="tabpanel" aria-labelledby="contact-tab">...</div>
                 </div>
