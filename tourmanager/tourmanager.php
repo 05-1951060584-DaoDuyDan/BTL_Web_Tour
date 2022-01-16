@@ -25,7 +25,7 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                     <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Tour Của Bạn</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Quản Lý Người Đặt Tour</button>
+                    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Thống Kê Người Đặt Tour</button>
                 </li>
             </ul>
             <div class="tab-content" id="myTabContent">
@@ -312,7 +312,42 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                 </div>
                 <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                     <div class="col-md bg-white" style="margin-left: -12px;">
-                        Ngon
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Mã tour</th>
+                                    <th scope="col">Số lượt đặt Tour</th>
+                                    <th scope="col">Tổng doanh thu</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $sqltour = "Select* from tb_tour where id_touroperator = {$row['id_touroperator']}";
+                                $resulttour = mysqli_query($conn,$sqltour);
+                                if(mysqli_num_rows($resulttour)){
+                                    while($rowtour = mysqli_fetch_assoc($resulttour)){
+                                        $sqlnumberbooking = "Select count(tour_code) as countbooking from tb_tourbooking where tour_code = '{$rowtour['tour_code']}'";
+                                        $resultbooking = mysqli_query($conn, $sqlnumberbooking);
+                                        $countbooking = mysqli_fetch_assoc($resultbooking);
+                                        $sqltotal = "Select sum(totalmoney) as total from tb_tourbooking where tour_code = '{$rowtour['tour_code']}'";
+                                        $resulttotal = mysqli_query($conn, $sqltotal);
+                                        $total = 0;
+                                        if(mysqli_num_rows($resulttotal)>0){
+                                            $counttotal = mysqli_fetch_assoc($resulttotal);
+                                            $total = $counttotal['total'];
+                                        }
+                                ?>
+                                <tr>
+                                    <td scope="row"><?php echo $rowtour['tour_code']?></td>
+                                    <td><?php echo $countbooking['countbooking']?></td>
+                                    <td><?php echo $total ?></td>
+                                </tr>
+                                <?php
+                                    }                          
+                                }
+                                ?>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

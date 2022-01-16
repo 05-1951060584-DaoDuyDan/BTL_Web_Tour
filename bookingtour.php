@@ -169,13 +169,13 @@ if (!isset($_GET['tourcode']) && !isset($_GET['idse'])) {
                                 <h4>Hình thức thanh toán</h4>
                                 <div class="row ms-2">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                        <input class="form-check-input" type="radio" name="payments" value="Thẻ ATM hoặc iBanking của các ngân hàng" id="flexRadioDefault1">
                                         <label class="form-check-label" for="flexRadioDefault1">
                                             Thẻ ATM hoặc iBanking của các ngân hàng
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                        <input class="form-check-input" type="radio" value="Thẻ thanh toán quốc tế (Visa/Master)" name="payments" id="flexRadioDefault2" checked>
                                         <label class="form-check-label" for="flexRadioDefault2">
                                             Thẻ thanh toán quốc tế (Visa/Master)
                                         </label>

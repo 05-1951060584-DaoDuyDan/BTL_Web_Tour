@@ -131,6 +131,7 @@ if (!isset($_SESSION['LoginOK'])) {
                                     <th scope="col">Mã Tour</th>
                                     <th scope="col">Ngày khởi hành</th>
                                     <th scope="col">Xem chi tiết</th>
+                                    <th scope="col">Hoàn thành và đánh giá</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -147,8 +148,15 @@ if (!isset($_SESSION['LoginOK'])) {
                                             <td><?php echo $rowbooking['tourbookingdate'] ?></td>
                                             <td>Đang phục vụ</td>
                                             <td><?php echo $rowbooking['tour_code'] ?></td>
-                                            <td><?php echo date('d-m-Y', strtotime($rowseday['startday'])) ?></td>
+                                            <td><?php echo date('d-m-Y', strtotime($rowseday['startday']))?></td>
                                             <td class="text-center text-primary"><i class="bi bi-info-circle"></i></td>
+                                            <?php
+                                            if(date('d/m/Y', strtotime($rowseday['endday']))<date("d/m/Y")){
+                                            ?>
+                                            <td class="text-center text-primary"><i class="bi bi-pencil-square"></i></i></td>
+                                            <?php
+                                            }
+                                            ?>
                                         </tr>
                                 <?php
                                     }
