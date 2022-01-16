@@ -80,15 +80,41 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                                 <div class="modal-dialog  modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                                            <h5 class="modal-title" id="staticBackdropLabel">Chỉnh sửa thông tin người quản lý Tour</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            
+                                            <form class="row g-3 needs-validation p-3" novalidate>
+                                                <div class="col-md-6">
+                                                    <label for="validationCustom01" class="form-label">Họ</label>
+                                                    <input type="text" class="form-control" id="validationCustom01" value="<?php echo $row['surnameuser'] ?>" required>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="validationCustom02" class="form-label">Tên</label>
+                                                    <input type="text" class="form-control" id="validationCustom02" value="<?php echo $row['nameuser'] ?>" required>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="validationCustom05" class="form-label">Loại hình kinh doanh</label>
+                                                    <input type="text" class="form-control" id="validationCustom05" value="<?php echo $row['businesstype'] ?>" required>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <label for="validationCustom04" class="form-label">Tên tour quản lý</label>
+                                                    <input type="text" class="form-control" id="validationCustom04" value="<?php echo $row['nametouroperator'] ?>" required>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                                        <option selected>Chọn loại hình kinh doanh</option>
+                                                        <option value="Cá nhân">Cá nhân</option>
+                                                        <option value="Doanh nghiệp">Doanh nghiệp</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <button type="button" class="btn btn-primary">Cập nhật</button>
+                                                </div>
+                                            </form>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Understood</button>
                                         </div>
                                     </div>
                                 </div>
