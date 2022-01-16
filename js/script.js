@@ -548,8 +548,8 @@ $(document).ready(function(){
 $(document).ready(function(){
     $("#btnsearchTour").click(function(){
         let form_datas = new FormData();
-        if($("#location").val()!=""){
-            form_datas.append('location', $("#location").val())
+        if($("#searchlocation").val()!=""){
+            form_datas.append('searchlocation', $("#searchlocation").val())
         }
         if($("#searchstartday").val()!=""){
             form_datas.append('searchstartday', $("#searchstartday").val())
@@ -569,25 +569,27 @@ $(document).ready(function(){
         if($("#searchPrice").val()!=""){
             form_datas.append('searchPrice', $("#searchPrice").val())
         }
-        if(($("#checkbox1").is(":checked")==true).val()!=""){
+        if(($("#checkbox1").is(":checked")==true) && $("#checkbox1").val()!=""){
             form_datas.append('khuyenmai', $("#checkbox1").val())
         }
-        if(($("#checkbox2").is(":checked")==true).val()!=""){
+        if(($("#checkbox2").is(":checked")==true) && $("#checkbox2").val()!=""){
             form_datas.append('tragop', $("#checkbox2").val())
+            console.log($("#checkbox2").val())
         }
-        $.ajax({
-            url: 'process-deleteService.php', // gửi đến file upload.php 
-            dataType: 'text',
-            cache: false,
-            contentType: false,
-            processData: false,
-            data: form_datas,
-            type: 'post',
-            success: function(res) {
-                $("#tourServiceTable").html(res);
-                $(".inforAddService").text("Xóa hành công!").css('color','green');
-            }
-        });
-        return false;
+        if($("#searchlocation").val()!="" || $("#searchstartday").val()!=""){
+            $.ajax({
+                url: 'process-searchTour.php', // gửi đến file upload.php 
+                dataType: 'text',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: form_datas,
+                type: 'post',
+                success: function(res) {
+                    $(".listtour").html(res);
+                }
+            });
+            return false;
+        }
     })
 })

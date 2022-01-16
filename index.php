@@ -138,7 +138,7 @@ require_once "process-string.php";
                 <form class="row g-3 needs-validation mt-3 me-3 ms-3" id="form-search" novalidate>
                     <div class="col-md-6">
                         <label for="validationCustom01" class="form-label">Bạn muốn đi đâu?</label>
-                        <input type="text" class="form-control" id="location" required>
+                        <input type="text" class="form-control" id="searchlocation" required>
                     </div>
                     <div class="col-md-6">
                         <label for="validationCustom02" class="form-label">Ngày khởi hành</label>
@@ -174,13 +174,13 @@ require_once "process-string.php";
                         <input type="text" class="form-control" id="searchPrice" required>
                     </div>
                     <div class="col-md-6 form-check advanced-search">
-                        <input class="form-check-input" id="checkbox1" name="checkbox1" type="checkbox1" value="ApDungKhuyenMai">
+                        <input class="form-check-input" id="checkbox1" name="checkbox1" type="checkbox" value="ApDungKhuyenMai">
                         <label class="form-check-label" for="flexCheckChecked">
                             Có áp dụng khuyến mãi
                         </label>
                     </div>
                     <div class="col-md-6 form-check advanced-search">
-                        <input class="form-check-input" type="checkbox2" name="checkbox2" id="checkbox2" value="TraGop">
+                        <input class="form-check-input" type="checkbox" name="checkbox2" id="checkbox2" value="TraGop">
                         <label class="form-check-label" for="flexCheckChecked">
                             Tour trả góp
                         </label>
@@ -220,112 +220,114 @@ require_once "process-string.php";
                     </div>
                 </div>
             </div>
-            <?php
-            $sql1 = 'SELECT*
-                FROM tb_tour, tb_touroperator, tb_typetour
-                WHERE tb_tour.id_touroperator = tb_touroperator.id_touroperator AND
-                tb_tour.id_typetour = tb_typetour.id_typetour and status_tour = 1 and tb_tour.lock = 0;';
-            $result =  mysqli_query($conn, $sql1);
-            if (mysqli_num_rows($result) > 0) {
-                while ($row = mysqli_fetch_assoc($result)) {
-                    $idtour = $row['tour_code'];
-                    $image = $row['imagetouroperator'];
-                    $nametouroperator = $row['nametouroperator'];
-                    $nametour = $row['nametour'];
-                    $days = $row['numberofdays'];
-                    $nametypetour = $row['nametypetour'];
-                    $start = $row['startinglocation'];
-                    $end = $row['endinglocation'];
-                    $content = $row['tourinfo'];
-                    $discount = $row['tourdiscount'];
-                    $idnew = substr(md5(rand()), 0, 4);
-                    $sqlseday = "Select* from tb_startendday where tour_code = '{$idtour}' order by startday";
-                    $resultseday = mysqli_query($conn, $sqlseday);
-                    $rowseday = mysqli_fetch_assoc($resultseday);
-            ?>
-                    <div class="card shadow-sm">
-                        <div class="p-3">
-                            <div class="d-flex flex-inline align-items-center">
-                                <img src="data:image/png;base64, <?php echo base64_encode($image) ?>" alt="" class="ms-1 mb-2" style="width: 40px; height: 40px">
-                                <p class="ms-3 fw-bold"><?php echo $nametouroperator ?></p>
-                            </div>
-                            <!-- Images Tour -->
-                            <div id="carouselExampleControlsNoTouching<?php echo $idnew; ?>" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
-                                <div class="carousel-inner">
-                                    <?php
-                                    $sql2 = "Select* from tb_tourimages where tour_code = '" . $idtour . "'";
-                                    $result1 =  mysqli_query($conn, $sql2);
-                                    if (mysqli_num_rows($result1) > 0) {
-                                        for ($i = 0; $i < mysqli_num_rows($result1); $i++) {
-                                            $row1 = mysqli_fetch_assoc($result1);
-                                            $images = $row1['images_part'];
-                                            if ($i == 0) {
-                                    ?>
-                                                <div class="carousel-item active">
-                                                    <img src="data:image/png;base64, <?php echo base64_encode($images) ?>" class="card-img-top d-block w-100" alt="..." style="max-height: 394px">
-                                                </div>
-                                            <?php
-                                            } else {
-                                            ?>
-                                                <div class="carousel-item">
-                                                    <img src="data:image/png;base64, <?php echo base64_encode($images) ?>" class="card-img-top d-block w-100" alt="..." style="max-height: 394px">
-                                                </div>
-                                            <?php
+            <div class="listtour">
+                <?php
+                $sql1 = 'SELECT*
+                    FROM tb_tour, tb_touroperator, tb_typetour
+                    WHERE tb_tour.id_touroperator = tb_touroperator.id_touroperator AND
+                    tb_tour.id_typetour = tb_typetour.id_typetour and status_tour = 1 and tb_tour.lock = 0;';
+                $result =  mysqli_query($conn, $sql1);
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $idtour = $row['tour_code'];
+                        $image = $row['imagetouroperator'];
+                        $nametouroperator = $row['nametouroperator'];
+                        $nametour = $row['nametour'];
+                        $days = $row['numberofdays'];
+                        $nametypetour = $row['nametypetour'];
+                        $start = $row['startinglocation'];
+                        $end = $row['endinglocation'];
+                        $content = $row['tourinfo'];
+                        $discount = $row['tourdiscount'];
+                        $idnew = substr(md5(rand()), 0, 4);
+                        $sqlseday = "Select* from tb_startendday where tour_code = '{$idtour}' order by startday";
+                        $resultseday = mysqli_query($conn, $sqlseday);
+                        $rowseday = mysqli_fetch_assoc($resultseday);
+                ?>
+                        <div class="card shadow-sm">
+                            <div class="p-3">
+                                <div class="d-flex flex-inline align-items-center">
+                                    <img src="data:image/png;base64, <?php echo base64_encode($image) ?>" alt="" class="ms-1 mb-2" style="width: 40px; height: 40px">
+                                    <p class="ms-3 fw-bold"><?php echo $nametouroperator ?></p>
+                                </div>
+                                <!-- Images Tour -->
+                                <div id="carouselExampleControlsNoTouching<?php echo $idnew; ?>" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
+                                    <div class="carousel-inner">
+                                        <?php
+                                        $sql2 = "Select* from tb_tourimages where tour_code = '" . $idtour . "'";
+                                        $result1 =  mysqli_query($conn, $sql2);
+                                        if (mysqli_num_rows($result1) > 0) {
+                                            for ($i = 0; $i < mysqli_num_rows($result1); $i++) {
+                                                $row1 = mysqli_fetch_assoc($result1);
+                                                $images = $row1['images_part'];
+                                                if ($i == 0) {
+                                        ?>
+                                                    <div class="carousel-item active">
+                                                        <img src="data:image/png;base64, <?php echo base64_encode($images) ?>" class="card-img-top d-block w-100" alt="..." style="max-height: 394px">
+                                                    </div>
+                                                <?php
+                                                } else {
+                                                ?>
+                                                    <div class="carousel-item">
+                                                        <img src="data:image/png;base64, <?php echo base64_encode($images) ?>" class="card-img-top d-block w-100" alt="..." style="max-height: 394px">
+                                                    </div>
+                                                <?php
+                                                }
+                                                ?>
+                                        <?php
                                             }
-                                            ?>
-                                    <?php
                                         }
-                                    }
-                                    ?>
+                                        ?>
+                                    </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching<?php echo $idnew; ?>" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsNoTouching<?php echo $idnew; ?>" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
                                 </div>
-                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching<?php echo $idnew; ?>" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsNoTouching<?php echo $idnew; ?>" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
-                            </div>
-                            <div class="d-flex flex-inline align-items-center text-center mt-1">
-                                <p class="mt-2 text-warning"><?php echo $nametypetour ?></p>
-                                <p class="p-1 bg-success ms-auto rounded text-light"><?php echo $days . ' ngày' ?></p>
-                            </div>
-                            <h4 class="mb-4 fw-bold"><?php echo $nametour ?></h4>
-                            <!-- Information Tour -->
-                            <div class="d-flex flex-inline">
-                                <span class="material-icons text-primary">
-                                    location_on
-                                </span>
-                                <p class="fw-bold ms-3"><?php echo $start . '-' . $end ?></p>
-                            </div>
-                            <div class="d-flex flex-inline">
-                                <span class="material-icons">
-                                    calendar_month
-                                </span>
-                                <p class="fw-bold ms-3">Thứ 2, 20/12/2021</p>
-                            </div>
-                            <!-- Content Tour -->
-                            <div>
-                                <p><?php echo $content ?></p>
-                            </div>
-                            <!-- Price Tour and Booking -->
-                            <div class="d-flex flex-inline justify-content-between">
-                                <div>
-                                    <p style="font-size: 14px;">Giá chỉ từ</p>
-                                    <p class="fw-bold text-danger"><?php echo ps_price($rowseday['adultprice']) ?></p>
+                                <div class="d-flex flex-inline align-items-center text-center mt-1">
+                                    <p class="mt-2 text-warning"><?php echo $nametypetour ?></p>
+                                    <p class="p-1 bg-success ms-auto rounded text-light"><?php echo $days . ' ngày' ?></p>
                                 </div>
+                                <h4 class="mb-4 fw-bold"><?php echo $nametour ?></h4>
+                                <!-- Information Tour -->
+                                <div class="d-flex flex-inline">
+                                    <span class="material-icons text-primary">
+                                        location_on
+                                    </span>
+                                    <p class="fw-bold ms-3"><?php echo $start . '-' . $end ?></p>
+                                </div>
+                                <div class="d-flex flex-inline">
+                                    <span class="material-icons">
+                                        calendar_month
+                                    </span>
+                                    <p class="fw-bold ms-3">Thứ 2, 20/12/2021</p>
+                                </div>
+                                <!-- Content Tour -->
                                 <div>
-                                    <a href="informationtour.php?tourcode=<?php echo $idtour ?>"><button type="button" class="btn btn-info me-auto">Xem chi tiết</button></a>
+                                    <p><?php echo $content ?></p>
+                                </div>
+                                <!-- Price Tour and Booking -->
+                                <div class="d-flex flex-inline justify-content-between">
+                                    <div>
+                                        <p style="font-size: 14px;">Giá chỉ từ</p>
+                                        <p class="fw-bold text-danger"><?php echo ps_price($rowseday['adultprice']) ?></p>
+                                    </div>
+                                    <div>
+                                        <a href="informationtour.php?tourcode=<?php echo $idtour ?>"><button type="button" class="btn btn-info me-auto">Xem chi tiết</button></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- End card -->
-            <?php
+                        <!-- End card -->
+                <?php
+                    }
                 }
-            }
-            ?>
+                ?>
+            </div>
         </div>
     </div>
 </div>
