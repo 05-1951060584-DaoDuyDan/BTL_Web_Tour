@@ -8,7 +8,6 @@
 
 <body >
     <div class="container ">
-        <a href="add-room.php" class="btn btn-success m-2">Thêm Tour</a>
         <div class="row">
             <table class="table table-striped">
                 <thead>
