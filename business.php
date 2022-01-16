@@ -38,9 +38,9 @@
             <input type="text" class="form-control" id="nameindustry" placeholder="Nhập tên doanh nghiệp" aria-label="Username" aria-describedby="addon-wrapping">
             <small id="textHelp" class="form-text">Tên doanh nghiệp của bạn sẽ được nhìn thấy bởi tất cả nhân viên.</small>
               <h6>Tên chủ sở hữu</h6>
-            <input type="text" class="form-control" placeholder="Dao Duy Dan" aria-label="Username" aria-describedby="addon-wrapping">
+            <input type="text" class="form-control" placeholder="Tên chủ sở hữu" name="" aria-label="Username" aria-describedby="addon-wrapping">
               <h6>Email</h6> 
-            <input type="text" class="form-control" id="email" placeholder="daodan2612@gmail.com" aria-label="Username" aria-describedby="addon-wrapping">
+            <input type="text" class="form-control" id="email" placeholder="Email chủ sở hữu" aria-label="Username" aria-describedby="addon-wrapping">
             <small class="form-text">Chúng tôi sẽ gửi thông báo tới doanh nghiệp của bạn qua email này.</small>
       </div>
       <div class="modal-footer">
