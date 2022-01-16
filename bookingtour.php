@@ -1,10 +1,10 @@
 <?php
-require 'partials-front/header.php';
-require_once "classprocessSQL.php";
-require_once "process-string.php";
 if (!isset($_GET['tourcode']) && !isset($_GET['idse'])) {
     header("location: index.php");
 } else {
+    require 'partials-front/header.php';
+    require_once "classprocessSQL.php";
+    require_once "process-string.php";
     $tour_code = $_GET['tourcode'];
     $id_startendday = $_GET['idse'];
     $ps = new Process();

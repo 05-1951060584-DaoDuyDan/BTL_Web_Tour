@@ -6,6 +6,7 @@ if (!isset($_SESSION['LoginOK'])) {
     // session_destroy();
     session_write_close();
     require('.//partials-front/header.php');
+    $ps = new Process();
     $sqltourmanager = "Select* from tb_user where tb_user.email = '{$user}'";
     $result =  mysqli_query($conn, $sqltourmanager);
     if (mysqli_num_rows($result) > 0) {
@@ -81,52 +82,116 @@ if (!isset($_SESSION['LoginOK'])) {
                         </div>
                     </div>
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        <?php
-                        
-                        ?>
                         <table class="table">
                             <thead>
                                 <tr>
                                     <th scope="col">Mã đặt tour</th>
-                                    <!-- <th scope="col">Họ</th>
-                                    <th scope="col">Tên</th>
-                                    <th scope="col">Giới tính</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Số điện thoại</th>
-                                    <th scope="col">Địa chỉ</th> -->
-                                    <th scope="col">Số người lớn</th>
-                                    <th scope="col">Số trẻ em</th>
-                                    <th scope="col">Số trẻ con</th>
                                     <th scope="col">Tổng tiền</th>
                                     <th scope="col">Ngày đặt Tour</th>
-                                    <th scope="col">Phương thức thanh toán</th>
                                     <th scope="col">Trạng thái</th>
                                     <th scope="col">Mã Tour</th>
                                     <th scope="col">Ngày khởi hành</th>
-                                    <th scope="col">Ngày kết thúc</th>
                                     <th scope="col">Xem chi tiết</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td scope="row"></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
+                                <?php
+                                if ($ps->getBookingTourChoUser($row['id_user']) != false) {
+                                    $rowBookingTourUser = $ps->getBookingTourChoUser($row['id_user']);
+                                    for ($i = 0; $i < count($rowBookingTourUser); $i++) {
+                                        $rowbooking = $rowBookingTourUser[$i];
+                                        $rowseday = $ps->getStartEndDay($rowbooking['id_startendday']);
+                                ?>
+                                        <tr>
+                                            <td scope="row"><?php echo $rowbooking['code_bookingtour'] ?></td>
+                                            <td><?php echo ps_price($rowbooking['totalmoney']) ?></td>
+                                            <td><?php echo $rowbooking['tourbookingdate'] ?></td>
+                                            <td>Chờ phê duyệt</td>
+                                            <td><?php echo $rowbooking['tour_code'] ?></td>
+                                            <td><?php echo date('d-m-Y', strtotime($rowseday['startday'])) ?></td>
+                                            <td></td>
+                                        </tr>
+                                <?php
+                                    }
+                                }
+                                ?>
                             </tbody>
                         </table>
                     </div>
-                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
-                    <div class="tab-pane fade" id="done" role="tabpanel" aria-labelledby="contact-tab">...</div>
+                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Mã đặt tour</th>
+                                    <th scope="col">Tổng tiền</th>
+                                    <th scope="col">Ngày đặt Tour</th>
+                                    <th scope="col">Trạng thái</th>
+                                    <th scope="col">Mã Tour</th>
+                                    <th scope="col">Ngày khởi hành</th>
+                                    <th scope="col">Xem chi tiết</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                if ($ps->getBookingTourDPVUser($row['id_user']) != false) {
+                                    $rowBookingTourUser = $ps->getBookingTourDPVUser($row['id_user']);
+                                    for ($i = 0; $i < count($rowBookingTourUser); $i++) {
+                                        $rowbooking = $rowBookingTourUser[$i];
+                                        $rowseday = $ps->getStartEndDay($rowbooking['id_startendday']);
+                                ?>
+                                        <tr>
+                                            <td scope="row"><?php echo $rowbooking['code_bookingtour'] ?></td>
+                                            <td><?php echo ps_price($rowbooking['totalmoney']) ?></td>
+                                            <td><?php echo $rowbooking['tourbookingdate'] ?></td>
+                                            <td>Chờ phê duyệt</td>
+                                            <td><?php echo $rowbooking['tour_code'] ?></td>
+                                            <td><?php echo date('d-m-Y', strtotime($rowseday['startday'])) ?></td>
+                                            <td></td>
+                                        </tr>
+                                <?php
+                                    }
+                                }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane fade" id="done" role="tabpanel" aria-labelledby="contact-tab">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Mã đặt tour</th>
+                                    <th scope="col">Tổng tiền</th>
+                                    <th scope="col">Ngày đặt Tour</th>
+                                    <th scope="col">Trạng thái</th>
+                                    <th scope="col">Mã Tour</th>
+                                    <th scope="col">Ngày khởi hành</th>
+                                    <th scope="col">Xem chi tiết</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                if ($ps->getBookingTourHTUser($row['id_user']) != false) {
+                                    $rowBookingTourUser = $ps->getBookingTourHTUser($row['id_user']);
+                                    for ($i = 0; $i < count($rowBookingTourUser); $i++) {
+                                        $rowbooking = $rowBookingTourUser[$i];
+                                        $rowseday = $ps->getStartEndDay($rowbooking['id_startendday']);
+                                ?>
+                                        <tr>
+                                            <td scope="row"><?php echo $rowbooking['code_bookingtour'] ?></td>
+                                            <td><?php echo ps_price($rowbooking['totalmoney']) ?></td>
+                                            <td><?php echo $rowbooking['tourbookingdate'] ?></td>
+                                            <td>Chờ phê duyệt</td>
+                                            <td><?php echo $rowbooking['tour_code'] ?></td>
+                                            <td><?php echo date('d-m-Y', strtotime($rowseday['startday'])) ?></td>
+                                            <td></td>
+                                        </tr>
+                                <?php
+                                    }
+                                }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

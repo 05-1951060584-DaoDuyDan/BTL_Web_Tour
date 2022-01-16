@@ -79,5 +79,41 @@ class Process{
             return false;
         }
     }
+    function getBookingTourChoUser($iduser){
+        $conn = $this->connectDb();
+        $sqlServive = "Select* from tb_tourbooking where id_user = {$iduser} and status_bookingtour = 0";
+        $resultService = mysqli_query($conn, $sqlServive);
+        $SEDArr = [];
+        if(mysqli_num_rows($resultService)>0){
+            $SEDArr = mysqli_fetch_all($resultService, MYSQLI_ASSOC);
+            return $SEDArr;
+        }else{
+            return false;
+        }
+    }
+    function getBookingTourDPVUser($iduser){
+        $conn = $this->connectDb();
+        $sqlServive = "Select* from tb_tourbooking where id_user = {$iduser} and status_bookingtour = 1";
+        $resultService = mysqli_query($conn, $sqlServive);
+        $SEDArr = [];
+        if(mysqli_num_rows($resultService)>0){
+            $SEDArr = mysqli_fetch_all($resultService, MYSQLI_ASSOC);
+            return $SEDArr;
+        }else{
+            return false;
+        }
+    }
+    function getBookingTourHTUser($iduser){
+        $conn = $this->connectDb();
+        $sqlServive = "Select* from tb_tourbooking where id_user = {$iduser} and status_bookingtour = 1";
+        $resultService = mysqli_query($conn, $sqlServive);
+        $SEDArr = [];
+        if(mysqli_num_rows($resultService)>0){
+            $SEDArr = mysqli_fetch_all($resultService, MYSQLI_ASSOC);
+            return $SEDArr;
+        }else{
+            return false;
+        }
+    }
 }
 ?>
