@@ -111,7 +111,7 @@ if (!isset($_SESSION['LoginOK'])) {
                                             <td><?php echo $rowbooking['tour_code'] ?></td>
                                             <td><?php echo date('d-m-Y', strtotime($rowseday['startday'])) ?></td>
                                             <td class="text-center text-primary"><i class="bi bi-info-circle"></i></td>
-                                            <td class="text-center"><a href="deleteBookingTour.php"><i class="bi bi-x-lg"></i></a></td>
+                                            <td class="text-center deleteBKT"><a href="" data-bs-toggle="modal" data-bs-target="#deleteBookingTour"><i class="bi bi-x-lg"></i></a></td>
                                         </tr>
                                 <?php
                                     }
@@ -119,6 +119,28 @@ if (!isset($_SESSION['LoginOK'])) {
                                 ?>
                             </tbody>
                         </table>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="deleteBookingTour" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Hủy đặt Tour</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <form action="process-deleteBookingTour.php" method="post">
+                                        <div class="modal-body">
+                                            <p>Bạn có muốn hủy đơn đặt tour <span class="idBookingTour"></span></p>
+                                            <input type="text" name="idBookingTourVal" class="idBookingTourVal" style="display: none;">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                                            <button type="submit" name="submitDeleteBKT" class="btn btn-primary">Hủy</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                         <table class="table">
@@ -148,12 +170,12 @@ if (!isset($_SESSION['LoginOK'])) {
                                             <td><?php echo $rowbooking['tourbookingdate'] ?></td>
                                             <td>Đang phục vụ</td>
                                             <td><?php echo $rowbooking['tour_code'] ?></td>
-                                            <td><?php echo date('d-m-Y', strtotime($rowseday['startday']))?></td>
+                                            <td><?php echo date('d-m-Y', strtotime($rowseday['startday'])) ?></td>
                                             <td class="text-center text-primary"><i class="bi bi-info-circle"></i></td>
                                             <?php
-                                            if(date('d/m/Y', strtotime($rowseday['endday']))<date("d/m/Y")){
+                                            if (date('d/m/Y', strtotime($rowseday['endday'])) < date("d/m/Y")) {
                                             ?>
-                                            <td class="text-center text-primary"><i class="bi bi-pencil-square"></i></i></td>
+                                                <td class="text-center text-primary"><i class="bi bi-pencil-square"></i></i></td>
                                             <?php
                                             }
                                             ?>

@@ -14,4 +14,5 @@
         $user = substr($_SESSION['LoginOK'], 1, 60);
         $user = rtrim($user);
     }
+    $dbh = new PDO("mysql:host=localhost;dbname=db_tournew", "root", "");
 ?>

@@ -593,3 +593,13 @@ $(document).ready(function(){
         }
     })
 })
+
+//hủy đặt tour
+$(".deleteBKT").click(function(){
+    $tr = $(this).closest('tr');
+    var data = $tr.children("td").map(function() {
+        return $(this).text();
+    }).get();
+    $(".idBookingTour").text(data[0]);
+    $(".idBookingTourVal").val((data[0]));
+})
