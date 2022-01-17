@@ -48,7 +48,7 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                                 <td><?php echo $rowbooking['tour_code'] ?></td>
                                 <td><?php echo date('d-m-Y', strtotime($rowseday['startday'])) ?></td>
                                 <td class="text-center text-primary deleteBKTE" data-bs-toggle="modal" data-bs-target="#approveBookingTour"><i class="bi bi-check2"></i></td>
-                                <td class="text-center text-primary"><i class="bi bi-info-circle"></i></td>
+                                <td class="text-center text-primary clickinformation" data-bs-toggle="modal" data-bs-target="#informationBookingTour"><a href="#"><i class="bi bi-info-circle"></i></a></td>
                                 <td class="text-center text-primary deleteBKTE" data-bs-toggle="modal" data-bs-target="#deleteBookingTour"><i class="bi bi-x-lg"></i></td>
                             </tr>
                     <?php

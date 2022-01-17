@@ -759,7 +759,7 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                                                 <td><?php echo $rowbooking['tour_code'] ?></td>
                                                 <td><?php echo date('d-m-Y', strtotime($rowseday['startday'])) ?></td>
                                                 <td class="text-center text-primary PDBKT" data-bs-toggle="modal" data-bs-target="#approveBookingTour"><i class="bi bi-check2"></i></td>
-                                                <td class="text-center text-primary"><a href="#"><i class="bi bi-info-circle"></i></a></td>
+                                                <td class="text-center text-primary clickinformation1" data-bs-toggle="modal" data-bs-target="#informationBookingTour"><a href="#"><i class="bi bi-info-circle"></i></a></td>
                                                 <td class="text-center text-primary deleteBKTE" data-bs-toggle="modal" data-bs-target="#deleteBookingTour"><i class="bi bi-x-lg"></i></td>
                                             </tr>
                                     <?php
@@ -840,7 +840,7 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                                             <td>Đang phục vụ</td>
                                             <td><?php echo $rowbooking['tour_code'] ?></td>
                                             <td><?php echo date('d-m-Y', strtotime($rowseday['startday'])) ?></td>
-                                            <td class="text-center text-primary"><a href="#"><i class="bi bi-info-circle"></i></a></td>
+                                            <td class="text-center text-primary clickinformation1" data-bs-toggle="modal" data-bs-target="#informationBookingTour"><a href="#"><i class="bi bi-info-circle"></i></a></td>
                                         </tr>
                                 <?php
                                     }
@@ -848,6 +848,21 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                                 ?>
                             </tbody>
                         </table>
+                    </div>
+                    <div class="inforbook">
+                        <div class="modal fade" id="informationBookingTour" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Thông tin chi tiết đơn đặt Tour</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
