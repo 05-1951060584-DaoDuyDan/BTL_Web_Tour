@@ -603,3 +603,39 @@ $(".deleteBKT").click(function(){
     $(".idBookingTour").text(data[0]);
     $(".idBookingTourVal").val((data[0]));
 })
+
+$(document).ready(function(){
+    $("#submitapproveBKT").click(function(){
+        let codebookingtour = $(".idBookingTour").text();
+        if(codebookingtour!=""){
+            let form_datas = new FormData();
+            form_datas.append('codebookingtour',codebookingtour);
+            $.ajax({
+                url: 'process-deleteService.php', // gửi đến file upload.php 
+                dataType: 'text',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: form_datas,
+                type: 'post',
+                success: function(res) {
+                    $(".listTourBookingCho").html(res);
+                    $("#helpinfo").text("Phê duyệt thành công!");
+                }
+            });
+            return false;
+        }else{
+            $(".inforAddService").text("Thông tin xóa chưa đầy đủ mời nhập lại!").css('color','red');
+        }
+    })
+})
+
+//Phê duyệt đặt Tour
+$(".deleteBKTE").click(function(){
+    $tr = $(this).closest('tr');
+    var data = $tr.children("td").map(function() {
+        return $(this).text();
+    }).get();
+    $(".idBookingTour").text(data[0]);
+    $(".idBookingTourVal").val($("#my_name_tour").val());
+})

@@ -10,4 +10,5 @@
     if(!$conn){
         die('Không thể kết nối');
     }
+    $dbh = new PDO("mysql:host=localhost;dbname=db_tournew", "root", "");
 ?>
