@@ -754,3 +754,18 @@ $(document).ready(function(){
         return false;
     })
 })
+
+//review
+$(document).ready(function(){
+    $("#customRange1").change(function(){
+        $(".reviewB").text($("#customRange1").val());
+        $(".reviewBC").val($("#customRange1").val());
+    })
+})
+$(".clickreview").click(function(){
+    $tr = $(this).closest('tr');
+    var data = $tr.children("td").map(function() {
+        return $(this).text();
+    }).get();
+    $(".codebooktour").val(data[0]);
+})

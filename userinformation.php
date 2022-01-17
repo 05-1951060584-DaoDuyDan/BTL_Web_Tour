@@ -175,7 +175,7 @@ if (!isset($_SESSION['LoginOK'])) {
                                             <?php
                                             if (date('d/m/Y', strtotime($rowseday['endday'])) < date("d/m/Y")) {
                                             ?>
-                                                <td class="text-center text-primary"><i class="bi bi-pencil-square"></i></i></td>
+                                                <td class="text-center text-primary clickreview"  data-bs-toggle="modal" data-bs-target="#reviewBooking"><i class="bi bi-pencil-square"></i></i></td>
                                             <?php
                                             }
                                             ?>
@@ -241,7 +241,35 @@ if (!isset($_SESSION['LoginOK'])) {
                             </div>
                         </div>
                     </div>
-                    
+                    <div class="cdreview">
+                        <div class="modal fade" id="reviewBooking" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title text-primary" id="exampleModalLabel">Hoàn tất và Đánh Giá Tour</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-md">
+                                                <form action="process-completeReview.php" method="post">
+                                                    <h4 class="text-center text-warning">Cảm ơn bạn đã trải nghiệm Tour du lịch của chúng tôi!</h4>
+                                                    <h5 class="text-center">Để nâng cao chất lượng Tour mong bạn đánh giá chuyến đi vừa qua bằng cách kéo thả ở dưới!</h5>
+                                                    <label for="customRange1" class="form-label">Chất lượng: <span class="reviewB">50</span>/100</label>
+                                                    <input type="range" class="form-range" id="customRange1">
+                                                    <input type="text" class="reviewBC" style="display: none;">
+                                                    <input type="text" class="codebooktour" name="codebooktour" style="display: none;">
+                                                    <div class="d-flex justify-content-center">
+                                                        <button class="btn btn-primary" type="submit" name="submitReview">Hoàn Tất</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
