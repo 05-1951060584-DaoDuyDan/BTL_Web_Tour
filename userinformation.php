@@ -257,7 +257,7 @@ if (!isset($_SESSION['LoginOK'])) {
                                                     <h5 class="text-center">Để nâng cao chất lượng Tour mong bạn đánh giá chuyến đi vừa qua bằng cách kéo thả ở dưới!</h5>
                                                     <label for="customRange1" class="form-label">Chất lượng: <span class="reviewB">50</span>/100</label>
                                                     <input type="range" class="form-range" id="customRange1">
-                                                    <input type="text" class="reviewBC" style="display: none;">
+                                                    <input type="text" class="reviewBC" name="reviewBC" style="display: none;">
                                                     <input type="text" class="codebooktour" name="codebooktour" style="display: none;">
                                                     <div class="d-flex justify-content-center">
                                                         <button class="btn btn-primary" type="submit" name="submitReview">Hoàn Tất</button>
