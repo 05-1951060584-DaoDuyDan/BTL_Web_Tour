@@ -51,5 +51,11 @@
 
         return $stringres;
     }
+    function ps_date($dates){
+        if($dates!='')
+            return date('d-m-Y',strtotime($dates));
+        else
+            return '';
+    }
     
 ?>

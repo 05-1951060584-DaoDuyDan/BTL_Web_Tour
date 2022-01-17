@@ -240,9 +240,17 @@ require_once "process-string.php";
                         $content = $row['tourinfo'];
                         $discount = $row['tourdiscount'];
                         $idnew = substr(md5(rand()), 0, 4);
-                        $sqlseday = "Select* from tb_startendday where tour_code = '{$idtour}' order by startday";
+                        $sqlseday = "Select* from tb_startendday where tour_code = '{$idtour}' and startday >= CURDATE() and status_startendday = 1 ORDER by startday";
                         $resultseday = mysqli_query($conn, $sqlseday);
-                        $rowseday = mysqli_fetch_assoc($resultseday);
+                        $wdstart = '';
+                        $startday = '';
+                        $adultprice = 0;
+                        if(mysqli_num_rows($resultseday)>0){
+                            $rowseday = mysqli_fetch_assoc($resultseday);
+                            $wdstart = $rowseday['wdstart'];
+                            $startday = $rowseday['startday'];
+                            $adultprice = $rowseday['adultprice'];
+                        }
                 ?>
                         <div class="card shadow-sm">
                             <div class="p-3">
@@ -304,7 +312,7 @@ require_once "process-string.php";
                                     <span class="material-icons">
                                         calendar_month
                                     </span>
-                                    <p class="fw-bold ms-3">Thứ 2, 20/12/2021</p>
+                                    <p class="fw-bold ms-3"><?php echo $wdstart.', '.ps_date($startday) ?></p>
                                 </div>
                                 <!-- Content Tour -->
                                 <div>
@@ -314,7 +322,7 @@ require_once "process-string.php";
                                 <div class="d-flex flex-inline justify-content-between">
                                     <div>
                                         <p style="font-size: 14px;">Giá chỉ từ</p>
-                                        <p class="fw-bold text-danger"><?php echo ps_price($rowseday['adultprice']) ?></p>
+                                        <p class="fw-bold text-danger"><?php echo ps_price($adultprice) ?></p>
                                     </div>
                                     <div>
                                         <a href="informationtour.php?tourcode=<?php echo $idtour ?>"><button type="button" class="btn btn-info me-auto">Xem chi tiết</button></a>

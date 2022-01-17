@@ -9,10 +9,12 @@ if ($_GET['tourcode']) {
     $resultSeDay = mysqli_query($conn, $sqlSeDay);
     $startday="";
     $endday="";
+    $adultprice = 0;
     if(mysqli_num_rows($resultSeDay)>0){
         $rowSeDay = mysqli_fetch_assoc($resultSeDay);
         $startday = date('d-m-Y',strtotime($rowSeDay['startday']));
         $endday = date('d-m-Y',strtotime($rowSeDay['endday']));
+        $adultprice = $rowSeDay['adultprice'];
     }
 } else {
     header("location: index.php");
@@ -218,6 +220,9 @@ if ($_GET['tourcode']) {
                     </div>
                     <?php
                     for($i = 0; $i < mysqli_num_rows($resultSeDay); $i++){
+                        if($i==0){
+                            $iseday = $rowSeDay['id_startendday'];
+                        }
                     ?>
                     <div class="card m-2">
                         <div class="d-flex card-body align-items-center justify-content-between">
@@ -297,12 +302,32 @@ if ($_GET['tourcode']) {
     <section class="container d-flex justify-content-center bg-light fixed-bottom align-items-center p-1">
         <div class="col-md-8">
             <h6>Giá chỉ từ</h6>
-            <h3 class="text-danger">1.760.000 ₫</h3>
+            <h3 class="text-danger"><?php echo ps_price($adultprice)?></h3>
         </div>
         <div class="col-md-4">
+            <?php
+            if(mysqli_num_rows($resultSeDay)>0){
+                if(isset($_SESSION['LoginOK'])){
+            ?>
+            <a href="process_addcart.php?tourcode=<?php echo $tour_code ?>&idse=<?php echo $iseday ?>&iduser=<?php echo $id_user ?>"><button type="button" class="tao4 btn btn-info text-white">
+                Đặt ngay
+            </button></a>
+            <?php
+            }else{
+                ?>
+                <a href="process_addcart.php?tourcode=<?php echo $tour_code ?>&idse=<?php echo $iseday ?>"><button type="button" class="tao4 btn btn-info text-white">
+                    Đặt ngay
+                </button></a>
+                <?php
+            }
+            }else{
+            ?>
             <button type="button" class="tao4 btn btn-info text-white">
                 Đặt ngay
             </button>
+            <?php
+            }
+            ?>
             <button type="button" class="tao4 btn btn-secondary text-info">
                 Các ngày khởi hành khác
             </button>

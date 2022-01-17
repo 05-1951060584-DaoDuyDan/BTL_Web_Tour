@@ -41,6 +41,7 @@ class Process{
 
         return $tourArr;
     }
+    //lấy thông tin 1 ngày đặt tour
     public function getStartEndDay($idse){
         $connection = $this->connectDb();
         $querySelect = "SELECT * FROM tb_startendday WHERE id_startendday='{$idse}'";
@@ -54,6 +55,20 @@ class Process{
 
         return $SEDArr;
     }
+    //lấy thông tin những ngày đặt tour của 1 tour
+    function getSETour($tour_code){
+        $conn = $this->connectDb();
+        $sqlServive = "Select* from tb_startendday where tour_code = '{$tour_code}' and startday >= CURDATE() and status_startendday = 1 ORDER by startday";
+        $resultService = mysqli_query($conn, $sqlServive);
+        $SEDArr = [];
+        if(mysqli_num_rows($resultService)>0){
+            $SEDArr = mysqli_fetch_all($resultService, MYSQLI_ASSOC);
+            return $SEDArr;
+        }else{
+            return false;
+        }
+    }
+    //
     function tourcart($id_user){
         $conn = $this->connectDb();
         $sqlcart = "Select* from tb_tourcart where id_user = {$id_user}";
