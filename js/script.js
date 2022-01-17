@@ -636,6 +636,95 @@ $(".deleteBKTE").click(function(){
     var data = $tr.children("td").map(function() {
         return $(this).text();
     }).get();
+    $(".idBookingTours").text(data[0]);
+})
+
+$(document).ready(function(){
+    $("#submitDeleteBKT").click(function(){
+        let codebookingtour = $(".idBookingTours").text();
+        var tourcode = $("#my_name_tour").val();
+        if(codebookingtour!=""){
+            let form_datas = new FormData();
+            form_datas.append('codebookingtour',codebookingtour);
+            form_datas.append('tourcode',tourcode);
+            $.ajax({
+                url: 'process-deleteBKT.php', // gửi đến file upload.php 
+                dataType: 'text',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: form_datas,
+                type: 'post',
+                success: function(res) {
+                    $(".listTourBookingCho").html(res);
+                    $("#helpinfo").text("Xóa thành công!").css("color","green");
+                }
+            });
+            return false;
+        }else{
+            $(".inforAddService").text("Thông tin xóa chưa đầy đủ mời nhập lại!").css('color','red');
+        }
+    })
+})
+$(".PDBKT").click(function(){
+    $tr = $(this).closest('tr');
+    var data = $tr.children("td").map(function() {
+        return $(this).text();
+    }).get();
     $(".idBookingTour").text(data[0]);
-    $(".idBookingTourVal").val($("#my_name_tour").val());
+})
+
+$(document).ready(function(){
+    $("#submitapproveBKT").click(function(){
+        let codebookingtour = $(".idBookingTour").text();
+        var tourcode = $("#my_name_tour").val();
+        if(codebookingtour!=""){
+            let form_datas = new FormData();
+            form_datas.append('codebookingtour',codebookingtour);
+            form_datas.append('tourcode',tourcode);
+            $.ajax({
+                url: 'process-approveBookingTour.php', // gửi đến file upload.php 
+                dataType: 'text',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: form_datas,
+                type: 'post',
+                success: function(res) {
+                    $(".listTourBookingCho").html(res);
+                    $("#helpinfo").text("Phê duyệt thành công!").css("color","green");
+                }
+            });
+            return false;
+        }else{
+            $(".inforAddService").text("Thông tin phê duyệt chưa đầy đủ mời nhập lại!").css('color','red');
+        }
+    })
+})
+
+//xem chi tiết đơn đặt Tour
+
+$(document).ready(function(){
+    $(".clickinformation").click(function(){
+        $tr = $(this).closest('tr');
+        var data = $tr.children("td").map(function() {
+            return $(this).text();
+        }).get();
+        let form_datas = new FormData();
+        console.log($(this).val());
+        form_datas.append('codebookingtour',data[0]);
+        $.ajax({
+            url: 'process-informationBookingTour.php', // gửi đến file upload.php 
+            dataType: 'text',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_datas,
+            type: 'post',
+            success: function(res) {
+                $(".modal-body").html(res);
+            }
+        });
+        return false;
+    })
 })

@@ -758,8 +758,8 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                                                 <td>Chờ phê duyệt</td>
                                                 <td><?php echo $rowbooking['tour_code'] ?></td>
                                                 <td><?php echo date('d-m-Y', strtotime($rowseday['startday'])) ?></td>
-                                                <td class="text-center text-primary deleteBKTE" data-bs-toggle="modal" data-bs-target="#approveBookingTour"><i class="bi bi-check2"></i></td>
-                                                <td class="text-center text-primary"><i class="bi bi-info-circle"></i></td>
+                                                <td class="text-center text-primary PDBKT" data-bs-toggle="modal" data-bs-target="#approveBookingTour"><i class="bi bi-check2"></i></td>
+                                                <td class="text-center text-primary"><a href="#"><i class="bi bi-info-circle"></i></a></td>
                                                 <td class="text-center text-primary deleteBKTE" data-bs-toggle="modal" data-bs-target="#deleteBookingTour"><i class="bi bi-x-lg"></i></td>
                                             </tr>
                                     <?php
@@ -775,17 +775,16 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Hủy đặt Tour</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Phê duyệt đặt Tour</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                    <form action="process-deleteBookingTour.php" method="post">
+                                    <form>
                                         <div class="modal-body">
                                             <p>Bạn có muốn phê duyệt đơn đặt Tour <span class="idBookingTour"></span>này không?</p>
-                                            <input type="text" name="idBookingTourVal" class="idBookingTourVal" style="display: none;">
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-                                            <button type="submit" name="submitapproveBKT" id="submitapproveBKT" class="btn btn-primary">Phê duyệt</button>
+                                            <button type="button" name="submitapproveBKT" data-bs-dismiss="modal" id="submitapproveBKT" class="btn btn-primary">Phê duyệt</button>
                                         </div>
                                     </form>
                                 </div>
@@ -799,14 +798,14 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                                         <h5 class="modal-title" id="exampleModalLabel">Hủy đặt Tour</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                    <form action="process-deleteBookingTour.php" method="post">
+                                    <form>
                                         <div class="modal-body">
-                                            <p>Bạn có muốn hủy đơn đặt tour <span class="idBookingTour"></span> này không?</p>
+                                            <p>Bạn có muốn hủy đơn đặt tour <span class="idBookingTours"></span> này không?</p>
                                             <input type="text" name="idBookingTourVal" class="idBookingTourVal" style="display: none;">
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-                                            <button type="submit" name="submitDeleteBKT" class="btn btn-primary">Hủy</button>
+                                            <button type="button" name="submitDeleteBKT" id="submitDeleteBKT" data-bs-dismiss="modal" class="btn btn-primary">Hủy</button>
                                         </div>
                                     </form>
                                 </div>
@@ -841,7 +840,7 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                                             <td>Đang phục vụ</td>
                                             <td><?php echo $rowbooking['tour_code'] ?></td>
                                             <td><?php echo date('d-m-Y', strtotime($rowseday['startday'])) ?></td>
-                                            <td class="text-center text-primary"><i class="bi bi-info-circle"></i></td>
+                                            <td class="text-center text-primary"><a href="#"><i class="bi bi-info-circle"></i></a></td>
                                         </tr>
                                 <?php
                                     }

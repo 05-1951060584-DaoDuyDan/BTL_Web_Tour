@@ -7,11 +7,10 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
         $count = 0;
         $codebookingtour = $_POST['codebookingtour'];
         $tour_code = $_POST['tourcode'];
-        $stmt = $dbh->prepare("Delete from tb_tourservicebookingtour where code_bookingtour = ?");
-        $stmt->bindParam(1, $codebookingtour);
-        $stmt->execute() ? $count++ : $count = 0;
-        $stmt = $dbh->prepare("Delete from tb_tourbooking where code_bookingtour = ?");
-        $stmt->bindParam(1, $codebookingtour);
+        $stmt = $dbh->prepare("Update tb_tourbooking set status_bookingtour = ? where code_bookingtour = ?");
+        $rt = 1;
+        $stmt->bindParam(1, $rt);
+        $stmt->bindParam(2, $codebookingtour);
         $stmt->execute() ? $count++ : $count = 0;
         if ($count != 0) {
             require_once "../classprocessSQL.php";

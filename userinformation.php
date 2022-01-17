@@ -110,7 +110,7 @@ if (!isset($_SESSION['LoginOK'])) {
                                             <td>Chờ phê duyệt</td>
                                             <td><?php echo $rowbooking['tour_code'] ?></td>
                                             <td><?php echo date('d-m-Y', strtotime($rowseday['startday'])) ?></td>
-                                            <td class="text-center text-primary"><i class="bi bi-info-circle"></i></td>
+                                            <td class="text-center text-primary clickinformation" data-bs-toggle="modal" data-bs-target="#informationBookingTour"><a href="#"><i class="bi bi-info-circle"></i></a></td>
                                             <td class="text-center deleteBKT"><a href="" data-bs-toggle="modal" data-bs-target="#deleteBookingTour"><i class="bi bi-x-lg"></i></a></td>
                                         </tr>
                                 <?php
@@ -171,7 +171,7 @@ if (!isset($_SESSION['LoginOK'])) {
                                             <td>Đang phục vụ</td>
                                             <td><?php echo $rowbooking['tour_code'] ?></td>
                                             <td><?php echo date('d-m-Y', strtotime($rowseday['startday'])) ?></td>
-                                            <td class="text-center text-primary"><i class="bi bi-info-circle"></i></td>
+                                            <td class="text-center text-primary clickinformation" data-bs-toggle="modal" data-bs-target="#informationBookingTour"><a href="#"><i class="bi bi-info-circle"></i></a></td>
                                             <?php
                                             if (date('d/m/Y', strtotime($rowseday['endday'])) < date("d/m/Y")) {
                                             ?>
@@ -215,7 +215,7 @@ if (!isset($_SESSION['LoginOK'])) {
                                             <td>Đã hoàn thành</td>
                                             <td><?php echo $rowbooking['tour_code'] ?></td>
                                             <td><?php echo date('d-m-Y', strtotime($rowseday['startday'])) ?></td>
-                                            <td class="text-center text-primary"><i class="bi bi-info-circle"></i></td>
+                                            <td class="text-center text-primary clickinformation" data-bs-toggle="modal" data-bs-target="#informationBookingTour"><a href="#"><i class="bi bi-info-circle"></i></a></td>
                                         </tr>
                                 <?php
                                     }
@@ -223,6 +223,23 @@ if (!isset($_SESSION['LoginOK'])) {
                                 ?>
                             </tbody>
                         </table>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="inforbook">
+                        <div class="modal fade" id="informationBookingTour" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Thông tin chi tiết đơn đặt Tour</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
