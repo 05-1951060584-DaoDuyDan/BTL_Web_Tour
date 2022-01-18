@@ -69,7 +69,6 @@ if (isset($_SESSION['LoginOK']) && substr($_SESSION['LoginOK'], 0, 1) == '3') {
                                     <td><?php echo $email; ?></td>
                                     <td> <?php echo $phonenumber ?></td>
                                     <td>
-                                <!-- <?php echo $row['imagetouroperator']; ?> -->
                                 <img src="data:image/jpeg;base64,<?php echo base64_encode($row['imagetouroperator']); ?>" width="160" height="100" alt="Image Operator" />
                                 </td>
                                     <td><?php echo $status; ?></td>

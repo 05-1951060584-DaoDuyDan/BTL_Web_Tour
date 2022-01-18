@@ -16,13 +16,13 @@ if ($_GET['tourcode']) {
             $startday = date('d-m-Y', strtotime($rowSeDay['startday']));
             $endday = date('d-m-Y', strtotime($rowSeDay['endday']));
             $adultprice = $rowSeDay['adultprice'];
-            (int)$danhgia = $ps->getDGTour($tour_code);
-            $danhgia = (int)$danhgia;
-            if($danhgia == NULL){
-                $danhgia = "Chưa có đánh giá";
-            }
-            $danhgia = ($danhgia=="Chưa có đánh giá") ? "Chưa có đánh giá" : $danhgia.''.'/100 điểm';
         }
+        (int)$danhgia = $ps->getDGTour($tour_code);
+        $danhgia = (int)$danhgia;
+        if($danhgia == NULL){
+            $danhgia = "Chưa có đánh giá";
+        }
+        $danhgia = ($danhgia=="Chưa có đánh giá") ? "Chưa có đánh giá" : $danhgia.''.'/100 điểm';
 ?>
         <main style="margin-top: 120px; margin-bottom: 200px;">
             <div class="container mb-5">

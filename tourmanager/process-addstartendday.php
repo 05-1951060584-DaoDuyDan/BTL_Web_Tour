@@ -14,7 +14,7 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
         $status = '1';
         $tour_code = $_POST['tourcode'];
         $dbh = new PDO("mysql:host=localhost;dbname=db_tournew", "root", "");
-        $stmt = $dbh->prepare("INSERT INTO `tb_startendday` (`id_startendday`, `startday`, `endday`, `wdstart`, `wdend`, `childprice`, `adultprice`, `vat`, `status_ startendday`, `tour_code`) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt = $dbh->prepare("INSERT INTO `tb_startendday` (`id_startendday`, `startday`, `endday`, `wdstart`, `wdend`, `childprice`, `adultprice`, `vat`, `status_startendday`, `tour_code`) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         $stmt->bindParam(1, $startDay);
         $stmt->bindParam(2, $endDay);
         $stmt->bindParam(3, $wdStart);
@@ -42,7 +42,7 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                 </thead>
                 <tbody>
                     <?php
-                    $sqltourseday = "Select* from tb_startendday where tour_code = '{$tour_code}' order by startday;";
+                    $sqltourseday = "Select* from tb_startendday where tour_code = '{$tour_code}' and startday >= CURDATE() and status_startendday = 1 ORDER by startday";
                     $resultseday = mysqli_query($conn, $sqltourseday);
                     if (mysqli_num_rows($resultseday)) {
                         for ($i = 0; $i < mysqli_num_rows($resultseday); $i++) {

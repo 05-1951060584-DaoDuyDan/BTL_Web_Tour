@@ -43,7 +43,7 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                 </thead>
                 <tbody>
                     <?php
-                    $sqltourseday = "Select* from tb_startendday where tour_code = '{$tour_code}' order by startday;";
+                    $sqltourseday = "Select* from tb_startendday where tour_code = '{$tour_code}' and startday >= CURDATE() and status_startendday = 1 ORDER by startday";
                     $resultseday = mysqli_query($conn, $sqltourseday);
                     if (mysqli_num_rows($resultseday)) {
                         for ($i = 0; $i < mysqli_num_rows($resultseday); $i++) {

@@ -107,7 +107,7 @@
         </div>
         <div class="container login-footer">
             <div class="row">
-                <div class="d-flex justify-content-between">
+                <div class="d-flex justify-content-between" id="content-login-footer">
                     <div class="d-flex">
                         <a href="https://play.google.com/store/apps/details?id=com.hahalolo.android.social&hl=en" class="text-decoration-none"><button type="button" class="btn btn-light rounded-pill d-flex align-items-center me-2"><span class="material-icons me-2">
                                     adb

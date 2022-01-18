@@ -95,6 +95,38 @@ if (isset($_SESSION['LoginOK']) && substr($_SESSION['LoginOK'], 0, 1) == '3') {
                     Booking
                 </div>
             </div>
+            <div class="wrapper-col-4">
+                <div class="col-4">
+                    <?php
+                        $sql4 = "SELECT * FROM tb_typepage";
+                        $res4 = mysqli_query($conn, $sql4);
+                        $user = mysqli_num_rows($res4);
+                        if( $user > 0){
+                            echo $user;
+                        }
+                        else{
+                            echo "Không có";
+                        }
+                    ?>
+                    <br>
+                    Số Loại Trang
+                </div>
+                <div class="col-4">
+                    <?php
+                        $sql4 = "SELECT * FROM tb_typetour";
+                        $res4 = mysqli_query($conn, $sql4);
+                        $user = mysqli_num_rows($res4);
+                        if( $user > 0){
+                            echo $user;
+                        }
+                        else{
+                            echo "Không có";
+                        }
+                    ?>
+                    <br>
+                    Số Loại Tour
+                </div>
+            </div>
         </div>
     </div>
 </div>

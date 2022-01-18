@@ -82,6 +82,13 @@
 } */
 /* end css header */
 
+@media (max-width: 776px) {
+#content-login-footer{
+  display: flex;
+  flex-direction: column;
+}
+}
+
 /* CSS for Login */
 
 #body_login {
