@@ -75,12 +75,12 @@
                                     <td><?php echo $nametypepage; ?></td>
                                     <td><?php echo $nameuser; ?></td>
                                     <td>
-                                        <a href="update-room.php?id=<?php echo $id;?>" class="m-l-42">
+                                        <a href="update-tour.php?id=<?php echo $id;?>" class="m-l-42">
                                         <i class="fas fa-lock text-center" style="color:blue"></i>
                                         </a>
                                     </td>
                                     <td>
-                                        <a href="delete-room.php?id=<?php echo $id;?>" class="m-l-42">
+                                        <a href="delete-tour.php?id=<?php echo $id;?>" class="m-l-42">
                                         <i class="fas fa-lock-open text-center" style="color:red"></i>
                                         </a>
                                     </td>

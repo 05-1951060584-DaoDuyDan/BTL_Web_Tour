@@ -77,7 +77,7 @@
                                     <td><?php echo $nametouroperator; ?></td>
                                     <td><?php echo $status; ?></td>
                                     <td>
-                                        <a href="update-room.php?id=<?php echo $id;?>" >
+                                        <a href="update-tour.php?id=<?php echo $id;?>" >
                                         <i class="fas fa-lock" style="color:blue"></i>
                                         </a>
                                     </td>

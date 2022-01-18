@@ -1,4 +1,12 @@
-<?php include('partials-front/header.php') ?>
+<?php 
+include('partials-front/header.php');
+require "../config/config.php";
+if (isset($_SESSION['LoginOK']) && substr($_SESSION['LoginOK'], 0, 1) == '3') {
+    
+} else {
+    header('location: ../index.php');
+}
+?>
 
 <div class="container-fluid bg-secondary bg-opacity-50">
     <div class="wrapper">

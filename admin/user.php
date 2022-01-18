@@ -70,12 +70,12 @@
                                     <td><?php echo $admin; ?></td>
 
                                     <td>
-                                        <a href="update-room.php?id=<?php echo $id;?>" >
+                                        <a href="update-tour.php?id=<?php echo $id;?>" >
                                         <i class="fas fa-lock text-center" style="color:blue"></i>
                                         </a>
                                     </td>
                                     <td>
-                                        <a href="delete-room.php?id=<?php echo $id;?>" >
+                                        <a href="delete-tour.php?id=<?php echo $id;?>" >
                                         <i class="fas fa-lock-open" style="color:red"></i>
                                         </a>
                                     </td>
