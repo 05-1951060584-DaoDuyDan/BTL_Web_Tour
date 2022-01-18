@@ -1,5 +1,11 @@
-<?php include('partials-front/header.php')
+<?php
+include('partials-front/header.php');
+require "../config/config.php";
+if (isset($_SESSION['LoginOK']) && substr($_SESSION['LoginOK'], 0, 1) == '3') {
     
+} else {
+    header('location: ../index.php');
+}
 ?>
 
 <body >
@@ -15,7 +21,7 @@
                         <th scope="col">Email</th>
                         <th scope="col">Số điện thoại</th>
                         <th scope="col">Trạng thái</th>
-                        <th scope="col">Địa chỉ</th>
+                        <!-- <th scope="col">Địa chỉ</th> -->
                         <th scope="col">Liên kết lúc</th>
                         <th scope="col">Khóa</th>
                         <th scope="col">Người quản trị</th>
@@ -46,9 +52,9 @@
                                 $email_verified_at = $row['email_verified_at'];
                                 
                                 if($row['lock'] == 0)
-                                    $lock = 'Không hoạt động';
+                                    $lock = 'Không Khóa';
                                 else
-                                    $lock = 'Hoạt động';
+                                    $lock = 'Đang Khóa';
                                 if($row['admin'] == 0)
                                     $admin = 'Sai';
                                 else
@@ -64,18 +70,18 @@
                                     <td> <?php echo $email; ?></td>
                                     <td><?php echo $phonenumber; ?></td>
                                     <td><?php echo $status; ?></td>
-                                    <td><?php echo $email_verification_link.substr($row['email_verification_link'], 50); ?></td>
+                                    
                                     <td><?php echo $email_verified_at; ?></td>
                                     <td><?php echo $lock; ?></td>
                                     <td><?php echo $admin; ?></td>
 
                                     <td>
-                                        <a href="update-tour.php?id=<?php echo $id;?>" >
+                                        <a onclick="return confirm('Bạn chắc chắn muốn khóa người dùng này?')" href="process-lockuser.php?id=<?php echo $id_user;?>" >
                                         <i class="fas fa-lock text-center" style="color:blue"></i>
                                         </a>
                                     </td>
                                     <td>
-                                        <a href="delete-tour.php?id=<?php echo $id;?>" >
+                                        <a href="process-unlockUser.php?id=<?php echo $id_user;?>" onclick="return confirm('Bạn chắc chắn muốn mở khóa người dùng này?')">
                                         <i class="fas fa-lock-open" style="color:red"></i>
                                         </a>
                                     </td>
@@ -85,6 +91,11 @@
                         } else{}
                     ?>
             </table>
+            <?php
+            /*
+            <td><?php echo $email_verification_link.substr($row['email_verification_link'], 50); ?></td>
+            */
+            ?>
         </div>
     </div>
 </body>
