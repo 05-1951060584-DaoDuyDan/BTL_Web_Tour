@@ -16,7 +16,7 @@ require_once "process-string.php";
                             <a href="userinformation.php" class="text-decoration-none text-dark">
                                 <div class="d-flex align-items-center">
                                     <span class="material-icons my_icon_header me-3">person</span>
-                                    <p class="mt-3"><?php echo $user ?></p>
+                                    <p class="mt-3"><?php $tuser = explode('@', $user); echo $tuser[0].'@' ?></p>
                                 </div>
                             </a>
                         <?php

@@ -44,10 +44,9 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
         }
         mkdir("../images/Tour/" . $tour_code);
     } else if (isset($_POST['themthongtintour']) && $ps->checkTour($_POST['themthongtintour']) || isset($_GET['tourcode']) && $ps->checkTour($_GET['tourcode'])) {
-        if (isset($_POST['themthongtintour'])){
+        if (isset($_POST['themthongtintour'])) {
             $tour_code = $_POST['tour_code_update'];
-        }
-        else{
+        } else {
             $tour_code = $_GET['tourcode'];
         }
         $sqlinfotour = "Select* from tb_tour, tb_typetour where tour_code = '{$tour_code}' and tb_tour.id_typetour = tb_typetour.id_typetour";
@@ -652,6 +651,7 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                                         <th scope="col">Mã dịch vụ</th>
                                         <th scope="col">Tên dịch vụ</th>
                                         <th scope="col">Giá</th>
+                                        <th scope="col">Tình Trạng</th>
                                         <th scope="col">Sửa</th>
                                         <th scope="col">Xóa</th>
                                     </tr>
@@ -664,15 +664,31 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                                     if ($tourservice != false) {
                                         for ($i = 0; $i < count($tourservice); $i++) {
                                             $rowservice = $tourservice[$i];
+                                            if ($rowservice['lock_service'] == 1) {
+                                                $tt = "Đang khóa";
                                     ?>
+                                                <tr>
+                                                    <td scope="row"><?php echo $rowservice['id_tourservice'] ?></td>
+                                                    <td><?php echo $rowservice['nameservice'] ?></td>
+                                                    <td><?php echo $rowservice['priceservice'] ?></td>
+                                                    <td><?php echo $tt ?></td>
+                                                    <td></td>
+                                                    <td><i class="bi bi-trash text-warning deleteTourServiceClick" data-bs-toggle="modal" data-bs-target="#deleteTourService"></i></td>
+                                                </tr>
+                                            <?php
+                                            } else{
+                                                $tt = "Không khóa";
+                                            ?>
                                             <tr>
                                                 <td scope="row"><?php echo $rowservice['id_tourservice'] ?></td>
                                                 <td><?php echo $rowservice['nameservice'] ?></td>
                                                 <td><?php echo $rowservice['priceservice'] ?></td>
+                                                <td><?php echo $tt ?></td>
                                                 <td><i class="bi bi-pencil-square text-warning updateTourServiceClick" data-bs-toggle="modal" data-bs-target="#editServiceTour"></i></td>
                                                 <td><i class="bi bi-trash text-warning deleteTourServiceClick" data-bs-toggle="modal" data-bs-target="#deleteTourService"></i></td>
                                             </tr>
                                     <?php
+                                            }
                                         }
                                     }
                                     ?>
@@ -862,7 +878,7 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        
+
                                     </div>
                                 </div>
                             </div>

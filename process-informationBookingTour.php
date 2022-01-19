@@ -5,7 +5,7 @@ if ($_POST['codebookingtour'] != '') {
     include('classprocessSQL.php');
     $ps = new Process();
     $codebookingtour = $_POST['codebookingtour'];
-    echo $codebookingtour;
+    //echo $codebookingtour;
     $sqlshowinfobookingtour = "Select* from tb_tourbooking where code_bookingtour = '{$codebookingtour}'";
     $resultSBT = mysqli_query($conn, $sqlshowinfobookingtour);
     if(mysqli_num_rows($resultSBT)>0){

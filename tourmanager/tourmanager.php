@@ -259,8 +259,15 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                                     <div class="col-md-4">
                                         <div class="col-md" style="margin-left: -12px;">
                                             <div class="card">
-                                                <img src="../images/Tour/TuanDung/1.png" class="card-img-top" alt="...">
+                                                <?php
+                                                    $sqlimg = "Select* from tb_tourimages where tour_code = '{$tour_code}'";
+                                                    $resultim = mysqli_query($conn, $sqlimg);
+                                                    $imgs = mysqli_fetch_assoc($resultim);
+                                                ?>
+                                                
+                                                <img src="data:image/png;base64, <?php echo base64_encode($imgs['images_part']) ?>" class="card-img-top" alt="...">
                                                 <div class="card-body">
+                                                    <h5 class="card-title">Mã Tour: <?php echo $tour_code ?></h5>
                                                     <h5 class="card-title"><?php echo $nametour ?></h5>
                                                     <p class="card-text"><?php echo $tourinfo ?></p>
                                                 </div>
@@ -273,14 +280,22 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                                                             <p class="fw-bold ms-3"><?php echo $tourstartinglocation . ' - ' . $tourendinglocation ?></p>
                                                         </div>
                                                     </li>
+                                                    <?php
+                                                    $se = $ps->getSETour($tour_code);
+                                                    if($se!=false){
+                                                        $saa = $se[0];
+                                                    ?>
                                                     <li class="list-group-item">
                                                         <div class="d-flex flex-inline">
                                                             <span class="material-icons">
                                                                 calendar_month
                                                             </span>
-                                                            <p class="fw-bold ms-3">Thứ 2, 20/12/2021</p>
+                                                            <p class="fw-bold ms-3"><?php echo $saa['wdstart'] ?>, <?php echo ps_date($saa['startday']) ?></p>
                                                         </div>
                                                     </li>
+                                                    <?php
+                                                    }
+                                                    ?>
                                                 </ul>
                                                 <?php
                                                 if ($tourstatus == 1 && $lock == 1 || $tourstatus == 0 && $lock == 1) {

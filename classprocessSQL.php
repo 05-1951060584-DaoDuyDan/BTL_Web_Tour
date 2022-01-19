@@ -99,7 +99,7 @@ class Process{
     //lấy ra dịch vụ của 1 tour
     function getTourServive($tour_code){
         $conn = $this->connectDb();
-        $sqlServive = "Select* from tb_tourservice where tour_code = '{$tour_code}'";
+        $sqlServive = "Select* from tb_tourservice where tour_code = '{$tour_code}' and `lock_service` = 0";
         $resultService = mysqli_query($conn, $sqlServive);
         $SEDArr = [];
         if(mysqli_num_rows($resultService)>0){

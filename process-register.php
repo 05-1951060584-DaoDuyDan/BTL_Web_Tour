@@ -15,7 +15,7 @@ if(mysqli_num_rows($result) <= 0)
     mysqli_query($conn, "INSERT INTO tb_user(nameuser, surnameuser, email, phonenumber, password, email_verification_link) VALUES('$name','$surname','$email','$phonenumber', '$pass1', '$token')");
     //sau khi lưu xong chúng ta sẽ cần gửi tới email đăng ký
     //yêu cầu người dùng nhấp để kích hoạt đường dẫn kích hoạt gửi vào email
-    $link = "<a href='http://localhost/BTL_WEB/activation.php?key=".$email."&token=".$token."'>Nhấp vào đây để kích hoạt.</a>";
+    $link = "<a href='http://localhost/BTL_WEB_TongHop/activation.php?key=".$email."&token=".$token."'>Nhấp vào đây để kích hoạt.</a>";
     
 
     //quá trình gửi email
