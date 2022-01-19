@@ -14,7 +14,9 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
 }
 
 ?>
-
+<head>
+    <title>Đăng ký tài khoản kinh doanh</title>
+</head>
 
 <!-- <header>AAAA</header> -->
 <div style="margin-top:70px">

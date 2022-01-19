@@ -199,7 +199,7 @@ class Process{
     }
     function checkTour($code){
         $conn = $this->connectDb();
-        $querySelect = "SELECT * FROM tb_tour WHERE tour_code='{$code}' and status_tour = 1 and `lock` = 0";
+        $querySelect = "SELECT * FROM tb_tour WHERE tour_code='{$code}' and `lock` = 0";
         $resultService = mysqli_query($conn, $querySelect);
         $SEDArr = [];
         if(mysqli_num_rows($resultService)>0){

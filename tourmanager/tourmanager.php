@@ -20,6 +20,9 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
 }
 
 ?>
+<head>
+    <title>Thông tin người quản lý</title>
+</head>
 <div id="main" style="margin-top: 66px;">
     <div class="container">
         <div class="row">
@@ -307,17 +310,15 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                                                     </div>
                                                 <?php
                                                 }
-                                                if ($tourstatus == 1 && $lock == 0) {
+                                                else if ($tourstatus == 1 && $lock == 0) {
                                                 ?>
                                                     <div class="card-body">
                                                         <a href="../informationtour.php?tourcode=<?php echo $tour_code ?>" class="card-link text-decoration-none">Xem Thông Tin Tour</a>
                                                         <a href="process-addtour.php?tourcode=<?php echo $tour_code ?>" class="card-link text-decoration-none">Chỉnh sửa Tour</a><br>
                                                     </div>
                                                 <?php
-                                                }
-                                                ?>
-                                                <?php
-                                                if ($tourstatus == 0 && $lock = 0) {
+                                                }   
+                                                else{
                                                 ?>
                                                     <div class="card-body">
                                                         <a href="process-addtour.php?tourcode=<?php echo $tour_code ?>" class="card-link text-decoration-none">Thêm thông tin Tour</a><br>

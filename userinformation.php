@@ -14,6 +14,9 @@ if (!isset($_SESSION['LoginOK'])) {
     }
 }
 ?>
+<head>
+    <title>Thông tin cá nhân</title>
+</head>
 <div id="main" style="margin-top: 70px;">
     <div class="container">
         <div class="row">

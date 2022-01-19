@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>User Account Activation by Email Verification using PHP</title>
+    <title>Xác thực Email Người Quản Trị</title>
     <!-- CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
@@ -27,7 +27,7 @@
                 session_start();
                 if (isset($_SESSION['LoginOK'])) {
                     unset($_SESSION['LoginOK']);
-                    header('location: index.php');
+                    header('location: ../login.php');
                 }
             }else{
                 $msg = "Bạn đã xác nhận email với chúng tôi rồi!";

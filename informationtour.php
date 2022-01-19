@@ -24,6 +24,9 @@ if ($_GET['tourcode']) {
         }
         $danhgia = ($danhgia=="Chưa có đánh giá") ? "Chưa có đánh giá" : $danhgia.''.'/100 điểm';
 ?>
+<head>
+    <title>Thông tin Tour</title>
+</head>
         <main style="margin-top: 120px; margin-bottom: 200px;">
             <div class="container mb-5">
                 <div class="row">

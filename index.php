@@ -2,7 +2,9 @@
 include('.//partials-front/header.php');
 require_once "process-string.php";
 ?>
-
+<head>
+    <title>Trang chủ</title>
+</head>
 <div class="container-fluid" style="margin-top: 66px">
     <div class="row mb-5">
         <!-- Sidebar -->

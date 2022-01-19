@@ -10,12 +10,20 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
         $nameservice = $_POST['nameservice'];
         $priceservice = $_POST['priceservice'];
         $tour_code = $_POST['tourcode'];
-        $dbh = new PDO("mysql:host=localhost;dbname=db_tournew", "root", "");
-        $stmt = $dbh->prepare("INSERT INTO `tb_tourservice` (`nameservice`, `priceservice`, `tour_code`) VALUES (?, ?, ?)");
-        $stmt->bindParam(1, $nameservice);
-        $stmt->bindParam(2, $priceservice);
-        $stmt->bindParam(3, $tour_code);
-        if ($stmt->execute()) {
+        // $dbh = new PDO("mysql:host=localhost;dbname=db_tournew", "root", "");
+        // $stmt = $dbh->prepare("");
+        // $stmt->bindParam(1, $nameservice);
+        // $stmt->bindParam(2, $priceservice);
+        // $stmt->bindParam(3, $tour_code);
+        $count = 0;
+        $sql = "Select* from tb_tourservice where nameservice = '{$nameservice}' and priceservice = {$priceservice} and tour_code = '{$tour_code}' ";
+        $sqlcheck = "Select* from tb_tourservice where nameservice = '{$nameservice}' and priceservice = {$priceservice} and tour_code = '{$tour_code}' ";
+        $result = mysqli_query($conn, $sqlcheck);
+        if(mysqli_num_rows($result)==0){
+            $sql = "INSERT INTO `tb_tourservice` (`nameservice`, `priceservice`, `tour_code`) VALUES ('{$nameservice}', {$priceservice}, '{$tour_code}')";
+        }
+        if (mysqli_query($conn, $sql) && $count ==0) {
+            $count++;
 ?>
             <table class="table mt-2 bg-white shadow-sm rounded">
                 <h4 class="mt-2">Danh sách các dịch vụ của Tour</h4>

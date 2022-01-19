@@ -7,7 +7,9 @@ if (isset($_SESSION['LoginOK']) && substr($_SESSION['LoginOK'], 0, 1) == '3') {
     header('location: ../index.php');
 }
 ?>
-
+<head>
+    <title>Admin Tour Operator</title>
+</head>
 <body >
     <div class="container ">
         <a href="add-room.php" class="btn btn-success m-2">Thêm Tour</a>

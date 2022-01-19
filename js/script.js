@@ -30,7 +30,7 @@ $('#btnAddSEDay').on('click', function() {
     }
     console.log(daycount);
     console.log(number);
-    if($("#startDay").val()<$("#endDay").val() && da <= dual  && daycount==number && $("#check-startday").text()=="Hợp lệ!"){
+    if($("#startDay").val()<=$("#endDay").val() && da <= dual  && daycount==number && $("#check-startday").text()=="Hợp lệ!"){
         let form_data = new FormData();
         let endDay = $("#endDay").val();
         let adultPrice = $("#adultPrice").val();
@@ -421,8 +421,8 @@ function accept(){
 //Thêm dịch vụ cho Tour
 $(document).ready(function(){
     $(".addTourService").click(function(){
-        let nameService = $("#nameService").val();
-        let priceService = $("#priceService").val();
+        let nameService = $("#nameServicesadd").val();
+        let priceService = $("#priceServicesadd").val();
         var tourcode = $("#my_name_tour").val();
         if(nameService!=""&&priceService!=""){
             let form_datas = new FormData();

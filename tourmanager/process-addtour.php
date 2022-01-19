@@ -33,8 +33,9 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
         $chinhsachtour = $_POST['chinhsachtour'];
         $sqladdtour = "Insert into tb_tour Values('{$tour_code}','{$nametour}','{$startlocation}','{$endlocation}',{$numberofdays},{$tourdiscount}, '{$tourinfo}', {$tourinstallemnt} ,'{$quydinhtour}','{$khuyenmaitour}','{$chinhsachtour}', 0, 0, {$_POST['typetour']}, {$row['id_touroperator']})";
         if (mysqli_query($conn, $sqladdtour)) {
+            header("location: tourmanager.php");
         } else {
-            // header("location: add-tour.php");
+            header("location: tourmanager.php");
         }
 
         $sqlstatustour = "Select* from tb_touroperator, tb_user, tb_tour where tb_user.id_user = tb_touroperator.id_user and tb_user.email = '{$user}' and tour_code = '{$tour_code}'";
@@ -56,6 +57,9 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
         header("location: tourmanager.php");
     }
 ?>
+    <head>
+        <title>Quản lý Tour của bạn</title>
+    </head>
     <div class="container" style="margin-top: 72px;">
         <div class="mt-2 mb-2">
             <a href="process-addtour.php" class="text-decoration-none d-flex align-items-center"><span class="material-icons">
@@ -630,11 +634,11 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                             <h4>Thêm dịch vụ cho Tour của bạn</h4>
                             <div class="col-md-6">
                                 <label for="nameService" class="form-label">Tên dịch vụ</label>
-                                <input type="text" name="nameService" class="form-control" id="nameService" value="" required>
+                                <input type="text" name="nameServicesadd" class="form-control" id="nameServicesadd" value="" required>
                             </div>
                             <div class="col-md-6">
                                 <label for="priceService" class="form-label">Giá dịch vụ</label>
-                                <input type="text" name="priceService" class="form-control" id="priceService" value="" required>
+                                <input type="text" name="priceServicesadd" class="form-control" id="priceServicesadd" value="" required>
                             </div>
                             <div class="col-md-6">
                                 <small class="inforAddService"></small>

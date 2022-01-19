@@ -3,6 +3,9 @@ include "partials-front/header.php";
 if(isset($_SESSION['LoginOK'])){
     if(substr($_SESSION['LoginOK'], 0, 1) == '1'){
     ?>
+    <head>
+        <title>Tài khoản bị khóa</title>
+    </head>
         <main style="margin-top: 70px; margin-bottom:70px">
             <div class="container">
                 <div class="row">

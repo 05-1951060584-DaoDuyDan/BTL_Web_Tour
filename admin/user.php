@@ -7,7 +7,9 @@ if (isset($_SESSION['LoginOK']) && substr($_SESSION['LoginOK'], 0, 1) == '3') {
     header('location: ../index.php');
 }
 ?>
-
+<head>
+    <title>Admin User</title>
+</head>
 <body >
     <div class="container">
         <div class="row">
