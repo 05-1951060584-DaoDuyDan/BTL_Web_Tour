@@ -25,60 +25,7 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
         if (mysqli_query($conn, $sql) && $count ==0) {
             $count++;
 ?>
-            <table class="table mt-2 bg-white shadow-sm rounded">
-                <h4 class="mt-2">Danh sách các dịch vụ của Tour</h4>
-                <thead>
-                    <tr>
-                        <th scope="col">Mã dịch vụ</th>
-                        <th scope="col">Tên dịch vụ</th>
-                        <th scope="col">Giá</th>
-                        <th scope="col">Sửa</th>
-                        <th scope="col">Xóa</th>
-                    </tr>
-                </thead>
-                <?php
-                $tourservice = $ps->getTourServive($tour_code);
-                ?>
-                <tbody>
-                    <?php
-                    if ($tourservice != false) {
-                        for ($i = 0; $i < count($tourservice); $i++) {
-                            $rowservice = $tourservice[$i];
-                    ?>
-                            <tr>
-                                <td scope="row"><?php echo $rowservice['id_tourservice'] ?></td>
-                                <td><?php echo $rowservice['nameservice'] ?></td>
-                                <td><?php echo $rowservice['priceservice'] ?></td>
-                                <td><i class="bi bi-pencil-square text-warning updateTourServiceClick" data-bs-toggle="modal" data-bs-target="#editServiceTour"></i></td>
-                                <td><i class="bi bi-trash text-warning deleteTourServiceClick" data-bs-toggle="modal" data-bs-target="#deleteTourService"></i></td>
-                            </tr>
-                    <?php
-                        }
-                    }
-                    ?>
-                </tbody>
-            </table>
-            <script>
-                $(document).ready(function() {
-                    $(".updateTourServiceClick").click(function() {
-                        $tr = $(this).closest('tr');
-                        var data = $tr.children("td").map(function() {
-                            return $(this).text();
-                        }).get();
-                        $("#idTourServiceUpdate").val(data[0]);
-                        $("#nameServiceUpdate").val(data[1]);
-                        $("#priceServiceUpdate").val(data[2]);
-                    })
-                })
-                $(".deleteTourServiceClick").click(function() {
-                    $tr = $(this).closest('tr');
-                    var data = $tr.children("td").map(function() {
-                        return $(this).text();
-                    }).get();
-                    $(".idservicedelete").text(data[0]);
-                    //$(".daydeleteout").val(data[0]);
-                })
-            </script>
+
 <?php
         } else {
             echo "Không thành công!";

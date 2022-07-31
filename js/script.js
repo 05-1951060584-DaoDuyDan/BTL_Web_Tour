@@ -438,8 +438,16 @@ $(document).ready(function(){
                 data: form_datas,
                 type: 'post',
                 success: function(res) {
-                    $("#tourServiceTable").html(res);
                     $(".inforAddService").text("Thành công!").css('color','green');
+                    var number = $('.tb_tourservice tr:last').closest('tr').find('td:first').text();
+                    number = Number(number)+1;
+                    $('.tb_tourservice tr:last').after('<tr><td>'+number+'</td><td>'
+                    +nameService+'</td><td>'
+                    +priceService+'</td><td>'
+                    +'Không khóa</td>'+
+                    +'<td><i class="bi bi-pencil-square text-warning updateTourServiceClick" data-bs-toggle="modal" data-bs-target="#editServiceTour"></i></td>'+
+                    '<td><i class="bi bi-trash text-warning deleteTourServiceClick" data-bs-toggle="modal" data-bs-target="#deleteTourService"></i></td>'+
+                    '</tr>');
                     $("#nameService").val("");
                     $("#priceService").val("");
                 }
@@ -504,9 +512,34 @@ $(".deleteTourServiceClick").click(function(){
         return $(this).text();
     }).get();
     $(".idservicedelete").text(data[0]);
-    //$(".daydeleteout").val(data[0]);
+    
+    $(".commitDeleteService").click(function(){
+        let idTourService = $(".idservicedelete").text();
+        var tourcode = $("#my_name_tour").val();
+        if(idTourService!=""){
+            let form_datas = new FormData();
+            form_datas.append('idTourService',idTourService);
+            form_datas.append('tourcode',tourcode);
+            $.ajax({
+                url: 'process-deleteService.php', // gửi đến file upload.php 
+                dataType: 'text',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: form_datas,
+                type: 'post',
+                success: function(res) {
+                    $(".inforAddService").text("Xóa hành công!").css('color','green');
+                    $tr.remove();
+                }
+            });
+            return false;
+        }else{
+            $(".inforAddService").text("Thông tin xóa chưa đầy đủ mời nhập lại!").css('color','red');
+        }
+    })
 })
-
+/*
 $(document).ready(function(){
     $(".commitDeleteService").click(function(){
         let idTourService = $(".idservicedelete").text();
@@ -524,8 +557,8 @@ $(document).ready(function(){
                 data: form_datas,
                 type: 'post',
                 success: function(res) {
-                    $("#tourServiceTable").html(res);
                     $(".inforAddService").text("Xóa hành công!").css('color','green');
+                    $(this).remove();
                 }
             });
             return false;
@@ -534,7 +567,7 @@ $(document).ready(function(){
         }
     })
 })
-
+*/
 $(document).ready(function(){
     $("#updateInfoUser").click(function(){
         $("#nameuser").attr("readonly", false);

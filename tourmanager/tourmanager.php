@@ -612,7 +612,7 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
                             </div>
                         </form>
                         <div id="tourServiceTable">
-                            <table class="table mt-2 bg-white shadow-sm rounded">
+                            <table class="table mt-2 bg-white shadow-sm rounded tb_tourservice">
                                 <h4 class="mt-2">Danh sách các dịch vụ của Tour</h4>
                                 <thead>
                                     <tr>
