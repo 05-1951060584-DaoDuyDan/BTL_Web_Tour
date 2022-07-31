@@ -117,6 +117,31 @@
 
 /* CSS for index */
 
+.wrapper{
+  display: none;
+}
+
+.wrapper img {
+  max-width: 125px;
+}
+
+.temp *{
+  font-family: "Poppins", sans-serif;
+}
+
+.temp .numb, .deg{
+  font-size: 72px;
+  font-weight: 500;
+}
+
+.icon-under{
+  font-size: 40px;
+}
+
+.details{
+  margin-bottom: -6px;
+}
+
 /* .wrapper{
   margin-top: 64px;
 }

@@ -36,7 +36,7 @@ require_once "process-string.php";
                         <?php
                         if (isset($_SESSION['LoginOK']) && substr($_SESSION['LoginOK'], 0, 1) == '1') {
                         ?>
-                            <a href="tourmanager/tourmanager.php" class="text-decoration-none text-dark">
+                            <a href="tourmanager/index.php" class="text-decoration-none text-dark">
                                 <div class="d-flex align-items-center">
                                     <span class="material-icons my_icon_header me-3">monetization_on</span>
                                     <p class="mt-3">Tài khoản kinh doanh</p>
@@ -56,42 +56,47 @@ require_once "process-string.php";
                         ?>
                     </div>
                 </div>
-                <div class="bg-white wrapper rounded shawdow-sm mt-3">
-                    <div class="time">
+                <div class="bg-white wrapper weather-part rounded shawdow-sm mt-3 text-center">
+                    <div class="time temp p-2">
                         <h6 class="text-center">Chúc bạn một ngày tốt lành! <?php  ?></h6>
                     </div>
-                    <div class="temp p-3 text-center">
+                    <img src="./icon/cloud.svg" alt="">
+                    <div class="temp ps-3 pt-3 pe-3 text-center">
                         <span class="numb">13</span>
-                        <span class="deg">°</span>
+                        <span class="deg">°C</span>
                     </div>
-                    <div class="weather p-3 text-center">
+                    <div class="weather ps-3 pt-3 pe-3 text-center">
                         Cloud
                     </div>
-                    <div class="location d-flex p-2 justify-content-center">
+                    <div class="location d-flex justify-content-center">
                         <span class="material-icons">
                             room
                         </span>
-                        <span>Ha Noi, Viet Nam</span>
+                        <span class="address">Ha Noi, Viet Nam</span>
                     </div>
                     <div class="bottom-details d-flex flex-row justify-content-between p-2 border border-radius m-1">
                         <div class="column feels d-flex flex-row align-items-center ">
-                            <span class="material-icons text-danger">
-                                device_thermostat
-                            </span>
+                            <div>
+                                <span class="material-icons text-danger icon-under">
+                                    device_thermostat
+                                </span>
+                            </div>
                             <div class="details">
                                 <div class="temp">
                                     <span class="numb-2"></span>
-                                    <span class="deg">°</span>
+                                    <span class="deg_">°</span>
                                 </div>
                                 <p>Feels Like</p>
                             </div>
                         </div>
                         <div class="column humidity d-flex flex-row align-items-center">
-                            <span class="material-icons text-primary">
-                                invert_colors
-                            </span>
+                            <div>
+                                <span class="material-icons text-primary icon-under">
+                                    invert_colors
+                                </span>
+                            </div>
                             <div class="details">
-                                <span>87%</span>
+                                <span class="humid">87%</span>
                                 <p>Humidity</p>
                             </div>
                         </div>
